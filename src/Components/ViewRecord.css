@@ -1,0 +1,10 @@
+.tableAlignment{
+    display: flex;
+    justify-content: space-evenly;
+    width: 20%;
+}
+
+.tableRow{
+    align-items: start ;
+    width: 20%;
+}
