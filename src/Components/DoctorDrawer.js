@@ -15,20 +15,24 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+import LocalHospitalIcon from '@material-ui/icons/LocalHospital';
+import ViewAgendaIcon from '@material-ui/icons/ViewAgenda';
+import PersonIcon from '@material-ui/icons/Person';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
 import SearchField from "react-search-field";
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import Avatar from '@material-ui/core/Avatar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBriefcaseMedical, faFileMedicalAlt, faNotesMedical, faUserMd,} from '@fortawesome/free-solid-svg-icons';
 import PatientList from "./PatientTable";
 import ViewRecord from "./ViewRecord";
 import './DoctorDrawer.css';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+} from "react-router-dom";
 
 
 const drawerWidth = 240;
@@ -152,14 +156,38 @@ export default function DoctorDrawer() {
                     </IconButton>
                 </div>
                 <Divider />
-                <List>
-                    {['Home', 'View Records', 'Profile', 'Log Out'].map((text, index) => (
-                        <ListItem button key={text}>
-                            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItem>
-                    ))}
-                </List>
+                    <Router>
+                        <List>
+                                <ListItem button>
+                                    <Link to="/"></Link>
+                                        <ListItemIcon>
+                                            <LocalHospitalIcon />
+                                        </ListItemIcon>
+                                        <ListItemText primary="Home" />
+                                </ListItem>
+                                <ListItem button>
+                                    <Link to="/view"></Link>
+                                    <ListItemIcon>
+                                        <ViewAgendaIcon />
+                                    </ListItemIcon>
+                                    <ListItemText primary="View Records" />
+                                </ListItem>
+                                <ListItem button>
+                                    <Link to="/profile"></Link>
+                                <ListItemIcon>
+                                    <PersonIcon />
+                                </ListItemIcon>
+                                <ListItemText primary="Profile" />
+                            </ListItem>
+                                <ListItem button>
+                                    <Link to="/exit"></Link>
+                                    <ListItemIcon>
+                                        <ExitToAppIcon />
+                                    </ListItemIcon>
+                                    <ListItemText primary="Log Out" />
+                                </ListItem>
+                        </List>
+                    </Router>
             </Drawer>
             <main className={classes.content}>
                 <div className={classes.toolbar} />
@@ -177,80 +205,80 @@ export default function DoctorDrawer() {
                     </Card>
                 </div>
                     <div className="features">
-                            {/*<div className="ViewRequests">*/}
-                            {/*    <Card>*/}
-                            {/*        <CardContent>*/}
-                            {/*            <PatientList/>*/}
-                            {/*        </CardContent>*/}
-                            {/*    </Card>*/}
-                            {/*</div>*/}
-                            {/*<div className='Count'>*/}
-                            {/*    <div className="CardCount">*/}
-                            {/*    <Card className='cardSize'>*/}
-                            {/*        <CardContent className='cardValues'>*/}
-                            {/*            <div className='myIcon'>*/}
-                            {/*            <FontAwesomeIcon className='imgIcon' icon={faUserMd} />*/}
-                            {/*            </div>*/}
-                            {/*            <div className='stats'>*/}
-                            {/*                <div className='number'>*/}
-                            {/*                    69*/}
-                            {/*                </div>*/}
-                            {/*                <div className='entity'>*/}
-                            {/*                    Patients*/}
-                            {/*                </div>*/}
-                            {/*            </div>*/}
-                            {/*        </CardContent>*/}
-                            {/*    </Card>*/}
-                            {/*        <Card className='cardSize'>*/}
-                            {/*            <CardContent className='cardValues'>*/}
-                            {/*                <div className='myIcon'>*/}
-                            {/*                    <FontAwesomeIcon className='imgIcon' icon={faBriefcaseMedical} />*/}
-                            {/*                </div>*/}
-                            {/*                <div className='stats'>*/}
-                            {/*                    <div className='number'>*/}
-                            {/*                        69*/}
-                            {/*                    </div>*/}
-                            {/*                    <div className='entity'>*/}
-                            {/*                        Doctors*/}
-                            {/*                    </div>*/}
-                            {/*                </div>*/}
-                            {/*            </CardContent>*/}
-                            {/*        </Card>*/}
-                            {/*    </div>*/}
-                            {/*    <div className="CardCount">*/}
-                            {/*        <Card className='cardSize'>*/}
-                            {/*            <CardContent className='cardValues'>*/}
-                            {/*                <div className='myIcon'>*/}
-                            {/*                    <FontAwesomeIcon className='imgIcon' icon={faFileMedicalAlt} />*/}
-                            {/*                </div>*/}
-                            {/*                <div className='stats'>*/}
-                            {/*                    <div className='number'>*/}
-                            {/*                        69*/}
-                            {/*                    </div>*/}
-                            {/*                    <div className='entity'>*/}
-                            {/*                        Records*/}
-                            {/*                    </div>*/}
-                            {/*                </div>*/}
-                            {/*            </CardContent>*/}
-                            {/*        </Card>*/}
-                            {/*        <Card className='cardSize'>*/}
-                            {/*            <CardContent className='cardValues'>*/}
-                            {/*                <div className='myIcon'>*/}
-                            {/*                    <FontAwesomeIcon className='imgIcon' icon={faNotesMedical} />*/}
-                            {/*                </div>*/}
-                            {/*                <div className='stats'>*/}
-                            {/*                    <div className='number'>*/}
-                            {/*                        69*/}
-                            {/*                    </div>*/}
-                            {/*                    <div className='entity'>*/}
-                            {/*                        Transactions*/}
-                            {/*                    </div>*/}
-                            {/*                </div>*/}
-                            {/*            </CardContent>*/}
-                            {/*        </Card>*/}
-                            {/*    </div>*/}
-                            {/*</div>*/}
-                        <ViewRecord />
+                            <div className="ViewRequests">
+                                <Card>
+                                    <CardContent>
+                                        <PatientList/>
+                                    </CardContent>
+                                </Card>
+                            </div>
+                            <div className='Count'>
+                                <div className="CardCount">
+                                <Card className='cardSize'>
+                                    <CardContent className='cardValues'>
+                                        <div className='myIcon'>
+                                        <FontAwesomeIcon className='imgIcon' icon={faUserMd} />
+                                        </div>
+                                        <div className='stats'>
+                                            <div className='number'>
+                                                69
+                                            </div>
+                                            <div className='entity'>
+                                                Patients
+                                            </div>
+                                        </div>
+                                    </CardContent>
+                                </Card>
+                                    <Card className='cardSize'>
+                                        <CardContent className='cardValues'>
+                                            <div className='myIcon'>
+                                                <FontAwesomeIcon className='imgIcon' icon={faBriefcaseMedical} />
+                                            </div>
+                                            <div className='stats'>
+                                                <div className='number'>
+                                                    69
+                                                </div>
+                                                <div className='entity'>
+                                                    Doctors
+                                                </div>
+                                            </div>
+                                        </CardContent>
+                                    </Card>
+                                </div>
+                                <div className="CardCount">
+                                    <Card className='cardSize'>
+                                        <CardContent className='cardValues'>
+                                            <div className='myIcon'>
+                                                <FontAwesomeIcon className='imgIcon' icon={faFileMedicalAlt} />
+                                            </div>
+                                            <div className='stats'>
+                                                <div className='number'>
+                                                    69
+                                                </div>
+                                                <div className='entity'>
+                                                    Records
+                                                </div>
+                                            </div>
+                                        </CardContent>
+                                    </Card>
+                                    <Card className='cardSize'>
+                                        <CardContent className='cardValues'>
+                                            <div className='myIcon'>
+                                                <FontAwesomeIcon className='imgIcon' icon={faNotesMedical} />
+                                            </div>
+                                            <div className='stats'>
+                                                <div className='number'>
+                                                    69
+                                                </div>
+                                                <div className='entity'>
+                                                    Transactions
+                                                </div>
+                                            </div>
+                                        </CardContent>
+                                    </Card>
+                                </div>
+                            </div>
+                        {/*<ViewRecord />*/}
                     </div>
             </main>
         </div>
