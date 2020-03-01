@@ -1,9 +1,8 @@
 import React from "react";
 import clsx from "clsx";
 import {Menu} from "@material-ui/icons";
-import { makeStyles,useTheme } from '@material-ui/core/styles';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 import {AppBar, Typography, IconButton, Toolbar, ClickAwayListener} from '@material-ui/core';
-import * as constants from '../data/constants'
 
 const drawerWidth = 240;
 

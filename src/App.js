@@ -22,6 +22,9 @@ function App() {
         <Route exact path="/medical-records">
           <MedicalRecords />
         </Route>
+        <Route exact path="patient">
+          <Home />
+        </Route>
       </Switch>
     </div>
   </Router>)

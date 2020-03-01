@@ -14,13 +14,16 @@ import {
     faUser,
     faUserMd
 } from '@fortawesome/free-solid-svg-icons';
+import {Avatar, Button, List, ListItem, ListItemAvatar, ListItemSecondaryAction, ListItemText} from "@material-ui/core";
+import PersonIcon from "@material-ui/core/SvgIcon";
+import FileCopyIcon from "@material-ui/core/SvgIcon";
 
 const CustomSearch = styled(TextField)`
   width: 100%;
 `;
 
 const CustomIcon = styled(FontAwesomeIcon)`
-  font-size: 100px;
+  font-size: 50px;
 `;
 
 const CustomFont = styled.section`
@@ -28,11 +31,19 @@ const CustomFont = styled.section`
   height: 100%;
 `;
 
+function generate(element) {
+    return [0, 1, 2].map(value =>
+        React.cloneElement(element, {
+            key: value,
+        }),
+    );
+}
+
 
 export default function DoctorView() {
 
     return(
-        <Grid container>
+        <Grid container spacing={2} m={2}>
             <Grid item xs={12}>
                 <Card>
                     <CardContent>
@@ -53,46 +64,101 @@ export default function DoctorView() {
                     </CardContent>
                 </Card>
             </Grid>
-            <Grid container justify="space-around" spacing={4} style={{marginTop: 20}}>
-                <Grid item md={4} xs={12}>
-                    <Card >
+            <Grid item md={3} xs={12}>
+                <div>
+                    <Card>
                         <CardContent>
-                            <Grid container direction="row" justify="space-evenly">
-                                <Grid item xs={6}><CustomIcon icon={faUser} /></Grid>
-                                <Grid item xs={6}><CustomFont>Registered Patients</CustomFont></Grid>
-                            </Grid>
+                            <CustomIcon icon={faUser} />
+                            Number
+                            <CustomFont>Registered Patients</CustomFont>
                         </CardContent>
                     </Card>
-                </Grid>
-                <Grid item md={4} xs={12}>
-                    <Card >
-                        <CardContent>
-                            <Grid container direction="row">
-                                <Grid item xs={6}><CustomIcon icon={faUserMd} /></Grid>
-                                <Grid item xs={6}><CustomFont>Registered Doctors</CustomFont></Grid>
-                            </Grid>
-                        </CardContent>
-                    </Card>
-                </Grid>
+                </div>
             </Grid>
-            <Grid container justify="space-around" spacing={4} style={{marginTop: 20}}>
-                <Grid item md={4} xs={12}>
-                    <Card >
+            <Grid item md={3} xs={12}>
+                <div>
+                    <Card>
                         <CardContent>
-                            <Grid container direction="row">
-                                <Grid item xs={6}><CustomIcon icon={faNotesMedical} /></Grid>
-                                <Grid item xs={6}><CustomFont>Number of Transactions</CustomFont></Grid>
-                            </Grid>
+                            <CustomIcon icon={faUserMd} />
+                            Number
+                            <CustomFont>Registered Doctors</CustomFont>
+                        </CardContent>
+                    </Card>
+                </div>
+            </Grid>
+            <Grid item md={3} xs={12}>
+                <div>
+                    <Card>
+                        <CardContent>
+                            <CustomIcon icon={faFileMedicalAlt} />
+                            Number
+                            <CustomFont>Total Transactions</CustomFont>
+                        </CardContent>
+                    </Card>
+                </div>
+            </Grid>
+            <Grid item md={3} xs={12}>
+                <div>
+                    <Card>
+                        <CardContent>
+                            <CustomIcon icon={faNotesMedical} />
+                            Number
+                            <CustomFont>Total EMRs</CustomFont>
+                        </CardContent>
+                    </Card>
+                </div>
+            </Grid>
+            <Grid container justify="space-evenly">
+                <Grid item md={5} xs={12}>
+                    <Card>
+                        <CardContent>
+                            <h3>Patients that trust you</h3>
+                            <div>
+                                <List>
+                                    {generate(
+                                        <ListItem>
+                                            <ListItemAvatar>
+                                                <Avatar>
+                                                    <PersonIcon />
+                                                </Avatar>
+                                            </ListItemAvatar>
+                                            <ListItemText primary="Patient Name" secondary="Access Granted: Jan 9, 2014"/>
+                                            <ListItemSecondaryAction>
+                                                <Button variant="contained" color="primary">
+                                                    View Record
+                                                </Button>
+                                            </ListItemSecondaryAction>
+                                        </ListItem>
+
+                                    )}
+                                </List>
+                            </div>
                         </CardContent>
                     </Card>
                 </Grid>
-                <Grid item md={4} xs={12}>
-                    <Card >
+                <Grid item md={5} xs={12}>
+                    <Card>
                         <CardContent>
-                            <Grid container direction="row">
-                                <Grid item xs={6}><CustomIcon icon={faFileMedicalAlt} /></Grid>
-                                <Grid item xs={6}><CustomFont>Number of Medical Records</CustomFont></Grid>
-                            </Grid>
+                            <h3>Your medical files</h3>
+                            <div>
+                                <List>
+                                    {generate(
+                                        <ListItem>
+                                            <ListItemAvatar>
+                                                <Avatar>
+                                                    <FileCopyIcon />
+                                                </Avatar>
+                                            </ListItemAvatar>
+                                            <ListItemText primary="Patient Name" secondary="EMR Number"/>
+                                            <ListItemSecondaryAction>
+                                                <Button variant="contained" color="primary">
+                                                    View File
+                                                </Button>
+                                            </ListItemSecondaryAction>
+                                        </ListItem>
+                                    )}
+                                </List>
+                            </div>
                         </CardContent>
                     </Card>
                 </Grid>
