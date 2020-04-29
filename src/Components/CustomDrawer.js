@@ -1,6 +1,6 @@
 import React from 'react';
 import clsx from "clsx";
-import {ChevronLeft, ChevronRight, Home, ExitToApp, Description} from "@material-ui/icons";
+import {ChevronLeft, ChevronRight} from "@material-ui/icons";
 import {Divider, ListItemText, ListItemIcon, ListItem, List, IconButton, Drawer} from '@material-ui/core'
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import {Link} from "react-router-dom";
@@ -72,7 +72,6 @@ const CustomDrawer = ({open, toggleDrawer, isDoctor}) => {
             <Divider />
             <List>
                 {items.map(item => {
-                    console.log(item)
                     return (
                         <ListItem button>
                             <ListItemIcon>

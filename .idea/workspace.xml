@@ -2,14 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="28480649-a059-4827-a8df-0d305360d954" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Components/PatientView.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/zeyadahmed.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/AppBarCustom.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/AppBarCustom.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/DoctorView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/DoctorView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/CustomDrawer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/CustomDrawer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/MedicalRecords.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/MedicalRecords.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/constants.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/PatientView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/PatientView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,6 +34,7 @@
   <component name="ProjectId" id="1XI9zhoY90dVTRbJNWV4RvIAXHm" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="CSS" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -80,7 +81,11 @@
       <workItem from="1581680350850" duration="326000" />
       <workItem from="1581848132066" duration="363000" />
       <workItem from="1581851650833" duration="33961000" />
-      <workItem from="1582976939503" duration="13112000" />
+      <workItem from="1582976939503" duration="13350000" />
+      <workItem from="1583493266070" duration="2361000" />
+      <workItem from="1583776816384" duration="12607000" />
+      <workItem from="1584099993117" duration="984000" />
+      <workItem from="1585811508833" duration="306000" />
     </task>
     <servers />
   </component>

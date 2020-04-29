@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Card, CardContent,
     List, ListItemText, ListItemAvatar, ListItem, ListItemSecondaryAction, Avatar,
     Grid,
@@ -21,10 +21,52 @@ const CustomButton = styled(Button)`
   color: white;
 `;
 
-export default function PatientView() {
 
-    return (
+export default class PatientView extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            patient: [],
+        };
+    }
+
+    componentDidMount() {
+        fetch('http://localhost:3000/api/patient')
+            .then(response => response.json())
+            .then(patient => {this.setState({ patient });
+                console.log(patient)
+            });
+    }
+
+    render(){
+        return (
             <Grid container justify="space-around" spacing={2}>
+                {/*<Grid item md={12}>*/}
+                {/*        <Grid container justify="space-evenly" alignItems="center">*/}
+                {/*            <Grid item md={2}>*/}
+                {/*                <Card>*/}
+                {/*                    <CardContent>*/}
+                {/*                        */}
+                {/*                    </CardContent>*/}
+                {/*                </Card>*/}
+                {/*            </Grid>*/}
+                {/*            <Grid item md={2}>*/}
+                {/*                <Card>*/}
+                {/*                    <CardContent>*/}
+                {/*                        Patient ID: {patient.pId}*/}
+                {/*                    </CardContent>*/}
+                {/*                </Card>*/}
+                {/*            </Grid>*/}
+                {/*            <Grid item md={2}>*/}
+                {/*                <Card>*/}
+                {/*                    <CardContent>*/}
+                {/*                        CNIC: {patient.CNIC}*/}
+                {/*                    </CardContent>*/}
+                {/*                </Card>*/}
+                {/*            </Grid>*/}
+                {/*        </Grid>)}*/}
+                {/*</Grid>*/}
                 <Grid item md={6} xs={12}>
                     <Card>
                         <CardContent>
@@ -44,7 +86,7 @@ export default function PatientView() {
                                                     Revoke Access
                                                 </Button>
                                             </ListItemSecondaryAction>
-                                        </ListItem>,
+                                        </ListItem>
                                     )}
                                 </List>
                             </div>
@@ -81,6 +123,7 @@ export default function PatientView() {
                     <CustomButton variant="contained">View Your Electronic Medical Record</CustomButton>
                 </Box>
             </Grid>
+        );
 
-    );
+    }
 }

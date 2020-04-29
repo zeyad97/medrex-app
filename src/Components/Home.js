@@ -50,7 +50,7 @@ export default function Home() {
             <CustomDrawer open={open} toggleDrawer={toggleDrawer} isDoctor={isDoctor} />
 
 
-            <div onClick={() => setIsDoctor(!isDoctor)} style={{marginTop: 100}}>Doctor</div>
+            <div onClick={() => setIsDoctor(!isDoctor)}  style={{marginTop: 100}}>Doctor</div>
             <main className={classes.content}>
                 {isDoctor && <DoctorView/>}
                 {!isDoctor && <PatientView/>}

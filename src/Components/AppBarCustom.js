@@ -56,7 +56,7 @@ const AppBarCustom = ({open, toggleDrawer}) => {
                         <Menu/>
                     </IconButton>
                     <Typography variant="h6" noWrap>
-                        Welcome test
+                        MedRex
                     </Typography>
                 </Toolbar>
             </AppBar>
