@@ -7,6 +7,8 @@ import { Card, CardContent,
     from '@material-ui/core';
 import PersonIcon from '@material-ui/icons/Person';
 import styled from "styled-components";
+//email addition
+import emailjs from 'emailjs-com';
 
 function generate(element) {
     return [0, 1, 2].map(value =>
@@ -36,6 +38,26 @@ export default class PatientView extends Component {
             .then(response => response.json())
             .then(patient => {this.setState({ patient });
                 console.log(patient)
+            });
+    }
+
+    //email function
+    sendEmail() {
+        
+
+        var template_params = {
+            "patient_email": "ramlah.aziz2012@gmail.com",
+            "doctor": "Ramlah"
+        }
+            
+        var service_id = "default_service";
+        var template_id = "medrex_request_access";
+        var user_id = "user_ST7dldKNwGvYdwcYMbwjg";
+        emailjs.send(service_id, template_id, template_params, user_id)
+            .then(function(response) {
+                console.log('SUCCESS!', response.status, response.text);
+            }, function(error) {
+                console.log('FAILED...', error);
             });
     }
 
@@ -121,6 +143,12 @@ export default class PatientView extends Component {
                 </Grid>
                 <Box m={2}>
                     <CustomButton variant="contained">View Your Electronic Medical Record</CustomButton>
+                </Box>
+                {/*email addition*/}
+                <Box m={2}>
+                <CustomButton className= "sendemail" onClick={() => this.sendEmail()}>
+                        {'Send Request Access Email'}
+                    </CustomButton>
                 </Box>
             </Grid>
         );
