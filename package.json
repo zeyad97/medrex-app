@@ -16,6 +16,7 @@
     "cors": "^2.8.5",
     "emailjs-com": "^2.4.1",
     "express": "^4.17.1",
+    "gapi-script": "^1.0.2",
     "material-ui-search-bar": "^0.4.2",
     "passport": "^0.4.1",
     "passport-facebook": "^3.0.0",
