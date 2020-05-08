@@ -1,34 +1,29 @@
-import React from 'react';
-import './App.css';
-import Home from "./Components/Home";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
-import SignInSide from "./Components/SignInSide";
-import MedicalRecords from "./Components/MedicalRecords";
+// src/App.js
+
+import React from "react";
+import NavBar from "./Components/NavBar";
+
+// New - import the React Router components, and the Profile page component
+import { Router, Route, Switch } from "react-router-dom";
+import Profile from "./Components/Profile";
+import history from "./utils/history";
+import PrivateRoute from "./Components/PrivateRoute";
 
 function App() {
-  return (<Router>
-    <div>
-      <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route exact path="/login">
-          <SignInSide />
-        </Route>
-        <Route exact path="/medical-records">
-          <MedicalRecords />
-        </Route>
-        <Route exact path="patient">
-          <Home />
-        </Route>
-      </Switch>
-    </div>
-  </Router>)
-  ;
+    return (
+        <div className="App">
+            {/* Don't forget to include the history module */}
+            <Router history={history}>
+                <header>
+                    <NavBar />
+                </header>
+                <Switch>
+                    <Route path="/" exact />
+                    <PrivateRoute path="/profile" component={Profile} />
+                </Switch>
+            </Router>
+        </div>
+    );
 }
 
 export default App;

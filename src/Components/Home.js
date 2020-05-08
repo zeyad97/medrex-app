@@ -5,7 +5,6 @@ import PatientView from "./PatientView";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { makeStyles } from '@material-ui/core/styles';
 import AppBarCustom from "./AppBarCustom";
-import { gapi } from 'gapi-script';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -31,12 +30,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-function signOut() {
-    var auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut().then(function () {
-      console.log('User signed out.');
-    });
-  };
+
 
 
 export default function Home() {
@@ -61,7 +55,6 @@ export default function Home() {
             <main className={classes.content}>
                 {isDoctor && <DoctorView/>}
                 {!isDoctor && <PatientView/>}
-                <a href="#" onclick="signOut();">Sign out</a>
             </main>
         </div>
     );
