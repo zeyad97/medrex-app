@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="28480649-a059-4827-a8df-0d305360d954" name="Default Changelist" comment="Auth0 used with google and facebook authentication. secure route also configured">
-      <change afterPath="$PROJECT_DIR$/src/Components/NavBar.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/PrivateRoute.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/auth_config.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/react-auth0-spa.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/history.js" afterDir="false" />
+    <list default="true" id="28480649-a059-4827-a8df-0d305360d954" name="Default Changelist" comment="Profile is re">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/AppBarCustom.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/AppBarCustom.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/CustomDrawer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/CustomDrawer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Profile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/SignInSide.js" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -90,8 +83,17 @@
       <workItem from="1583776816384" duration="12607000" />
       <workItem from="1584099993117" duration="984000" />
       <workItem from="1585811508833" duration="306000" />
-      <workItem from="1588936121992" duration="1813000" />
+      <workItem from="1588936121992" duration="2203000" />
+      <workItem from="1589398113829" duration="1204000" />
     </task>
+    <task id="LOCAL-00001" summary="Auth0 used with google and facebook authentication. secure route also configured">
+      <created>1588938236534</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1588938236534</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
