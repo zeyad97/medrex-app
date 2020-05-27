@@ -1,3 +1,5 @@
+// src/components/Email.js
+
 import React from 'react';
 import emailjs from 'emailjs-com';
 
