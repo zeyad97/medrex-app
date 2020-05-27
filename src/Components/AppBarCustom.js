@@ -57,7 +57,6 @@ const AppBarCustom = ({open, toggleDrawer}) => {
                         <Menu/>
                     </IconButton>
                     <Typography variant="h6" noWrap>
-                        <Profile/>
                     </Typography>
                 </Toolbar>
             </AppBar>

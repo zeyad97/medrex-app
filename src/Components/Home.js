@@ -5,6 +5,7 @@ import PatientView from "./PatientView";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { makeStyles } from '@material-ui/core/styles';
 import AppBarCustom from "./AppBarCustom";
+import Profile from "./Profile";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -53,6 +54,7 @@ export default function Home() {
 
             <div onClick={() => setIsDoctor(!isDoctor)}  style={{marginTop: 100}}>Doctor</div>
             <main className={classes.content}>
+                <Profile/>
                 {isDoctor && <DoctorView/>}
                 {!isDoctor && <PatientView/>}
             </main>
