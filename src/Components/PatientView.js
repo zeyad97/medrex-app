@@ -61,7 +61,7 @@ export default class PatientView extends Component {
             });
     }
 
-       render(){
+    render(){
         return (
             <Grid container justify="space-around" spacing={2}>
                 {/*<Grid item md={12}>*/}
@@ -149,19 +149,6 @@ export default class PatientView extends Component {
                 <CustomButton className= "sendemail" onClick={() => this.sendEmail()}>
                         {'Send Request Access Email'}
                     </CustomButton>
-                                        
-                    {/*  //redirect function
-                        handleClick() {
-                            // do something meaningful, Promises, if/else, whatever, and then
-                            window.location.assign('http://localhost:3001/auth/facebook/');
-                        }
-
-                        <CustomButton className= "redirecttoREST"
-                            onClick={this.handleClick.bind(this)}>
-                                {'REST Server sign in'}
-                        </CustomButton>
-                    */}
-                    
                 </Box>
             </Grid>
         );
