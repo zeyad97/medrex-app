@@ -9,10 +9,12 @@ import Profile from "./Components/Profile";
 import history from "./utils/history";
 import PrivateRoute from "./Components/PrivateRoute";
 
+
+
+
 function App() {
     return (
         <div className="App">
-            {/* Don't forget to include the history module */}
             <Router history={history}>
                 <header>
                     <NavBar />

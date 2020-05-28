@@ -1,11 +1,7 @@
-// src/components/Profile.js
-
-
 import React, { Fragment } from "react";
-import { useAuth0 } from "../react-auth0-spa";
 
-const Profile = () => {
-    const { loading, user } = useAuth0();
+const Profile = (props) => {
+    const { loading, user } = props;
 
     if (loading || !user) {
         return <div>Loading...</div>;

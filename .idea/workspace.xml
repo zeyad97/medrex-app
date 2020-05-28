@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="28480649-a059-4827-a8df-0d305360d954" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Components/Dashboard.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/Form.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/AppBarCustom.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/AppBarCustom.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/NavBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NavBar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Profile.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -77,7 +79,7 @@
       <workItem from="1589398113829" duration="1396000" />
       <workItem from="1589824616393" duration="1733000" />
       <workItem from="1590581314839" duration="815000" />
-      <workItem from="1590591257035" duration="915000" />
+      <workItem from="1590591257035" duration="6771000" />
     </task>
     <task id="LOCAL-00001" summary="Auth0 used with google and facebook authentication. secure route also configured">
       <created>1588938236534</created>
@@ -93,7 +95,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589400812294</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="AuthO functioning proeperly">
+      <created>1590608495829</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1590608495829</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -114,6 +123,17 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Auth0 used with google and facebook authentication. secure route also configured" />
     <MESSAGE value="Profile retrieved, used in AppBar." />
-    <option name="LAST_COMMIT_MESSAGE" value="Profile retrieved, used in AppBar." />
+    <MESSAGE value="AuthO functioning proeperly" />
+    <option name="LAST_COMMIT_MESSAGE" value="AuthO functioning proeperly" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="297" y="25" key="CommitChangelistDialog2" timestamp="1590608495662">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="297" y="25" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1590608495662" />
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1590608504138">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1590608504138" />
   </component>
 </project>
