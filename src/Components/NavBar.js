@@ -3,7 +3,6 @@
 import React from "react";
 import { useAuth0 } from "../react-auth0-spa";
 import { Link } from "react-router-dom";
-import Profile from "./Profile";
 import Form from "./Form"
 
 const NavBar = () => {
@@ -19,8 +18,7 @@ const NavBar = () => {
 
             {isAuthenticated && (
                 <span>
-        <Link to="/">{Form()}</Link>&nbsp;
-                    <Link to="/profile">{Profile()}</Link>
+        {Form()}
       </span>
             )}
         </div>

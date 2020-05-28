@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="28480649-a059-4827-a8df-0d305360d954" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Components/Dashboard.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Form.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Dashboard.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Form.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Form.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/NavBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NavBar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Profile.js" afterDir="false" />
     </list>
@@ -79,7 +78,7 @@
       <workItem from="1589398113829" duration="1396000" />
       <workItem from="1589824616393" duration="1733000" />
       <workItem from="1590581314839" duration="815000" />
-      <workItem from="1590591257035" duration="6771000" />
+      <workItem from="1590591257035" duration="9998000" />
     </task>
     <task id="LOCAL-00001" summary="Auth0 used with google and facebook authentication. secure route also configured">
       <created>1588938236534</created>
@@ -102,7 +101,14 @@
       <option name="project" value="LOCAL" />
       <updated>1590608495829</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Dashboard and form component created">
+      <created>1590666913729</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1590666913729</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -124,16 +130,29 @@
     <MESSAGE value="Auth0 used with google and facebook authentication. secure route also configured" />
     <MESSAGE value="Profile retrieved, used in AppBar." />
     <MESSAGE value="AuthO functioning proeperly" />
-    <option name="LAST_COMMIT_MESSAGE" value="AuthO functioning proeperly" />
+    <MESSAGE value="Dashboard and form component created" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dashboard and form component created" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="297" y="25" key="CommitChangelistDialog2" timestamp="1590608495662">
+    <state x="297" y="25" key="CommitChangelistDialog2" timestamp="1590666913626">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="297" y="25" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1590608495662" />
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1590608504138">
+    <state x="297" y="25" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1590666913626" />
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1590666920132">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1590608504138" />
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1590666920132" />
+    <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1590672244738">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1440.900@0.0.1440.900" timestamp="1590672244738" />
+    <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1590672244739">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1440.900@0.0.1440.900" timestamp="1590672244739" />
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1590673801472">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1590673801472" />
   </component>
 </project>
