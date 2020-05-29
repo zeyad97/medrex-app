@@ -1,8 +1,6 @@
-// src/components/NavBar.js
-
 import React from "react";
 import { useAuth0 } from "../react-auth0-spa";
-import Form from "./Form"
+import Profile from "./Profile"
 
 const NavBar = () => {
     const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
@@ -14,12 +12,7 @@ const NavBar = () => {
             )}
 
             {isAuthenticated && <button onClick={() => logout()}>Log out</button>}
-
-            {isAuthenticated && (
-                <span>
-        {Form()}
-      </span>
-            )}
+            {isAuthenticated && (<span><Profile /></span>)}
         </div>
     );
 };
