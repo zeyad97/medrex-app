@@ -5,7 +5,6 @@ import PatientView from "./PatientView";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { makeStyles } from '@material-ui/core/styles';
 import AppBarCustom from "./AppBarCustom";
-import Profile from "./Profile";
 
 const useStyles = makeStyles(theme => ({
     root: {
