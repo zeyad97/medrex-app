@@ -3,10 +3,9 @@
 import React from "react";
 import NavBar from "./Components/NavBar";
 import { Router, Route, Switch } from "react-router-dom";
-import Profile from "./Components/Authoriser";
+import Profile from "./Components/Profile";
 import history from "./utils/history";
 import PrivateRoute from "./Components/PrivateRoute";
-import StatsGrid from "./Components/StatsGrids";
 
 
 
@@ -23,7 +22,6 @@ function App() {
                     <PrivateRoute path="/profile" component={Profile} />
                 </Switch>
             </Router>
-            {/*<StatsGrid></StatsGrid>*/}
         </div>
     );
 }

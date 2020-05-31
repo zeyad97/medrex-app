@@ -2,7 +2,7 @@ import React from "react";
 import { useAuth0 } from "../react-auth0-spa";
 import Form from './Form';
 
-const Authoriser = () => {
+const Profile = () => {
     const { loading, user } = useAuth0();
 
 
@@ -19,4 +19,4 @@ return(
 
 };
 
-export default Authoriser;
+export default Profile;

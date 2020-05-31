@@ -2,17 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="28480649-a059-4827-a8df-0d305360d954" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Components/StatsGrids.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/helper.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/Intro.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/DoctorView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/DoctorView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Authoriser.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Profile.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/Form.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Form.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Home.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/NavBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NavBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Authoriser.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +81,7 @@
       <workItem from="1590581314839" duration="815000" />
       <workItem from="1590591257035" duration="11891000" />
       <workItem from="1590688328826" duration="51618000" />
-      <workItem from="1590871425206" duration="19517000" />
+      <workItem from="1590871425206" duration="23523000" />
     </task>
     <task id="LOCAL-00001" summary="Auth0 used with google and facebook authentication. secure route also configured">
       <created>1588938236534</created>
@@ -137,7 +132,14 @@
       <option name="project" value="LOCAL" />
       <updated>1590791307196</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Registration module completed - validation.&#10;StatsGrid and Profile component is in works.">
+      <created>1590952596850</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1590952596850</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -163,17 +165,18 @@
     <MESSAGE value="Dashboard removed, consolidated Form component created." />
     <MESSAGE value="Form completed." />
     <MESSAGE value="Form converted into a classful component with two more additional fields." />
-    <option name="LAST_COMMIT_MESSAGE" value="Form converted into a classful component with two more additional fields." />
+    <MESSAGE value="Registration module completed - validation.&#10;StatsGrid and Profile component is in works." />
+    <option name="LAST_COMMIT_MESSAGE" value="Registration module completed - validation.&#10;StatsGrid and Profile component is in works." />
   </component>
   <component name="WindowStateProjectService">
-    <state x="297" y="25" key="CommitChangelistDialog2" timestamp="1590791307045">
+    <state x="297" y="25" key="CommitChangelistDialog2" timestamp="1590952596611">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="297" y="25" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1590791307045" />
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1590791313310">
+    <state x="297" y="25" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1590952596611" />
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1590952644455">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1590791313310" />
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1590952644455" />
     <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1590672244738">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
