@@ -64,7 +64,7 @@ class Form extends React.Component {
         } catch (error) {
             console.log("Not a doctor")
             try {
-                const responsePatient = await axios.get('http://9b941af4a781.ngrok.io/api/patient/' +
+                const responsePatient = await axios.get(url + 'api/patient/' +
                     this.props.user.sub.substring(9, 25))
                 this.setState({present: true});
             } catch (error) {
@@ -81,10 +81,11 @@ class Form extends React.Component {
     }
 
     handleSubmit = async event => {
+        const url = 'http://9b941af4a781.ngrok.io/';
         console.log(this.state)
-        if (this.props.state.type === 'patient') {
+        if (this.state.type === 'patient') {
             try {
-                const createPatient = await axios.post('http://9b941af4a781.ngrok.io/api/patient',
+                const createPatient = await axios.post(url + 'api/patient',
                     {
                         pId: this.state.Id,
                         cnic: this.state.cnic,
@@ -96,7 +97,7 @@ class Form extends React.Component {
                         bloodGroup: this.state.bloodGroup,
                         address: this.state.address
                     });
-                const response = await axios.get('http://9b941af4a781.ngrok.io/api/patient/' + this.props.user.sub.substring(9, 25))
+                const response = await axios.get(url + 'api/patient/' + this.props.user.sub.substring(9, 25))
                 console.log(response)
                 console.log("patient created")
 
@@ -106,7 +107,7 @@ class Form extends React.Component {
             }
         } else {
             try {
-                const createDoctor = await axios.post('http://9b941af4a781.ngrok.io/api/doctor',
+                const createDoctor = await axios.post(url + 'api/doctor',
                     {
                         dId: this.state.Id,
                         cnic: this.state.cnic,
@@ -116,7 +117,7 @@ class Form extends React.Component {
                         dob: this.state.dateOfBirth,
                         email: this.state.email
                     });
-                const response = await axios.get('http://9b941af4a781.ngrok.io/api/doctor/' + this.props.user.sub.substring(9, 25))
+                const response = await axios.get(url + 'api/doctor/' + this.props.user.sub.substring(9, 25))
                 console.log(response)
                 console.log("doc created")
             } catch (error) {
