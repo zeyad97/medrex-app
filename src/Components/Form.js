@@ -147,7 +147,7 @@ class Form extends React.Component {
             bloodGroupForm = <div></div>;
             addressForm = <div></div>;
         }
-        if(this.state.present){
+        if(!(this.state.present)){
             if (!(this.props.loading) || !(this.props.user)) {
                 return (
                     <form onSubmit={this.handleSubmit}>
