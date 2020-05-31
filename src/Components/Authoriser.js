@@ -2,13 +2,16 @@ import React from "react";
 import { useAuth0 } from "../react-auth0-spa";
 import Form from './Form';
 
-const Profile = () => {
+const Authoriser = () => {
     const { loading, user } = useAuth0();
+
 
     if (loading || !user) {
         return <div>Loading...</div>;
     }
-    return(
+
+
+return(
         <div>
             <Form loading={loading} user={user}/>
         </div>
@@ -16,4 +19,4 @@ const Profile = () => {
 
 };
 
-export default Profile;
+export default Authoriser;

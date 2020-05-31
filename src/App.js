@@ -2,12 +2,11 @@
 
 import React from "react";
 import NavBar from "./Components/NavBar";
-
-// New - import the React Router components, and the Profile page component
 import { Router, Route, Switch } from "react-router-dom";
-import Profile from "./Components/Profile";
+import Profile from "./Components/Authoriser";
 import history from "./utils/history";
 import PrivateRoute from "./Components/PrivateRoute";
+import StatsGrid from "./Components/StatsGrids";
 
 
 
@@ -24,6 +23,7 @@ function App() {
                     <PrivateRoute path="/profile" component={Profile} />
                 </Switch>
             </Router>
+            {/*<StatsGrid></StatsGrid>*/}
         </div>
     );
 }

@@ -53,7 +53,6 @@ export default function Home() {
 
             <div onClick={() => setIsDoctor(!isDoctor)}  style={{marginTop: 100}}>Doctor</div>
             <main className={classes.content}>
-                <Profile/>
                 {isDoctor && <DoctorView/>}
                 {!isDoctor && <PatientView/>}
             </main>
