@@ -3,7 +3,7 @@ import TextField from '@material-ui/core/TextField';
 import { Grid, Typography, Divider, Select, MenuItem, InputLabel, FormControl, FormLabel, RadioGroup, FormControlLabel, Radio, Button } from "@material-ui/core";
 import DateFnsUtils from '@date-io/date-fns';
 import {MuiPickersUtilsProvider, DatePicker} from '@material-ui/pickers';
-import Home from "./Home";
+import PersistentLeftDrawer from "./PersistentLeftDrawer";
 const axios = require('axios');
 
 
@@ -49,7 +49,7 @@ class Form extends React.Component {
         this.setState({lName: this.props.user.family_name});
         this.setState({email: this.props.user.email});
         console.log(this.state);
-        const url = 'http://9b941af4a781.ngrok.io/api/';
+        const url = 'https://68ecf393afc3.ngrok.io/api/';
         try {
             const responseDoctor = await axios.get(url +'doctor/' + this.props.user.sub.substring(9, 25));
             this.setState({present: true});
@@ -67,7 +67,7 @@ class Form extends React.Component {
     handleSubmit = async event => {
         event.preventDefault();
         console.log(this.state);
-        const url = 'http://9b941af4a781.ngrok.io/api/';
+        const url = 'https://68ecf393afc3.ngrok.io/api/';
         if (this.state.type === 'patient') {
             try {
                 const createPatient = await axios.post(url+'patient',
@@ -83,7 +83,7 @@ class Form extends React.Component {
                         address: this.state.address
                     });
                 const response = await axios.get(url+'patient/' + this.state.Id)
-                console.log(response)
+                console.log(response.data.pId);
                 console.log("patient created")
 
             } catch (error) {
@@ -103,13 +103,14 @@ class Form extends React.Component {
                         email: this.state.email
                     });
                 const response = await axios.get(url+'doctor/' + this.state.Id)
-                console.log(response)
+                console.log(response.data.dId);
                 console.log("doc created")
             } catch (error) {
                 console.error(error)
                 console.log("catch of createDoc")
             }
         }
+
     }
 
     render() {
@@ -259,7 +260,8 @@ class Form extends React.Component {
         else{
             return(
                 <div>
-                    <Home/>
+                    <PersistentLeftDrawer state={this.state}/>
+                    {this.props.isAuth && <button onClick={() => this.props.myLogout}>Log out</button>}
                 </div>
             )
         }

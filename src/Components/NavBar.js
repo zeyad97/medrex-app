@@ -1,6 +1,6 @@
 import React from "react";
 import { useAuth0 } from "../react-auth0-spa";
-import Authoriser from "./Profile";
+import Authoriser from "./Authoriser";
 
 const NavBar = () => {
     const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
