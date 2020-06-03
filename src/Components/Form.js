@@ -9,8 +9,8 @@ const axios = require('axios');
 
 
 class Form extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             present: false,
             Id: '',
@@ -44,30 +44,36 @@ class Form extends React.Component {
 
 
     async componentDidMount() {
-        this.setState({Id: this.props.user.sub.substring(9, 25)})
-        this.setState({fName: this.props.user.given_name});
-        this.setState({lName: this.props.user.family_name});
-        this.setState({email: this.props.user.email});
+        this.setState({Id: this.props.user.sub.substring(9, 25),fName: this.props.user.given_name,
+            lName: this.props.user.family_name})
         console.log(this.state);
-        const url = 'https://68ecf393afc3.ngrok.io/api/';
+        const url = 'http://f944c269c55b.ngrok.io/api/';
         try {
-            const responseDoctor = await axios.get(url +'doctor/' + this.props.user.sub.substring(9, 25));
-            this.setState({present: true});
+            const docData = await axios.get(url +'doctor/' + this.props.user.sub.substring(9, 25));
+            let dataToAdd = docData.data;
+            console.log(dataToAdd);
+            this.setState({present: true, type:'doctor', cnic: dataToAdd.cnic, dob:dataToAdd.dob,
+                sex: dataToAdd.sex, email: dataToAdd.email});
+            console.log(docData);
+
         } catch (error) {
             console.log("Not a doctor")
             try {
-                const responsePatient = await axios.get(url +'patient/' + this.props.user.sub.substring(9, 25))
-                this.setState({present: true});
+                const patData = await axios.get(url +'patient/' + this.props.user.sub.substring(9, 25))
+                let valueToAdd = patData.data;
+                this.setState({address:valueToAdd.address, present: true, type:'doctor', cnic: valueToAdd.cnic,
+                    dob:valueToAdd.dob, bloodGroup: valueToAdd.bloodGroup, sex: valueToAdd.sex, email: valueToAdd.email});
             } catch (error) {
                 console.log("Not a patient, create a new record");
             }
         }
+        console.log(this.state);
     }
 
     handleSubmit = async event => {
         event.preventDefault();
         console.log(this.state);
-        const url = 'https://68ecf393afc3.ngrok.io/api/';
+        const url = 'http://f944c269c55b.ngrok.io/api/';
         if (this.state.type === 'patient') {
             try {
                 const createPatient = await axios.post(url+'patient',
@@ -260,8 +266,7 @@ class Form extends React.Component {
         else{
             return(
                 <div>
-                    <PersistentLeftDrawer state={this.state}/>
-                    {this.props.isAuth && <button onClick={() => this.props.myLogout}>Log out</button>}
+                    <PersistentLeftDrawer participant={this.state}/>
                 </div>
             )
         }

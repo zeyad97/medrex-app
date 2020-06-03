@@ -15,13 +15,13 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import HomeIcon from '@material-ui/icons/Home';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import DescriptionIcon from '@material-ui/icons/Description';
 import PersonIcon from '@material-ui/icons/Person';
 import StatsGrid from "./StatsGrids";
+import QueryTable from "./QueryTable";
+import {useAuth0} from "../react-auth0-spa";
 
 const drawerWidth = 240;
 
@@ -86,7 +86,7 @@ export default function PersistentDrawerLeft(props) {
     const classes = useStyles();
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
-    const [doctor, setDoctor] = React.useState(false);
+    const { isAuthenticated, logout } = useAuth0();
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -96,54 +96,44 @@ export default function PersistentDrawerLeft(props) {
         setOpen(false);
     };
 
-    const listRendering = () => {
-        if(props.state.type === 'doctor'){
-            setDoctor(true);
-        }
-    }
-
-    let listToRender;
-    if(doctor){
-        listToRender =
-            <div>
-                <ListItem button>
-                    <ListItemIcon><HomeIcon/></ListItemIcon>
-                    <ListItemText>Home</ListItemText>
-                </ListItem>
-                <ListItem button>
-                    <ListItemIcon><DescriptionIcon/></ListItemIcon>
-                    <ListItemText>My Records</ListItemText>
-                </ListItem>
-                <ListItem button>
-                    <ListItemIcon><PersonIcon/></ListItemIcon>
-                    <ListItemText>Profile</ListItemText>
-                </ListItem>
-                <ListItem button>
-                    <ListItemIcon><ExitToAppIcon/></ListItemIcon>
-                    <ListItemText>Log Out</ListItemText>
-                </ListItem>
-            </div>
-        ;
-    }
-    else{
-        listToRender =
+    const listRendering = (props) => {
+        let listToRender;
+        if(props === 'patient'){
+            listToRender =
                 <div>
                     <ListItem button>
                         <ListItemIcon><HomeIcon/></ListItemIcon>
                         <ListItemText>Home</ListItemText>
                     </ListItem>
                     <ListItem button>
+                        <ListItemIcon><DescriptionIcon/></ListItemIcon>
+                        <ListItemText>My E-Health-Record</ListItemText>
+                    </ListItem>
+                    <ListItem button>
                         <ListItemIcon><PersonIcon/></ListItemIcon>
                         <ListItemText>Profile</ListItemText>
                     </ListItem>
-                    <ListItem button>
-                        <ListItemIcon><ExitToAppIcon/></ListItemIcon>
-                        <ListItemText>Log Out</ListItemText>
-                    </ListItem>
                 </div>
-        ;
+            ;}
+        else{
+            listToRender =
+                <div>
+                    <ListItem button>
+                        <ListItemIcon><HomeIcon/></ListItemIcon>
+                        <ListItemText>Home</ListItemText>
+                    </ListItem>
+                    <ListItem button>
+                        <ListItemIcon><DescriptionIcon/></ListItemIcon>
+                        <ListItemText>My created EHRs</ListItemText>
+                    </ListItem>
+                    <ListItem button>
+                        <ListItemIcon><PersonIcon/></ListItemIcon>
+                        <ListItemText>Profile</ListItemText>
+                    </ListItem>
+                </div>;
+                    }
+        return listToRender;
     }
-
     return (
         <div className={classes.root}>
             <CssBaseline />
@@ -164,7 +154,7 @@ export default function PersistentDrawerLeft(props) {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" noWrap>
-                        Welcome {props.state.fName}!
+                        Welcome {props.participant.fName}!
                     </Typography>
                 </Toolbar>
             </AppBar>
@@ -184,7 +174,11 @@ export default function PersistentDrawerLeft(props) {
                 </div>
                 <Divider />
                 <List>
-                    {listToRender}
+                    {listRendering(props.participant.type)}
+                    {isAuthenticated && <ListItem button onClick={() => logout()}>
+                        <ListItemIcon><ExitToAppIcon/></ListItemIcon>
+                        <ListItemText>Log Out</ListItemText>
+                    </ListItem>}
                 </List>
             </Drawer>
             <main
@@ -193,7 +187,8 @@ export default function PersistentDrawerLeft(props) {
                 })}
             >
                 <div className={classes.drawerHeader} />
-            <StatsGrid/>
+                <StatsGrid/>
+                <QueryTable user={props}/>
             </main>
         </div>
     );

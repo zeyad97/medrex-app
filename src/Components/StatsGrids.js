@@ -11,8 +11,8 @@ import ReceiptIcon from '@material-ui/icons/Receipt';
 const StatsGrid = () => {
 
     return (
-        <div style={{background:'#ececec', padding:'30px'}}>
-        <Grid container direction="row" justify="center" alignItems="center" spacing={2}>
+        <Grid container direction="row" justify="center" alignItems="center" spacing={2}
+              style={{background:'#64b5f6', padding:'30px'}}>
                 <Grid item xs={3}>
                     <Card>
                         <Statistic title="Total Patients" value={11} prefix={<PersonIcon  />} />
@@ -34,7 +34,6 @@ const StatsGrid = () => {
                 </Card>
             </Grid>
         </Grid>
-        </div>
     );
 };
 
