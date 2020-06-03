@@ -47,7 +47,7 @@ class Form extends React.Component {
         this.setState({Id: this.props.user.sub.substring(9, 25),fName: this.props.user.given_name,
             lName: this.props.user.family_name})
         console.log(this.state);
-        const url = 'http://f944c269c55b.ngrok.io/api/';
+        const url = 'http://d7f3cf026b7d.ngrok.io/api/';
         try {
             const docData = await axios.get(url +'doctor/' + this.props.user.sub.substring(9, 25));
             let dataToAdd = docData.data;
@@ -61,7 +61,7 @@ class Form extends React.Component {
             try {
                 const patData = await axios.get(url +'patient/' + this.props.user.sub.substring(9, 25))
                 let valueToAdd = patData.data;
-                this.setState({address:valueToAdd.address, present: true, type:'doctor', cnic: valueToAdd.cnic,
+                this.setState({address:valueToAdd.address, present: true, type:'patient', cnic: valueToAdd.cnic,
                     dob:valueToAdd.dob, bloodGroup: valueToAdd.bloodGroup, sex: valueToAdd.sex, email: valueToAdd.email});
             } catch (error) {
                 console.log("Not a patient, create a new record");
@@ -73,7 +73,7 @@ class Form extends React.Component {
     handleSubmit = async event => {
         event.preventDefault();
         console.log(this.state);
-        const url = 'http://f944c269c55b.ngrok.io/api/';
+        const url = 'http://d7f3cf026b7d.ngrok.io/api/';
         if (this.state.type === 'patient') {
             try {
                 const createPatient = await axios.post(url+'patient',

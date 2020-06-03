@@ -16,6 +16,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import HomeIcon from '@material-ui/icons/Home';
+import {Grid} from "@material-ui/core";
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import DescriptionIcon from '@material-ui/icons/Description';
 import PersonIcon from '@material-ui/icons/Person';
@@ -85,7 +86,7 @@ const useStyles = makeStyles((theme) => ({
 export default function PersistentDrawerLeft(props) {
     const classes = useStyles();
     const theme = useTheme();
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = React.useState(true);
     const { isAuthenticated, logout } = useAuth0();
 
     const handleDrawerOpen = () => {
@@ -181,15 +182,18 @@ export default function PersistentDrawerLeft(props) {
                     </ListItem>}
                 </List>
             </Drawer>
-            <main
-                className={clsx(classes.content, {
-                    [classes.contentShift]: open,
-                })}
-            >
-                <div className={classes.drawerHeader} />
-                <StatsGrid/>
-                <QueryTable user={props}/>
+            <main className={clsx(classes.content, {[classes.contentShift]: open,})}>
+                <div className={classes.drawerHeader}/>
+                <Grid container row spacing={2} justify='center' alignItems='center'>
+                    <Grid item xs={12}>
+                        <StatsGrid/>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <QueryTable user={props.participant.Id}/>
+                    </Grid>
+                </Grid>
             </main>
+
         </div>
     );
 }

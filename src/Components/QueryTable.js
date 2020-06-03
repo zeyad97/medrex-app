@@ -8,100 +8,93 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import axios from 'axios';
 
-export class QueryTable extends Component {
+class QueryTable extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            doctorIds: [],
-            docs: [],
-            creators: [],
-            medicalRN: [],
-            recType: []
+            queries: [],
         }
     };
 
     async componentDidMount() {
-        const url = 'http://f944c269c55b.ngrok.io/api/';
+        const url = 'http://d7f3cf026b7d.ngrok.io/api/';
         try{
             const response = await axios.get(url+ 'queries/getAccessRequestsForPatient', {
                 params: {
-                    patientObject: 'resource:org.medrex.basic.patient#'+ this.props.user.participant.Id
+                    patientObject: 'resource:org.medrex.basic.patient#'+ '1154517588222789'
                 }
             });
-            let varZero = response.data[0];
+            console.log(response);
+            let queriesNumber = response.data.length;
             let i;
-            this.state.medicalRN.push(varZero.mrn);
-            this.state.recType.push(varZero.type);
-            let varOne = varZero.requestDocs;
-            let part,usePart;
-            for (i=1; i < varOne.length ; i++){
-                part = varOne[i];
-                usePart = part.substring(33, part.length);
-                this.state.doctorIds.push(usePart);
-            }
-            let varTwo = this.state.doctorIds;
-            let value,newValue,j;
-            for (j=0; j < varTwo.length; j++ ){
-                value = varTwo[j];
-            try{
-                const getRequests =  await axios.get(url +'doctor/' + value);
-                newValue = getRequests.data.fName;
-                this.state.docs.push(newValue)
-            }catch(error){
-                console.log(error);
-            }
-            }
-            let varThree = varZero.maker;
-            let ownerToAdd = varThree.substring(33,varZero.maker.length);
-            try{
-                const getCreator =  await axios.get(url +'doctor/' + ownerToAdd);
-                let drCreator = getCreator.data.fName;
-                console.log(drCreator);
-                this.state.creators.push(drCreator);
-            }catch(error){
-                console.log(error)
+            for (i=0; i<queriesNumber; i++){
+                let varZero = response.data[i].requestDocs;
+                let varOne = response.data[i];
+                let j,part,newPart;
+                for (j=1; j<varZero.length; j++)
+                {
+                    let docReq = []
+                    part = varZero[j];
+                    newPart = part.substring(33,part.length);
+                    let docCreate = varOne.maker;
+                    let docCre = docCreate.substring(33,docCreate.length);
+                    try{
+                        const doc = await axios.get(url +'doctor/' + newPart);
+                        const owner =  await axios.get(url+ 'doctor/' + docCre);
+                        const docData = doc.data.fName;
+                        const ownerData = owner.data.fName;
+                        docReq.push(docData,ownerData);
+                    }catch(error){
+                        console.log(error);
+                    }
+                    let medNumber = varOne.mrn;
+                    let medType = varOne.type;
+                    let assess = varOne.assessment;
+                    docReq.push(medNumber,medType, assess);
+                    const obj = {docName: docReq[0], maker: docReq[1] , medicalNo:docReq[2], medicalType:docReq[3],
+                        shortAssess:docReq[4]}
+                    this.state.queries.push(obj);
+                    console.log(this.state.queries);}
+
             }
         }catch(error) {
             console.log(error)
         }
-        console.log(this.state.doctorIds);
-        console.log(this.state.docs);
-        console.log(this.state.medicalRN);
-        console.log(this.state.recType);
-        console.log(this.state.creators);
+        console.log(this.state.queries);
     }
+
+
 
     render() {
         return (
+            <div>
+                {this.state.queries}
             <TableContainer component={Paper}>
-            <Table stickyHeader  aria-label="sticky table">
-            <TableHead>
-            <TableRow>
-            <TableCell>Id</TableCell>
-        <TableCell align="right">Doctor</TableCell>
-        <TableCell align="right">Medical Record Number</TableCell>
-        <TableCell align="right">Creator</TableCell>
-        <TableCell align="right">Type</TableCell>
-        <TableCell style={{paddingRight:"60px"}} align="right" >Department</TableCell>
-        </TableRow>
-        </TableHead>
-        <TableBody>
-        {
-            this.state.doctorIds.map((p, index) => {
-                return <TableRow key={index}>
-                    <TableCell component="th" scope="row">
-                        {p}
-                    </TableCell>
-                    <TableCell align="right">{p.state.docs}</TableCell>
-                    <TableCell align="right">{this.state.medicalRN}</TableCell>
-                    <TableCell align="right">{this.state.creators}</TableCell>
-                    <TableCell align="right">{this.state.recType}</TableCell>
-                </TableRow>
-            })
-        }
-        </TableBody>
-        </Table>
-        </TableContainer>
+                <Table style={{minWidth:'650'}} size="small" aria-label="a dense table">
+                    <TableHead>
+                        <TableRow>
+                            <TableCell align="center">Doctor</TableCell>
+                            <TableCell align="center">Created by</TableCell>
+                            <TableCell align="center">MRN</TableCell>
+                            <TableCell align="center">Type</TableCell>
+                            <TableCell align="center">Assessment</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {this.state.queries.map((row) =>
+
+                            <TableRow key={row.docName}>
+                                <TableCell align="center">{row.docName}</TableCell>
+                                <TableCell align="center">{row.maker}</TableCell>
+                                <TableCell align="center">{row.medicalNo}</TableCell>
+                                <TableCell align="center">{row.medicalType}</TableCell>
+                                <TableCell align="center">{row.shortAssess}</TableCell>
+                            </TableRow>
+                       )}
+                    </TableBody>
+                </Table>
+            </TableContainer>
+            </div>
     );
     }
 }

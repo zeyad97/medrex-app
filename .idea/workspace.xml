@@ -2,15 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="28480649-a059-4827-a8df-0d305360d954" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Components/QueryTable.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/SearchBar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/MyDrawer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Dashboard.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/Form.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Form.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Intro.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/MedicalRecords.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/PersistentLeftDrawer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/PersistentLeftDrawer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/StatsGrids.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/StatsGrids.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/QueryTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/QueryTable.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +81,7 @@
       <workItem from="1590591257035" duration="11891000" />
       <workItem from="1590688328826" duration="51618000" />
       <workItem from="1590871425206" duration="24061000" />
-      <workItem from="1591011664494" duration="44756000" />
+      <workItem from="1591011664494" duration="59681000" />
     </task>
     <task id="LOCAL-00001" summary="Auth0 used with google and facebook authentication. secure route also configured">
       <created>1588938236534</created>
@@ -164,7 +160,14 @@
       <option name="project" value="LOCAL" />
       <updated>1591049661119</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Patient dashboard started. Drawer works perfectly.">
+      <created>1591170058734</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1591170058734</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -194,7 +197,8 @@
     <MESSAGE value="Reg Module 80% completed." />
     <MESSAGE value="Reg Module 80% completed + minor changes" />
     <MESSAGE value="Navbar finalised-changes according to the participant." />
-    <option name="LAST_COMMIT_MESSAGE" value="Navbar finalised-changes according to the participant." />
+    <MESSAGE value="Patient dashboard started. Drawer works perfectly." />
+    <option name="LAST_COMMIT_MESSAGE" value="Patient dashboard started. Drawer works perfectly." />
   </component>
   <component name="WindowStateProjectService">
     <state x="421" y="259" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1591028557132">
@@ -205,18 +209,18 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1440.900@0.0.1440.900" timestamp="1591050761472" />
-    <state x="297" y="25" key="CommitChangelistDialog2" timestamp="1591049660836">
+    <state x="297" y="25" key="CommitChangelistDialog2" timestamp="1591170058579">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="297" y="25" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1591049660836" />
+    <state x="297" y="25" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1591170058579" />
     <state x="608" y="324" width="443" height="252" key="MultipleFileMergeDialog" timestamp="1590960353144">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="608" y="324" width="443" height="252" key="MultipleFileMergeDialog/0.0.1440.900@0.0.1440.900" timestamp="1590960353144" />
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1591049671606">
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1591170064910">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1591049671606" />
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1591170064910" />
     <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1590672244738">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
