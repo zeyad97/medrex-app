@@ -1,17 +1,17 @@
 import React from 'react';
 import emailjs from 'emailjs-com';
 
-// this class is not being used anywhere, the function sendemail and the button have both been 
-// copied into PatientView.js. This class is for reference purpose when properly integrating 
+// this class is not being used anywhere, the function sendemail and the button have both been
+// copied into PatientView.js. This class is for reference purpose when properly integrating
 class email extends React.Component {
-    
+
     sendEmail() {
-    
+
         var template_params = {
             "patient_email": "ramlah.aziz2012@gmail.com",
             "doctor": "Ramlah"
         }
-            
+
         var service_id = "default_service";
         var template_id = "medrex_request_access";
         // from emailjs website
@@ -22,11 +22,11 @@ class email extends React.Component {
             }, function(error) {
                 console.log('FAILED...', error);
             });
-    } 
+    }
 
     render() {
         return (
-            <button 
+            <button
             className= "sendemail"
             onClick={() => this.sendEmail()}
             >

@@ -1,6 +1,6 @@
 import React from "react";
 import "antd/dist/antd.css";
-import { Statistic, Card, Row, Col } from 'antd';
+import { Statistic, Card } from 'antd';
 import { Grid } from "@material-ui/core";
 import PersonIcon from "@material-ui/icons/Person";
 import LocalHospitalIcon from '@material-ui/icons/LocalHospital';

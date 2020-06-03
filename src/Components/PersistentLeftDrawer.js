@@ -86,8 +86,8 @@ const useStyles = makeStyles((theme) => ({
 export default function PersistentDrawerLeft(props) {
     const classes = useStyles();
     const theme = useTheme();
-    const [open, setOpen] = React.useState(true);
-    const { isAuthenticated, logout } = useAuth0();
+    const [open, setOpen] = React.useState(false);
+    const {isAuthenticated, logout} = useAuth0();
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -99,7 +99,7 @@ export default function PersistentDrawerLeft(props) {
 
     const listRendering = (props) => {
         let listToRender;
-        if(props === 'patient'){
+        if (props === 'patient') {
             listToRender =
                 <div>
                     <ListItem button>
@@ -108,15 +108,15 @@ export default function PersistentDrawerLeft(props) {
                     </ListItem>
                     <ListItem button>
                         <ListItemIcon><DescriptionIcon/></ListItemIcon>
-                        <ListItemText>My E-Health-Record</ListItemText>
+                        <ListItemText>My E-Health-Records</ListItemText>
                     </ListItem>
                     <ListItem button>
                         <ListItemIcon><PersonIcon/></ListItemIcon>
                         <ListItemText>Profile</ListItemText>
                     </ListItem>
                 </div>
-            ;}
-        else{
+            ;
+        } else {
             listToRender =
                 <div>
                     <ListItem button>
@@ -132,68 +132,74 @@ export default function PersistentDrawerLeft(props) {
                         <ListItemText>Profile</ListItemText>
                     </ListItem>
                 </div>;
-                    }
+        }
         return listToRender;
     }
-    return (
-        <div className={classes.root}>
-            <CssBaseline />
-            <AppBar
-                position="fixed"
-                className={clsx(classes.appBar, {
-                    [classes.appBarShift]: open,
-                })}
-            >
-                <Toolbar>
-                    <IconButton
-                        color="inherit"
-                        aria-label="open drawer"
-                        onClick={() => {handleDrawerOpen();listRendering()}}
-                        edge="start"
-                        className={clsx(classes.menuButton, open && classes.hide)}
-                    >
-                        <MenuIcon />
-                    </IconButton>
-                    <Typography variant="h6" noWrap>
-                        Welcome {props.participant.fName}!
-                    </Typography>
-                </Toolbar>
-            </AppBar>
-            <Drawer
-                className={classes.drawer}
-                variant="persistent"
-                anchor="left"
-                open={open}
-                classes={{
-                    paper: classes.drawerPaper,
-                }}
-            >
-                <div className={classes.drawerHeader}>
-                    <IconButton onClick={handleDrawerClose}>
-                        {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-                    </IconButton>
-                </div>
-                <Divider />
-                <List>
-                    {listRendering(props.participant.type)}
-                    {isAuthenticated && <ListItem button onClick={() => logout()}>
-                        <ListItemIcon><ExitToAppIcon/></ListItemIcon>
-                        <ListItemText>Log Out</ListItemText>
-                    </ListItem>}
-                </List>
-            </Drawer>
-            <main className={clsx(classes.content, {[classes.contentShift]: open,})}>
-                <div className={classes.drawerHeader}/>
-                <Grid container row spacing={2} justify='center' alignItems='center'>
-                    <Grid item xs={12}>
-                        <StatsGrid/>
-                    </Grid>
-                    <Grid item xs={12}>
-                        <QueryTable user={props.participant.Id}/>
-                    </Grid>
-                </Grid>
-            </main>
 
-        </div>
-    );
-}
+
+        return (
+            <div className={classes.root}>
+                <CssBaseline/>
+                <AppBar
+                    position="fixed"
+                    className={clsx(classes.appBar, {
+                        [classes.appBarShift]: open,
+                    })}
+                >
+                    <Toolbar>
+                        <IconButton
+                            color="inherit"
+                            aria-label="open drawer"
+                            onClick={() => {
+                                handleDrawerOpen();
+                                listRendering()
+                            }}
+                            edge="start"
+                            className={clsx(classes.menuButton, open && classes.hide)}
+                        >
+                            <MenuIcon/>
+                        </IconButton>
+                        <Typography variant="h6" noWrap>
+                            Welcome {props.participant.fName}!
+                        </Typography>
+                    </Toolbar>
+                </AppBar>
+                <Drawer
+                    className={classes.drawer}
+                    variant="persistent"
+                    anchor="left"
+                    open={open}
+                    classes={{
+                        paper: classes.drawerPaper,
+                    }}
+                >
+                    <div className={classes.drawerHeader}>
+                        <IconButton onClick={handleDrawerClose}>
+                            {theme.direction === 'ltr' ? <ChevronLeftIcon/> : <ChevronRightIcon/>}
+                        </IconButton>
+                    </div>
+                    <Divider/>
+                    <List>
+                        {listRendering(props.participant.type)}
+                        {isAuthenticated && <ListItem button onClick={() => logout()}>
+                            <ListItemIcon><ExitToAppIcon/></ListItemIcon>
+                            <ListItemText>Log Out</ListItemText>
+                        </ListItem>}
+                    </List>
+                </Drawer>
+                <main className={clsx(classes.content, {[classes.contentShift]: open,})}>
+                    <div className={classes.drawerHeader}>
+                    </div>
+                    <Grid container row spacing={2} justify='center' alignItems='center'>
+                        <Grid item xs={12}>
+                            <StatsGrid/>
+                        </Grid>
+                        <Grid item xs={12}>
+                            <QueryTable user={props.participant}/>
+                        </Grid>
+                    </Grid>
+                </main>
+
+            </div>
+        );
+    }
