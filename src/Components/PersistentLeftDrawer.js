@@ -23,6 +23,7 @@ import PersonIcon from '@material-ui/icons/Person';
 import StatsGrid from "./StatsGrids";
 import QueryTable from "./QueryTable";
 import {useAuth0} from "../react-auth0-spa";
+import EMedicalTable from "./EMedicalTable";
 
 const drawerWidth = 240;
 
@@ -196,6 +197,9 @@ export default function PersistentDrawerLeft(props) {
                         </Grid>
                         <Grid item xs={12}>
                             <QueryTable user={props.participant}/>
+                        </Grid>
+                        <Grid item xs={12}>
+                            <EMedicalTable identity={props.participant}/>
                         </Grid>
                     </Grid>
                 </main>

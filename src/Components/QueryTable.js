@@ -22,7 +22,7 @@ class QueryTable extends Component {
     };
 
     async componentDidMount() {
-        const url = 'http://d7f3cf026b7d.ngrok.io/api/';
+        const url = 'http://0d0a157b5c62.ngrok.io/api/';
         try{
             const response = await axios.get(url+ 'queries/getAccessRequestsForPatient', {
                 params: {
@@ -49,8 +49,8 @@ class QueryTable extends Component {
                     try{
                         const doc = await axios.get(url +'doctor/' + newPart);
                         const owner =  await axios.get(url+ 'doctor/' + docCre);
-                        const docData = doc.data.fName;
-                        const ownerData = owner.data.fName;
+                        const docData = doc.data.lName;
+                        const ownerData = owner.data.lName;
                         docReq.push(docData,ownerData);
                     }catch(error){
                         console.log(error);
@@ -75,7 +75,7 @@ class QueryTable extends Component {
 
     async click(var1) {
         console.log('clicked');
-        const url = 'http://d7f3cf026b7d.ngrok.io/api/';
+        const url = 'http://0d0a157b5c62.ngrok.io/api/';
         let email;
         try {
             const response = await axios.post(url + 'giveAccess',

@@ -6,6 +6,7 @@ import { Router, Route, Switch } from "react-router-dom";
 import Profile from "./Components/Authoriser";
 import history from "./utils/history";
 import PrivateRoute from "./Components/PrivateRoute";
+import EMedicalTable from "./Components/EMedicalTable";
 
 
 

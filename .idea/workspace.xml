@@ -2,14 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="28480649-a059-4827-a8df-0d305360d954" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Components/EMedicalTable.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Email.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Email.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/EMedicalTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/EMedicalTable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Form.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Form.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/PersistentLeftDrawer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/PersistentLeftDrawer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/QueryTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/QueryTable.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/StatsGrids.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/StatsGrids.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +83,7 @@
       <workItem from="1590688328826" duration="51618000" />
       <workItem from="1590871425206" duration="24061000" />
       <workItem from="1591011664494" duration="67386000" />
-      <workItem from="1591206492086" duration="5892000" />
+      <workItem from="1591206492086" duration="33299000" />
     </task>
     <task id="LOCAL-00001" summary="Auth0 used with google and facebook authentication. secure route also configured">
       <created>1588938236534</created>
@@ -178,7 +176,14 @@
       <option name="project" value="LOCAL" />
       <updated>1591192051507</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Patient can view and grant medical record accesses now.">
+      <created>1591219855147</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1591219855147</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -210,7 +215,8 @@
     <MESSAGE value="Navbar finalised-changes according to the participant." />
     <MESSAGE value="Patient dashboard started. Drawer works perfectly." />
     <MESSAGE value="Patient Dashboard query1 completed with minor faults." />
-    <option name="LAST_COMMIT_MESSAGE" value="Patient Dashboard query1 completed with minor faults." />
+    <MESSAGE value="Patient can view and grant medical record accesses now." />
+    <option name="LAST_COMMIT_MESSAGE" value="Patient can view and grant medical record accesses now." />
   </component>
   <component name="WindowStateProjectService">
     <state x="421" y="259" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1591028557132">
@@ -221,18 +227,22 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1440.900@0.0.1440.900" timestamp="1591050761472" />
-    <state x="297" y="25" key="CommitChangelistDialog2" timestamp="1591192051365">
+    <state x="297" y="25" key="CommitChangelistDialog2" timestamp="1591219854872">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="297" y="25" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1591192051365" />
-    <state x="608" y="324" width="443" height="252" key="MultipleFileMergeDialog" timestamp="1590960353144">
+    <state x="297" y="25" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1591219854872" />
+    <state x="254" y="79" key="MergeDialog" timestamp="1591219929332">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="608" y="324" width="443" height="252" key="MultipleFileMergeDialog/0.0.1440.900@0.0.1440.900" timestamp="1590960353144" />
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1591192062006">
+    <state x="254" y="79" key="MergeDialog/0.0.1440.900@0.0.1440.900" timestamp="1591219929332" />
+    <state x="608" y="324" width="443" height="252" key="MultipleFileMergeDialog" timestamp="1591219929365">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1591192062006" />
+    <state x="608" y="324" width="443" height="252" key="MultipleFileMergeDialog/0.0.1440.900@0.0.1440.900" timestamp="1591219929365" />
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1591219941184">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1591219941184" />
     <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1590672244738">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -249,13 +259,13 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="409" y="245" key="git4idea.merge.GitPullDialog/0.0.1440.900@0.0.1440.900" timestamp="1590837152552" />
-    <state x="385" y="210" key="run.anything.popup" timestamp="1590828097678">
+    <state x="385" y="210" key="run.anything.popup" timestamp="1591288048611">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="385" y="210" key="run.anything.popup/0.0.1440.900@0.0.1440.900" timestamp="1590828097678" />
-    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1591126387513">
+    <state x="385" y="210" key="run.anything.popup/0.0.1440.900@0.0.1440.900" timestamp="1591288048611" />
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1591288504686">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1591126387513" />
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1591288504686" />
   </component>
 </project>

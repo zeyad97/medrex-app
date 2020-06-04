@@ -46,25 +46,20 @@ class Form extends React.Component {
     async componentDidMount() {
         this.setState({Id: this.props.user.sub.substring(9, 25),fName: this.props.user.given_name,
             lName: this.props.user.family_name})
-        console.log(this.state);
-        const url = 'http://d7f3cf026b7d.ngrok.io/api/';
+        const url = 'http://0d0a157b5c62.ngrok.io/api/';
         try {
             const docData = await axios.get(url +'doctor/' + this.props.user.sub.substring(9, 25));
             let dataToAdd = docData.data;
-            console.log(dataToAdd);
             this.setState({present: true, type:'doctor', cnic: dataToAdd.cnic, dob:dataToAdd.dob,
                 sex: dataToAdd.sex, email: dataToAdd.email});
-            console.log(docData);
 
         } catch (error) {
-            console.log("Not a doctor")
             try {
                 const patData = await axios.get(url +'patient/' + this.props.user.sub.substring(9, 25))
                 let valueToAdd = patData.data;
                 this.setState({address:valueToAdd.address, present: true, type:'patient', cnic: valueToAdd.cnic,
                     dob:valueToAdd.dob, bloodGroup: valueToAdd.bloodGroup, sex: valueToAdd.sex, email: valueToAdd.email});
             } catch (error) {
-                console.log("Not a patient, create a new record");
             }
         }
         console.log(this.state);
@@ -72,8 +67,7 @@ class Form extends React.Component {
 
     handleSubmit = async event => {
         event.preventDefault();
-        console.log(this.state);
-        const url = 'http://d7f3cf026b7d.ngrok.io/api/';
+        const url = 'http://0d0a157b5c62.ngrok.io/api/';
         if (this.state.type === 'patient') {
             try {
                 const createPatient = await axios.post(url+'patient',
@@ -90,10 +84,8 @@ class Form extends React.Component {
                     });
                 const response = await axios.get(url+'patient/' + this.state.Id)
                 console.log(response.data.pId);
-                console.log("patient created")
 
             } catch (error) {
-                console.log("catch of createPatient")
                 console.error(error)
             }
         } else {
