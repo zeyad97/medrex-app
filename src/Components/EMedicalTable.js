@@ -32,9 +32,8 @@ function Row(props) {
     const classes = useRowStyles();
 
     async function revoke(varOne,indexValue) {
-        const url = 'http://0d0a157b5c62.ngrok.io/api/';
             try{
-                const response = await axios.post(url + 'revokeAccess',
+                const response = await axios.post(process.env.REACT_APP_NGROK_HTTP + 'revokeAccess',
                     {
                         "$class": "org.medrex.basic.revokeAccess",
                         "record": "resource:org.medrex.basic.healthRecord#" + varOne[0].myMrn,
@@ -173,8 +172,7 @@ export default function CollapsibleTable(props) {
         console.log("in useEffect");
         let arr2 = [];
         try{
-            const url = 'http://0d0a157b5c62.ngrok.io/api/';
-            const emrData = await axios.get(url+ 'queries/returnRecordsOfPatient', {
+            const emrData = await axios.get(process.env.REACT_APP_NGROK_HTTP + 'queries/returnRecordsOfPatient', {
                 params: {
                     patientObject: 'resource:org.medrex.basic.patient#' + props.identity.Id
                 }
@@ -187,7 +185,7 @@ export default function CollapsibleTable(props) {
                     let myEmr = emrData.data[i];
                     let makerRes = emrData.data[i].maker;
                     let maker = makerRes.substring(33,makerRes.length);
-                    const makerRequest = await axios.get("http://0d0a157b5c62.ngrok.io/api/doctor/"+ maker +
+                    const makerRequest = await axios.get(process.env.REACT_APP_NGROK_HTTP + "doctor/"+ maker +
                         "?filter={\"fields\": [ \"fname\",\"lName\"]}");
                     let makerName = makerRequest.data.lName;
                     let trusted = emrData.data[i].trustedDocs;
@@ -197,7 +195,7 @@ export default function CollapsibleTable(props) {
                     for(j=0; j<trustedSize; j++) {
                         try {
                             let trustedRes = trusted[j].substring(33, trusted[j].length);
-                            const trustedReq = await axios.get("http://0d0a157b5c62.ngrok.io/api/doctor/" +
+                            const trustedReq = await axios.get(process.env.REACT_APP_NGROK_HTTP + "doctor/" +
                                 trustedRes + "?filter={\"fields\": [ \"fname\",\"lName\"]}");
                             const docDeets = {identityDoc: trustedRes, nameDoc: trustedReq.data.lName};
                             objectsDoc.push(docDeets);

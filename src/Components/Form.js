@@ -46,16 +46,15 @@ class Form extends React.Component {
     async componentDidMount() {
         this.setState({Id: this.props.user.sub.substring(9, 25),fName: this.props.user.given_name,
             lName: this.props.user.family_name})
-        const url = 'http://0d0a157b5c62.ngrok.io/api/';
         try {
-            const docData = await axios.get(url +'doctor/' + this.props.user.sub.substring(9, 25));
+            const docData = await axios.get(process.env.REACT_APP_NGROK_HTTP +'doctor/' + this.props.user.sub.substring(9, 25));
             let dataToAdd = docData.data;
             this.setState({present: true, type:'doctor', cnic: dataToAdd.cnic, dob:dataToAdd.dob,
                 sex: dataToAdd.sex, email: dataToAdd.email});
 
         } catch (error) {
             try {
-                const patData = await axios.get(url +'patient/' + this.props.user.sub.substring(9, 25))
+                const patData = await axios.get(process.env.REACT_APP_NGROK_HTTP +'patient/' + this.props.user.sub.substring(9, 25))
                 let valueToAdd = patData.data;
                 this.setState({address:valueToAdd.address, present: true, type:'patient', cnic: valueToAdd.cnic,
                     dob:valueToAdd.dob, bloodGroup: valueToAdd.bloodGroup, sex: valueToAdd.sex, email: valueToAdd.email});
@@ -67,10 +66,9 @@ class Form extends React.Component {
 
     handleSubmit = async event => {
         event.preventDefault();
-        const url = 'http://0d0a157b5c62.ngrok.io/api/';
         if (this.state.type === 'patient') {
             try {
-                const createPatient = await axios.post(url+'patient',
+                const createPatient = await axios.post(process.env.REACT_APP_NGROK_HTTP + 'patient',
                     {
                         pId: this.state.Id,
                         cnic: this.state.cnic,
@@ -82,7 +80,7 @@ class Form extends React.Component {
                         bloodGroup: this.state.bloodGroup,
                         address: this.state.address
                     });
-                const response = await axios.get(url+'patient/' + this.state.Id)
+                const response = await axios.get(process.env.REACT_APP_NGROK_HTTP + 'patient/' + this.state.Id)
                 console.log(response.data.pId);
 
             } catch (error) {
@@ -90,7 +88,7 @@ class Form extends React.Component {
             }
         } else {
             try {
-                const createDoctor = await axios.post(url+'doctor',
+                const createDoctor = await axios.post(process.env.REACT_APP_NGROK_HTTP +'doctor',
                     {
                         dId: this.state.Id,
                         cnic: this.state.cnic,
@@ -100,7 +98,7 @@ class Form extends React.Component {
                         dob: this.state.dateOfBirth,
                         email: this.state.email
                     });
-                const response = await axios.get(url+'doctor/' + this.state.Id)
+                const response = await axios.get(process.env.REACT_APP_NGROK_HTTP + 'doctor/' + this.state.Id)
                 console.log(response.data.dId);
                 console.log("doc created")
             } catch (error) {

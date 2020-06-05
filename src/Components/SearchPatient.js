@@ -21,9 +21,8 @@ class SearchPatient extends React.Component {
     }
 
     async getSearchResults() {
-        const url = ' http://0d0a157b5c62.ngrok.io/api/';
             try{
-                const response = await axios.get(url+ 'queries/searchPatientsByFnameLnameOrPid', {
+                const response = await axios.get(process.env.REACT_APP_NGROK_HTTP+ 'queries/searchPatientsByFnameLnameOrPid', {
                     params: {
                         String: this.state.searchTerm
                     }

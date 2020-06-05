@@ -22,9 +22,8 @@ class QueryTable extends Component {
     };
 
     async componentDidMount() {
-        const url = 'http://0d0a157b5c62.ngrok.io/api/';
         try{
-            const response = await axios.get(url+ 'queries/getAccessRequestsForPatient', {
+            const response = await axios.get(process.env.REACT_APP_NGROK_HTTP + 'queries/getAccessRequestsForPatient', {
                 params: {
                     patientObject: 'resource:org.medrex.basic.patient#'+ this.props.user.Id
                 }
@@ -47,8 +46,8 @@ class QueryTable extends Component {
                     let docCreate = varOne.maker;
                     let docCre = docCreate.substring(33,docCreate.length);
                     try{
-                        const doc = await axios.get(url +'doctor/' + newPart);
-                        const owner =  await axios.get(url+ 'doctor/' + docCre);
+                        const doc = await axios.get(process.env.REACT_APP_NGROK_HTTP +'doctor/' + newPart);
+                        const owner =  await axios.get(process.env.REACT_APP_NGROK_HTTP+ 'doctor/' + docCre);
                         const docData = doc.data.lName;
                         const ownerData = owner.data.lName;
                         docReq.push(docData,ownerData);
@@ -75,10 +74,9 @@ class QueryTable extends Component {
 
     async click(var1) {
         console.log('clicked');
-        const url = 'http://0d0a157b5c62.ngrok.io/api/';
         let email;
         try {
-            const response = await axios.post(url + 'giveAccess',
+            const response = await axios.post(process.env.REACT_APP_NGROK_HTTP + 'giveAccess',
                 {
                     "$class": "org.medrex.basic.giveAccess",
                     "record": "resource:org.medrex.basic.healthRecord#" + var1.medicalNo,
@@ -87,7 +85,7 @@ class QueryTable extends Component {
                     "timestamp": new Date()
                 });
             try {
-                const docRes = await axios.get(url + 'doctor/' + var1.docID)
+                const docRes = await axios.get(process.env.REACT_APP_NGROK_HTTP + 'doctor/' + var1.docID)
                 const docDataAdd = docRes.data;
                 email = docDataAdd.email;
 
