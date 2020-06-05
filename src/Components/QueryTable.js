@@ -46,10 +46,10 @@ class QueryTable extends Component {
                     let docCreate = varOne.maker;
                     let docCre = docCreate.substring(33,docCreate.length);
                     try{
-                        const doc = await axios.get(process.env.REACT_APP_NGROK_HTTP +'doctor/' + newPart);
-                        const owner =  await axios.get(process.env.REACT_APP_NGROK_HTTP+ 'doctor/' + docCre);
-                        const docData = doc.data.lName;
-                        const ownerData = owner.data.lName;
+                        const doc = await axios.get(process.env.REACT_APP_NGROK_HTTP +'doctor/' + newPart  + "?filter={\"fields\": [ \"fName\", \"lName\"]}");
+                        const owner =  await axios.get(process.env.REACT_APP_NGROK_HTTP+ 'doctor/' + docCre  + "?filter={\"fields\": [ \"fName\", \"lName\"]}");
+                        const docData = doc.data.fName + ' ' + doc.data.lName;
+                        const ownerData = owner.data.fName + ' ' + owner.data.lName;
                         docReq.push(docData,ownerData);
                     }catch(error){
                         console.log(error);
