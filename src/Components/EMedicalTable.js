@@ -56,8 +56,8 @@ function Row(props) {
                 </TableCell>
                 <TableCell align="center">{recordArray[0].myMrn}</TableCell>
                 <TableCell align="center">{recordArray[0].myType}</TableCell>
-                <TableCell align="center">{recordArray[0].myMaker}</TableCell>
                 <TableCell align="center">{recordArray[0].myDate}</TableCell>
+                <TableCell align="center">{recordArray[0].myMaker}</TableCell>
             </TableRow>
             <TableRow>
                 <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
@@ -149,7 +149,7 @@ function Row(props) {
                                         <TableRow key={row.identityDoc}>
 
                                             <TableCell>{row.nameDoc}</TableCell>
-                                            <TableCell><Button color='secondary' onClick={() => {revoke(recordArray,numberDoc)}}>
+                                            <TableCell><Button variant='contained' color='secondary' onClick={() => {revoke(recordArray,numberDoc)}}>
                                                 Revoke Access
                                             </Button></TableCell>
                                         </TableRow>
@@ -168,6 +168,7 @@ export default function CollapsibleTable(props) {
     console.log("Comp loaded");
     const [record, setRecord] = React.useState([]);
     const [loading, setLoading] = React.useState(true);
+
     useEffect(async () => {
         console.log("in useEffect");
         let arr2 = [];

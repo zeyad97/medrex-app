@@ -2,12 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="28480649-a059-4827-a8df-0d305360d954" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Components/DialogForm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/DocAccessTable.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/EMedicalTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/EMedicalTable.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/Form.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Form.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/PersistentLeftDrawer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/PersistentLeftDrawer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/QueryTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/QueryTable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/SearchPatient.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/SearchPatient.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/SearchResultsTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/SearchResultsTable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/StatsGrids.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/StatsGrids.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +40,8 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="CSS" />
@@ -83,7 +90,8 @@
       <workItem from="1590688328826" duration="51618000" />
       <workItem from="1590871425206" duration="24061000" />
       <workItem from="1591011664494" duration="67386000" />
-      <workItem from="1591206492086" duration="33299000" />
+      <workItem from="1591206492086" duration="33348000" />
+      <workItem from="1591352466877" duration="15775000" />
     </task>
     <task id="LOCAL-00001" summary="Auth0 used with google and facebook authentication. secure route also configured">
       <created>1588938236534</created>
@@ -183,7 +191,14 @@
       <option name="project" value="LOCAL" />
       <updated>1591219855147</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Patient dashboard functionality completed!">
+      <created>1591312000488</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1591312000488</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -216,21 +231,22 @@
     <MESSAGE value="Patient dashboard started. Drawer works perfectly." />
     <MESSAGE value="Patient Dashboard query1 completed with minor faults." />
     <MESSAGE value="Patient can view and grant medical record accesses now." />
-    <option name="LAST_COMMIT_MESSAGE" value="Patient can view and grant medical record accesses now." />
+    <MESSAGE value="Patient dashboard functionality completed!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Patient dashboard functionality completed!" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="421" y="259" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1591028557132">
+    <state x="421" y="259" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1591364866582">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="421" y="259" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1440.900@0.0.1440.900" timestamp="1591028557132" />
+    <state x="421" y="259" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1440.900@0.0.1440.900" timestamp="1591364866582" />
     <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1591050761472">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1440.900@0.0.1440.900" timestamp="1591050761472" />
-    <state x="297" y="25" key="CommitChangelistDialog2" timestamp="1591219854872">
+    <state x="297" y="25" key="CommitChangelistDialog2" timestamp="1591312000349">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="297" y="25" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1591219854872" />
+    <state x="297" y="25" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1591312000349" />
     <state x="254" y="79" key="MergeDialog" timestamp="1591219929332">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -239,10 +255,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="608" y="324" width="443" height="252" key="MultipleFileMergeDialog/0.0.1440.900@0.0.1440.900" timestamp="1591219929365" />
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1591219941184">
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1591312008454">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1591219941184" />
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1591312008454" />
     <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1590672244738">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -255,10 +271,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="343" y="67" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1440.900@0.0.1440.900" timestamp="1590830770399" />
-    <state x="409" y="245" key="git4idea.merge.GitPullDialog" timestamp="1590837152552">
+    <state x="409" y="245" key="git4idea.merge.GitPullDialog" timestamp="1591352496624">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="409" y="245" key="git4idea.merge.GitPullDialog/0.0.1440.900@0.0.1440.900" timestamp="1590837152552" />
+    <state x="409" y="245" key="git4idea.merge.GitPullDialog/0.0.1440.900@0.0.1440.900" timestamp="1591352496624" />
     <state x="385" y="210" key="run.anything.popup" timestamp="1591288048611">
       <screen x="0" y="0" width="1440" height="900" />
     </state>

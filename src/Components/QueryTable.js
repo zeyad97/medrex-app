@@ -145,7 +145,7 @@ class QueryTable extends Component {
                                             <TableCell align="center">{row.medicalType}</TableCell>
                                             <TableCell align="center">{row.shortAssess}</TableCell>
                                             <TableCell align='center'>
-                                                <Button  color='primary'
+                                                <Button variant='contained'  color='primary'
                                                          onClick={() => {this.click(row)}}>
                                                 Grant Access
                                             </Button></TableCell>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import "antd/dist/antd.css";
 import { Statistic, Card } from 'antd';
 import { Grid } from "@material-ui/core";
