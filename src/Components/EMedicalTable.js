@@ -187,8 +187,8 @@ export default function CollapsibleTable(props) {
                     let makerRes = emrData.data[i].maker;
                     let maker = makerRes.substring(33,makerRes.length);
                     const makerRequest = await axios.get(process.env.REACT_APP_NGROK_HTTP + "doctor/"+ maker +
-                        "?filter={\"fields\": [ \"fname\",\"lName\"]}");
-                    let makerName = makerRequest.data.lName;
+                        "?filter={\"fields\": [ \"fName\",\"lName\"]}");
+                    let makerName = makerRequest.data.fName + ' ' + makerRequest.data.lName;
                     let trusted = emrData.data[i].trustedDocs;
                     let trustedSize = emrData.data[i].trustedDocs.length;
                     let j;
@@ -197,8 +197,8 @@ export default function CollapsibleTable(props) {
                         try {
                             let trustedRes = trusted[j].substring(33, trusted[j].length);
                             const trustedReq = await axios.get(process.env.REACT_APP_NGROK_HTTP + "doctor/" +
-                                trustedRes + "?filter={\"fields\": [ \"fname\",\"lName\"]}");
-                            const docDeets = {identityDoc: trustedRes, nameDoc: trustedReq.data.lName};
+                                trustedRes + "?filter={\"fields\": [ \"fName\",\"lName\"]}");
+                            const docDeets = {identityDoc: trustedRes, nameDoc: trustedReq.data.fName + ' ' + trustedReq.data.lName};
                             objectsDoc.push(docDeets);
                         } catch (error) {
                             console.log(error);
