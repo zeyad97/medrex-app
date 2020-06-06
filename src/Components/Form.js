@@ -22,7 +22,8 @@ class Form extends React.Component {
             dateOfBirth: new Date(),
             type: '',
             bloodGroup: '',
-            address: ''
+            address: '',
+            photoLink: ''
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleDateChange = this.handleDateChange.bind(this);
@@ -45,7 +46,7 @@ class Form extends React.Component {
 
     async componentDidMount() {
         this.setState({Id: this.props.user.sub.substring(9, 25),fName: this.props.user.given_name,
-            lName: this.props.user.family_name})
+            lName: this.props.user.family_name, photoLink: this.props.user.picture})
         try {
             const docData = await axios.get(process.env.REACT_APP_NGROK_HTTP +'doctor/' + this.props.user.sub.substring(9, 25));
             let dataToAdd = docData.data;
@@ -240,7 +241,7 @@ class Form extends React.Component {
                                     {bloodGroupForm}
                                     {addressForm}
                                     <Grid item>
-                                        <Button input type="submit" value="Submit">
+                                        <Button variant='contained' input type="submit" value="Submit">
                                             Submit
                                         </Button>
                                     </Grid>

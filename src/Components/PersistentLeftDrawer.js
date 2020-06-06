@@ -25,6 +25,7 @@ import QueryTable from "./QueryTable";
 import {useAuth0} from "../react-auth0-spa";
 import EMedicalTable from "./EMedicalTable";
 import AccessibleEMRTable from './AccessibleEMRTable';
+import SearchPatient from "./SearchPatient";
 
 const drawerWidth = 240;
 
@@ -203,8 +204,12 @@ export default function PersistentDrawerLeft(props) {
                             <EMedicalTable identity={props.participant}/>
                         </Grid>
                         <Grid item xs={12}>
+                            <SearchPatient/>
+                        </Grid>
+                        <Grid item xs={12}>
                             <AccessibleEMRTable user={props.participant}/>
                         </Grid>
+                        
                     </Grid>
                 </main>
 
