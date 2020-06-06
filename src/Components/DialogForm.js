@@ -8,12 +8,17 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Grid from "@material-ui/core/Grid";
 import {Divider} from "@material-ui/core";
+import FormControl from "@material-ui/core/FormControl";
+import FormLabel from "@material-ui/core/FormLabel";
+import RadioGroup from "@material-ui/core/RadioGroup";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Radio from "@material-ui/core/Radio";
 const axios = require('axios');
 
 export default function FormDialog(props) {
     const [open, setOpen] = React.useState(false);
     const [form,setValues] = React.useState(
-        {bt:'',bp:'',hr:'',rr:'',
+        {type:'',bt:'',bp:'',hr:'',rr:'',
             hist:'',meds:'',allerg:'',shist:'',
         ass:'',plan:'',extra:'',labs:''});
 
@@ -35,14 +40,15 @@ export default function FormDialog(props) {
         const myDate = new Date();
         console.log(myDate);
         const url =  "http://eb9f85ab69f0.ngrok.io/api"
-        var y = randomNumber();
-        console.log(y);
+        var y = randomNumber().toString();
+        console.log(typeof y);
+        console.log(props.doctorMy.doctor.Id)
         try{
             const addRecordReq = await axios.post(url + "/healthRecord", {
                 $class: "org.medrex.basic.healthRecord",
                 mrn: y,
-                owner: "resource: org.medrex.basic.patient#"+ props.patientMy[0].patId,
-                maker: "resource: org.medrex.basic.doctor#"+ props.doctorMy.Id,
+                owner: "resource:org.medrex.basic.patient#"+ props.patientMy[0].patId,
+                maker: "resource:org.medrex.basic.doctor#"+ props.doctorMy.doctor.Id,
                 date: myDate,
                 history: form.hist,
                 meds: form.meds,
@@ -87,6 +93,18 @@ export default function FormDialog(props) {
                         Kindly fill the following form and submit it to add a new record.
                     </DialogContentText>
                         <Grid container direction="row" justify="space-evenly" alignItems="center" spacing={3}>
+                            <Grid item xs={12}>
+                                <h3>Record Type</h3>
+                            </Grid>
+                                <Grid item xs={12}>
+                                    <FormControl component="fieldset">
+                                        <RadioGroup row aria-label="gender" name="type" value={form.type} onChange={updateField}>
+                                            <FormControlLabel value="OPD" control={<Radio />} label="OutPatient Department" />
+                                            <FormControlLabel value="IPD" control={<Radio />} label="InPatient Department" />
+                                            <FormControlLabel value="Emergency" control={<Radio />} label="Emergency" />
+                                        </RadioGroup>
+                                    </FormControl>
+                                </Grid>
                                 <Grid item xs={12}>
                                     <h3>Vitals</h3>
                                 </Grid>
