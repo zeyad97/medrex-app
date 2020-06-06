@@ -3,8 +3,6 @@ import { Grid } from "@material-ui/core";
 import Avatar from "@material-ui/core/Avatar";
 import {makeStyles} from "@material-ui/core/styles";
 import {deepOrange, deepPurple} from "@material-ui/core/colors";
-import Button from "@material-ui/core/Button";
-import {AxiosInstance as axios} from "axios";
 import DialogForm from "./DialogForm";
 
 
@@ -66,7 +64,7 @@ export default function DocAccessTable(props) {
                             <Avatar className={classes.orange}  children={props.record[0].patName.getInitials()}/>
                         </Grid>
                         <Grid item xs={6} justify='flex-end'>
-                            <DialogForm/>
+                            <DialogForm patientMy={props.record} doctorMy={props.doctor}/>
                         </Grid>
                         <Grid item xs={12} direction='column'>
                             <h3>{props.record[0].patName}</h3>
