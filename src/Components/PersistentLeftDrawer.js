@@ -204,12 +204,12 @@ export default function PersistentDrawerLeft(props) {
                             <EMedicalTable identity={props.participant}/>
                         </Grid>
                         <Grid item xs={12}>
-                            <SearchPatient/>
+                            <SearchPatient doctor={props.participant}/>
                         </Grid>
                         <Grid item xs={12}>
                             <AccessibleEMRTable user={props.participant}/>
                         </Grid>
-                        
+
                     </Grid>
                 </main>
 

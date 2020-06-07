@@ -130,7 +130,7 @@ const classes = useStyles();
                             Search</Button>
                     </Grid>
                     <Grid item xs={12}>
-                        <SearchResultsTable resultsToDisplay={this.state}/>
+                        <SearchResultsTable resultsToDisplay={this.state} myDoctor={this.props}/>
                     </Grid>
                 </Grid>
             </div>

@@ -28,6 +28,7 @@ class SearchResultsTable extends React.Component {
 
     render (){
         //console.log('intable!', this.props);
+        console.log(this.props);
         return (
             <div>
                 {this.props.resultsToDisplay.viewResults?
@@ -59,7 +60,7 @@ class SearchResultsTable extends React.Component {
                         </TableContainer>
                 : <p> Please enter case sensitive first name, last name or patient id!</p>}
                 {this.state.showEMR ?
-                    <DocAccessTable record={this.props.resultsToDisplay.axiosResults} /> :
+                    <DocAccessTable record={this.props.resultsToDisplay.axiosResults} doctor={this.props.myDoctor}/> :
                     null
                 }
             </div>
