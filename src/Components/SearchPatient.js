@@ -1,5 +1,6 @@
 //call it from wherever it doesn't need any props. It contains the search bar and search function.
 //table is in SearchResultsTable.js
+//doctor component used to search patients
 
 import React from 'react';
 import InputBase from '@material-ui/core/InputBase';
@@ -113,7 +114,7 @@ const classes = useStyles();
 
             <div style={{flexGrow: '1'}}>
                 <Grid container spacing={2} justify="center" alignItems="center">
-                    <Grid item xs={6}>
+                    <Grid item xs={8}>
                         <InputBase
                             placeholder="Search…"
                             id="filled-search"
@@ -124,8 +125,8 @@ const classes = useStyles();
                             onChange={this.handleChange}
                         />
                     </Grid>
-                    <Grid item xs={6}>
-                        <Button onClick={() => this.getSearchResults()} variant='contained' color='primary'
+                    <Grid item xs={4}>
+                        <Button onClick={() => this.getSearchResults()} variant='contained' color='secondary'
                                 endIcon={<SearchIcon/>}>
                             Search</Button>
                     </Grid>

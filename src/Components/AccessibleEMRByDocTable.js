@@ -1,5 +1,8 @@
 // call with         user={props.participant}
-// like         <AccessibleEMRTable /*user={props.participant}*/></AccessibleEMRTable>
+// like         <AccessibleEMRByDocTable /*user={props.participant}*/></AccessibleEMRByDocTable>
+//component used to view accessible EMRs by the doctor using the system
+//Doctor component
+
 
 import React, { Component } from 'react'
 import Table from '@material-ui/core/Table';
@@ -12,8 +15,9 @@ import Paper from '@material-ui/core/Paper';
 import axios from 'axios';
 import {Button} from "@material-ui/core";
 import Skeleton from '@material-ui/lab/Skeleton';
+import EMedicalDialog from "./EMedicalDialog";
 
-class AccessibleEMRTable extends Component {
+class AccessibleEMRByDocTable extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -37,7 +41,7 @@ class AccessibleEMRTable extends Component {
             let OwnerID, makerID, objectString, objectString2, makerName, ownerName, queryNames = [];
 
             for (i=0; i<queriesNumber; i++){
-                
+
                 let varOne = response.data[i];
 
                 //get owner id
@@ -49,7 +53,7 @@ class AccessibleEMRTable extends Component {
                 try{
                     const owner =  await axios.get(process.env.REACT_APP_NGROK_HTTP+ 'patient/' + OwnerID
                     + "?filter={\"fields\": [ \"fName\", \"lName\"]}");
-                    const maker = await axios.get(process.env.REACT_APP_NGROK_HTTP +'doctor/' + makerID 
+                    const maker = await axios.get(process.env.REACT_APP_NGROK_HTTP +'doctor/' + makerID
                     + "?filter={\"fields\": [ \"fName\", \"lName\"]}");
                     ownerName = owner.data.fName + ' ' + owner.data.lName;
                     makerName = maker.data.fName + ' ' + maker.data.lName;
@@ -57,11 +61,11 @@ class AccessibleEMRTable extends Component {
                     console.log(error);
                 }
 
-                console.log(varOne);                
-                const obj = { owner: ownerName ,maker: makerName, date:varOne.date, MRN: varOne.mrn, medicalType: varOne.type,
+                console.log(varOne);
+                const obj = { owner: ownerName ,maker: makerName, date:varOne.date, mrn: varOne.mrn, medicalType: varOne.type,
                         shortAssess: varOne.assessment};
                 queries.push(obj);
-                
+
             }
             this.setState({requests: queries});
         } catch(error) {
@@ -73,9 +77,9 @@ class AccessibleEMRTable extends Component {
     async click(var1) {
         console.log('clicked');
         try {
-            
+
             try {
-            
+
             } catch (error) {
                 console.log(error)
             }
@@ -84,7 +88,11 @@ class AccessibleEMRTable extends Component {
         }
     }
 
+
+
     render() {
+        console.log("THIS!!")
+        console.log(this.state.requests);
         return(
             <div>
                 <h1>Accessible Medical Requests</h1>
@@ -109,18 +117,14 @@ class AccessibleEMRTable extends Component {
                                 </TableHead>
                                 <TableBody>
                                     {this.state.requests.map((row) =>
-                                        <TableRow key={row.MRN}>
+                                        <TableRow key={row.mrn}>
                                             <TableCell align="center">{row.owner}</TableCell>
                                             <TableCell align="center">{row.maker}</TableCell>
                                             <TableCell align="center">{row.date}</TableCell>
-                                            <TableCell align="center">{row.MRN}</TableCell>
+                                            <TableCell align="center">{row.mrn}</TableCell>
                                             <TableCell align="center">{row.medicalType}</TableCell>
                                             <TableCell align="center">{row.shortAssess}</TableCell>
-                                            <TableCell align='center'>
-                                                <Button  color='primary'
-                                                         onClick={() => {this.click(row)}}>
-                                                View
-                                            </Button></TableCell>
+                                            <TableCell align='center'><EMedicalDialog patientRecord={row}/></TableCell>
                                         </TableRow>
                                     )}
                                 </TableBody>
@@ -133,4 +137,4 @@ class AccessibleEMRTable extends Component {
         }
 }
 
-export default AccessibleEMRTable;
+export default AccessibleEMRByDocTable;

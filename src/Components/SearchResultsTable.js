@@ -1,4 +1,6 @@
 //called in SearchPatient.js
+//doctor component to display search results
+
 
 import React from 'react';
 import Table from '@material-ui/core/Table';
@@ -10,6 +12,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Button from "@material-ui/core/Button";
 import DocAccessTable from "./DocAccessTable";
+import PatientSearchByDocTable from "./PatientSearchByDocTable";
 
 class SearchResultsTable extends React.Component {
     constructor(props){
@@ -40,6 +43,7 @@ class SearchResultsTable extends React.Component {
                                         <TableCell align="center">Patient Name</TableCell>
                                         <TableCell align="center">Sex</TableCell>
                                         <TableCell align="center">Date of Birth</TableCell>
+                                        <TableCell></TableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
@@ -50,8 +54,8 @@ class SearchResultsTable extends React.Component {
                                             <TableCell align="center">{row.patSex}</TableCell>
                                             <TableCell align="center">{row.patAge.substring(0,10)}</TableCell>
                                             <TableCell align="center" onClick={this.onButtonClick}>
-                                                <Button variant='contained'>
-                                                View EMR</Button>
+                                                <Button color='secondary'>
+                                                View Patient</Button>
                                             </TableCell>
                                         </TableRow>
                                 )}
@@ -60,7 +64,8 @@ class SearchResultsTable extends React.Component {
                         </TableContainer>
                 : <p> Please enter case sensitive first name, last name or patient id!</p>}
                 {this.state.showEMR ?
-                    <DocAccessTable record={this.props.resultsToDisplay.axiosResults} doctor={this.props.myDoctor}/> :
+                    <DocAccessTable record={this.props.resultsToDisplay.axiosResults} doctor={this.props.myDoctor}/>
+                    :
                     null
                 }
             </div>

@@ -1,3 +1,7 @@
+//Our site navigator
+//General Component
+
+
 import React from 'react';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
@@ -6,7 +10,6 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
-import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -20,11 +23,10 @@ import {Grid} from "@material-ui/core";
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import DescriptionIcon from '@material-ui/icons/Description';
 import PersonIcon from '@material-ui/icons/Person';
-import StatsGrid from "./StatsGrids";
-import QueryTable from "./QueryTable";
+import AccessRequestsTable from "./AccessRequestsTable";
 import {useAuth0} from "../react-auth0-spa";
 import EMedicalTable from "./EMedicalTable";
-import AccessibleEMRTable from './AccessibleEMRTable';
+import AccessibleEMRByDocTable from './AccessibleEMRByDocTable';
 import SearchPatient from "./SearchPatient";
 
 const drawerWidth = 240;
@@ -162,9 +164,9 @@ export default function PersistentDrawerLeft(props) {
                         >
                             <MenuIcon/>
                         </IconButton>
-                        <Typography variant="h6" noWrap>
+                        {/*<Typography variant="h6" noWrap>*/}
                             Welcome {props.participant.fName}!
-                        </Typography>
+                        {/*</Typography>*/}
                     </Toolbar>
                 </AppBar>
                 <Drawer
@@ -195,10 +197,7 @@ export default function PersistentDrawerLeft(props) {
                     </div>
                     <Grid container row spacing={2} justify='center' alignItems='center'>
                         <Grid item xs={12}>
-                            <StatsGrid/>
-                        </Grid>
-                        <Grid item xs={12}>
-                            <QueryTable user={props.participant}/>
+                            <AccessRequestsTable user={props.participant}/>
                         </Grid>
                         <Grid item xs={12}>
                             <EMedicalTable identity={props.participant}/>
@@ -207,7 +206,7 @@ export default function PersistentDrawerLeft(props) {
                             <SearchPatient doctor={props.participant}/>
                         </Grid>
                         <Grid item xs={12}>
-                            <AccessibleEMRTable user={props.participant}/>
+                            <AccessibleEMRByDocTable user={props.participant}/>
                         </Grid>
 
                     </Grid>

@@ -1,5 +1,7 @@
+//Used to display all medical records of patients
+//Patient Component
+
 import React, {useEffect} from 'react';
-import PropTypes, {number} from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Collapse from '@material-ui/core/Collapse';
@@ -15,7 +17,8 @@ import Paper from '@material-ui/core/Paper';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import {Button} from "@material-ui/core";
-const axios = require('axios')
+import Skeleton from "@material-ui/lab/Skeleton";
+const axios = require('axios');
 
 const useRowStyles = makeStyles({
     root: {
@@ -149,7 +152,7 @@ function Row(props) {
                                         <TableRow key={row.identityDoc}>
 
                                             <TableCell>{row.nameDoc}</TableCell>
-                                            <TableCell><Button variant='contained' color='secondary' onClick={() => {revoke(recordArray,numberDoc)}}>
+                                            <TableCell><Button color='secondary' onClick={() => {revoke(recordArray,numberDoc)}}>
                                                 Revoke Access
                                             </Button></TableCell>
                                         </TableRow>
@@ -225,37 +228,38 @@ export default function CollapsibleTable(props) {
             console.log(error)
         }
         setRecord(record.concat(arr2));
+        setLoading(false);
 
     }, []);
 
     console.log(record);
-    // console.log(vitals);
-    // console.log(history);
-    // console.log(summary);
-    // console.log(accessDocs);
-
 
     return (
+        loading ?
         <div>
-            <h1>Your Electronic Medical Record</h1>
-            <TableContainer component={Paper}>
-                <Table aria-label="collapsible table">
-                    <TableHead>
-                        <TableRow>
-                            <TableCell />
-                            <TableCell align="center">MRN</TableCell>
-                            <TableCell align="center">Record Type</TableCell>
-                            <TableCell align="center">Date Created</TableCell>
-                            <TableCell align="center">Created By</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {record && record.map((recordArray, index) => (
-                            <Row key={recordArray[0].myMrn} recordArray={recordArray} />
-                        ))}
-                    </TableBody>
-                </Table>
-            </TableContainer>
-        </div>
+            <Skeleton variant="text" />
+            <Skeleton variant="rect"/>
+        </div>:
+                <div>
+                    <h1>Your Electronic Medical Record</h1>
+                    <TableContainer component={Paper}>
+                        <Table aria-label="collapsible table">
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell />
+                                    <TableCell align="center">MRN</TableCell>
+                                    <TableCell align="center">Record Type</TableCell>
+                                    <TableCell align="center">Date Created</TableCell>
+                                    <TableCell align="center">Created By</TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {record && record.map((recordArray, index) => (
+                                    <Row key={recordArray[0].myMrn} recordArray={recordArray} />
+                                ))}
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
+                </div>
     );
 }

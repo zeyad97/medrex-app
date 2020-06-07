@@ -1,3 +1,6 @@
+//EMR maker form in a dialog box
+//Doctor Component
+
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -9,7 +12,6 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Grid from "@material-ui/core/Grid";
 import {Divider} from "@material-ui/core";
 import FormControl from "@material-ui/core/FormControl";
-import FormLabel from "@material-ui/core/FormLabel";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Radio from "@material-ui/core/Radio";
@@ -184,10 +186,10 @@ export default function FormDialog(props) {
                         </Grid>
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleClose} color="primary">
+                    <Button onClick={handleClose} variant='contained' color="secondary">
                         Cancel
                     </Button>
-                    <Button color="primary" type="submit">
+                    <Button color="secondary" variant='contained' type="submit">
                         Submit record
                     </Button>
                 </DialogActions>

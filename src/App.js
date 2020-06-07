@@ -6,20 +6,27 @@ import { Router, Route, Switch } from "react-router-dom";
 import Profile from "./Components/Authoriser";
 import history from "./utils/history";
 import PrivateRoute from "./Components/PrivateRoute";
+import { ThemeProvider } from '@material-ui/core/styles'
+import CssBaseline from '@material-ui/core/CssBaseline';
+import theme from './theme';
+import Authoriser from "./Components/Authoriser";
 
 
 function App() {
     return (
         <div className="App">
-            <Router history={history}>
-                <header>
-                    <NavBar />
-                </header>
-                <Switch>
-                    <Route path="/" exact />
-                    <PrivateRoute path="/profile" component={Profile} />
-                </Switch>
-            </Router>
+            <ThemeProvider theme={theme}>
+                <CssBaseline />
+                <Router history={history}>
+                    <header>
+                        <NavBar />
+                    </header>
+                    <Switch>
+                        <Route path="/" exact />
+                        <PrivateRoute path="/authoriser" component={Authoriser} />
+                    </Switch>
+                </Router>
+            </ThemeProvider>
         </div>
     );
 }

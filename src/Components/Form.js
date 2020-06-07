@@ -1,9 +1,13 @@
+//Initial Component
+//Patient and Doctor go through this
+
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import { Grid, Typography, Divider, Select, MenuItem, InputLabel, FormControl, FormLabel, RadioGroup, FormControlLabel, Radio, Button } from "@material-ui/core";
 import DateFnsUtils from '@date-io/date-fns';
 import {MuiPickersUtilsProvider, DatePicker} from '@material-ui/pickers';
 import PersistentLeftDrawer from "./PersistentLeftDrawer";
+import Skeleton from "@material-ui/lab/Skeleton";
 const axios = require('axios');
 
 
@@ -145,8 +149,8 @@ class Form extends React.Component {
             bloodGroupForm = <div></div>;
             addressForm = <div></div>;
         }
-        if(!(this.state.present)){
-            if (!(this.props.loading) || !(this.props.user)) {
+        if(!(this.props.loading) || !(this.props.user)){
+            if (!(this.state.present)) {
                 return (
                     <form onSubmit={this.handleSubmit}>
                         <Grid container spacing={2}>
@@ -241,7 +245,8 @@ class Form extends React.Component {
                                     {bloodGroupForm}
                                     {addressForm}
                                     <Grid item>
-                                        <Button variant='contained' input type="submit" value="Submit">
+                                        <Button variant='contained' color='secondary' input
+                                                type="submit" value="Submit">
                                             Submit
                                         </Button>
                                     </Grid>
@@ -251,18 +256,16 @@ class Form extends React.Component {
                     </form>
                 )
             } else {
-                return <div><p>Loading</p></div>;
+                return (<PersistentLeftDrawer participant={this.state}/>);
             }
         }
         else{
             return(
                 <div>
-                    <PersistentLeftDrawer participant={this.state}/>
+                    <Skeleton variant="rect" width={210} height={118} />
                 </div>
             )
         }
         }
-
 };
-
 export default Form;

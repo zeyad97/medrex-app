@@ -1,3 +1,7 @@
+//Access Requests Table
+//Patient only
+//homepage
+
 import React, { Component } from 'react'
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -11,7 +15,7 @@ import {Button} from "@material-ui/core";
 import Skeleton from '@material-ui/lab/Skeleton';
 import emailjs from "emailjs-com";
 
-class QueryTable extends Component {
+class AccessRequestsTable extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -145,7 +149,7 @@ class QueryTable extends Component {
                                             <TableCell align="center">{row.medicalType}</TableCell>
                                             <TableCell align="center">{row.shortAssess}</TableCell>
                                             <TableCell align='center'>
-                                                <Button variant='contained'  color='primary'
+                                                <Button color='secondary'
                                                          onClick={() => {this.click(row)}}>
                                                 Grant Access
                                             </Button></TableCell>
@@ -161,4 +165,4 @@ class QueryTable extends Component {
         }
 }
 
-export default QueryTable;
+export default AccessRequestsTable;

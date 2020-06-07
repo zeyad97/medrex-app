@@ -3,7 +3,8 @@ import { Grid } from "@material-ui/core";
 import Avatar from "@material-ui/core/Avatar";
 import {makeStyles} from "@material-ui/core/styles";
 import {deepOrange, deepPurple} from "@material-ui/core/colors";
-import DialogForm from "./DialogForm";
+import DialogForm from "./EMRMakerByDocForm";
+import PatientSearchByDocTable from "./PatientSearchByDocTable";
 
 
 export default function DocAccessTable(props) {
@@ -45,15 +46,6 @@ export default function DocAccessTable(props) {
     };
 
 
-    // useEffect(async () => {
-    //     try{
-    //         const emrData = await axios.get(process.env.REACT_APP_NGROK_HTTP)
-    //     }catch(error){
-    //         console.log(error);
-    //     }
-    // }, []);
-
-
     return (
         <div>
             <h1>Patient Profile</h1>
@@ -73,6 +65,9 @@ export default function DocAccessTable(props) {
                             <h4>Date of Birth:<h5>{props.record[0].patAge.substring(0,10)}</h5></h4>
                         </Grid>
                     </Grid>
+                </Grid>
+                <Grid item xs={12}>
+                    <PatientSearchByDocTable patientDetails={props.record} doctorDetails={props.doctor}/>
                 </Grid>
             </Grid>
         </div>
