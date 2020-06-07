@@ -38,7 +38,7 @@ class AccessibleEMRByDocTable extends Component {
             let queries=[];
             let queriesNumber = response.data.length;
             let i;
-            let OwnerID, makerID, objectString, objectString2, makerName, ownerName, queryNames = [];
+            let OwnerID, makerID, objectString, objectString2, makerName, ownerName;
 
             for (i=0; i<queriesNumber; i++){
 
@@ -95,7 +95,7 @@ class AccessibleEMRByDocTable extends Component {
         console.log(this.state.requests);
         return(
             <div>
-                <h1>Accessible Medical Requests</h1>
+                <h1>My Accessible Medical Records</h1>
                 {this.state.loading ?
                     <div>
                         <Skeleton variant="text" />
