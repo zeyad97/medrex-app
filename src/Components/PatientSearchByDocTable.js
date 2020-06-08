@@ -35,6 +35,9 @@ export default function PatientSearchByDocTable(props) {
             const emrData = await axios.get(process.env.REACT_APP_NGROK_HTTP + 'queries/returnRecordsOfPatient', {
                 params: {
                     patientObject: 'resource:org.medrex.basic.patient#' + props.patientDetails[0].patId
+                },
+                headers: {
+                    'x-api-key': process.env.REACT_APP_API_KEY
                 }
             });
             let arr0 = [];
@@ -47,7 +50,12 @@ export default function PatientSearchByDocTable(props) {
                 obj.createdDate = dataToCheck[i].date;
                 let makerID = dataToCheck[i].maker.substring(33,dataToCheck[i].maker.length);
                 const maker = await axios.get(process.env.REACT_APP_NGROK_HTTP +'doctor/' + makerID
-                    + "?filter={\"fields\": [ \"fName\", \"lName\"]}");
+                    + "?filter={\"fields\": [ \"fName\", \"lName\"]}",
+                    {
+                        headers: {
+                            'x-api-key': process.env.REACT_APP_API_KEY
+                          }
+                    });
                 let makerName = maker.data.fName + ' ' + maker.data.lName;
                 obj.createdBy = makerName;
                 const objOne = {name:makerName, id:makerID};
@@ -57,7 +65,12 @@ export default function PatientSearchByDocTable(props) {
                     let docID = dataToCheck[i].trustedDocs[j].substring(33,dataToCheck[i].trustedDocs[j].length);
                     objDoc.id = docID;
                     const docReq = await axios.get(process.env.REACT_APP_NGROK_HTTP +'doctor/' + docID
-                        + "?filter={\"fields\": [ \"fName\", \"lName\"]}");
+                        + "?filter={\"fields\": [ \"fName\", \"lName\"]}",
+                        {
+                            headers: {
+                                'x-api-key': process.env.REACT_APP_API_KEY
+                              }
+                        });
                     let docName = docReq.data.fName + ' ' + docReq.data.lName;
                     objDoc.name = docName;
                     obj.trustedDocs.push(objDoc);
@@ -91,6 +104,11 @@ export default function PatientSearchByDocTable(props) {
                     "requestingDoc": "resource:org.medrex.basic.doctor#"+props.doctorDetails.doctor.Id,
                     "transactionId": "",
                     "timestamp": "2020-06-07T09:23:06.917Z"
+                },
+                {
+                    headers: {
+                        'x-api-key': process.env.REACT_APP_API_KEY
+                      }
                 })
             console.log("Request sent!")
         }

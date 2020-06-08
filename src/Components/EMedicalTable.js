@@ -35,7 +35,10 @@ export default function EMedicalTable(props) {
         const emrData = await axios.get(process.env.REACT_APP_NGROK_HTTP + 'queries/returnRecordsOfPatient', {
             params: {
                 patientObject: 'resource:org.medrex.basic.patient#' + myValue
-            }
+            },
+            headers: {
+                'x-api-key': process.env.REACT_APP_API_KEY
+              }
         });
         let arr0 = [];
         let i,j;
@@ -47,7 +50,12 @@ export default function EMedicalTable(props) {
             obj.createdDate = dataToCheck[i].date;
             let makerID = dataToCheck[i].maker.substring(33,dataToCheck[i].maker.length);
             const maker = await axios.get(process.env.REACT_APP_NGROK_HTTP +'doctor/' + makerID
-                + "?filter={\"fields\": [ \"fName\", \"lName\"]}");
+                + "?filter={\"fields\": [ \"fName\", \"lName\"]}",
+                {
+                    headers: {
+                        'x-api-key': process.env.REACT_APP_API_KEY
+                      }
+                });
             let makerName = maker.data.fName + ' ' + maker.data.lName;
             obj.createdBy = makerName;
             const objOne = {name:makerName, id:makerID};
@@ -57,7 +65,12 @@ export default function EMedicalTable(props) {
                 let docID = dataToCheck[i].trustedDocs[j].substring(33,dataToCheck[i].trustedDocs[j].length);
                 objDoc.id = docID;
                 const docReq = await axios.get(process.env.REACT_APP_NGROK_HTTP +'doctor/' + docID
-                    + "?filter={\"fields\": [ \"fName\", \"lName\"]}");
+                    + "?filter={\"fields\": [ \"fName\", \"lName\"]}",
+                    {
+                        headers: {
+                            'x-api-key': process.env.REACT_APP_API_KEY
+                          }
+                    });
                 let docName = docReq.data.fName + ' ' + docReq.data.lName;
                 objDoc.name = docName;
                 obj.trustedDocs.push(objDoc);
@@ -86,6 +99,11 @@ export default function EMedicalTable(props) {
                     record: "resource:org.medrex.basic.healthRecord#"+ var1.mrn,
                     transactionId: "",
                     timestamp: new Date()
+                },
+                {
+                    headers: {
+                        'x-api-key': process.env.REACT_APP_API_KEY
+                      }
                 }
             );
             console.log(verifyReq)

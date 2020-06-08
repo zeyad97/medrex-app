@@ -31,6 +31,9 @@ class AccessibleEMRByDocTable extends Component {
             const response = await axios.get(process.env.REACT_APP_NGROK_HTTP + 'queries/returnRecordsAccessibleToDoctor', {
                 params: {
                     doctorObject: 'resource:org.medrex.basic.doctor#'+ /*'1349197901937941'/*/ this.props.user.Id
+                },
+                headers: {
+                    'x-api-key': process.env.REACT_APP_API_KEY
                 }
             });
             console.log('axios response:',response);
@@ -51,9 +54,19 @@ class AccessibleEMRByDocTable extends Component {
                 makerID = objectString2.substring(33,objectString2.length);
                 try{
                     const owner =  await axios.get(process.env.REACT_APP_NGROK_HTTP+ 'patient/' + OwnerID
-                    + "?filter={\"fields\": [ \"fName\", \"lName\"]}");
+                    + "?filter={\"fields\": [ \"fName\", \"lName\"]}",
+                    {
+                        headers: {
+                            'x-api-key': process.env.REACT_APP_API_KEY
+                          }
+                    });
                     const maker = await axios.get(process.env.REACT_APP_NGROK_HTTP +'doctor/' + makerID
-                    + "?filter={\"fields\": [ \"fName\", \"lName\"]}");
+                    + "?filter={\"fields\": [ \"fName\", \"lName\"]}",
+                    {
+                        headers: {
+                            'x-api-key': process.env.REACT_APP_API_KEY
+                          }
+                    });
                     ownerName = owner.data.fName + ' ' + owner.data.lName;
                     makerName = maker.data.fName + ' ' + maker.data.lName;
                 } catch(error) {

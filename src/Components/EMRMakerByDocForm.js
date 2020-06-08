@@ -41,12 +41,11 @@ export default function FormDialog(props) {
         console.log(form);
         const myDate = new Date();
         console.log(myDate);
-        const url =  "http://eb9f85ab69f0.ngrok.io/api"
         var y = randomNumber().toString();
         console.log(typeof y);
         console.log(props.doctorMy.doctor.Id)
         try{
-            const addRecordReq = await axios.post(url + "/healthRecord", {
+            const addRecordReq = await axios.post(process.env.REACT_APP_NGROK_HTTP + "/healthRecord", {
                 $class: "org.medrex.basic.healthRecord",
                 mrn: y,
                 owner: "resource:org.medrex.basic.patient#"+ props.patientMy[0].patId,
@@ -67,6 +66,11 @@ export default function FormDialog(props) {
                 type: form.type,
                 trustedDocs: [],
                 requestDocs: []
+            },
+            {
+                headers: {
+                    'x-api-key': process.env.REACT_APP_API_KEY
+                  }
             } )
             console.log(addRecordReq);
         }catch(error){

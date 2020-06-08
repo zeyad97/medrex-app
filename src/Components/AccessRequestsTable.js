@@ -30,7 +30,10 @@ class AccessRequestsTable extends Component {
             const response = await axios.get(process.env.REACT_APP_NGROK_HTTP + 'queries/getAccessRequestsForPatient', {
                 params: {
                     patientObject: 'resource:org.medrex.basic.patient#'+ this.props.user.Id
-                }
+                },
+                headers: {
+                    'x-api-key': process.env.REACT_APP_API_KEY
+                  }
             });
             console.log(response);
             let queries=[];
@@ -50,8 +53,18 @@ class AccessRequestsTable extends Component {
                     let docCreate = varOne.maker;
                     let docCre = docCreate.substring(33,docCreate.length);
                     try{
-                        const doc = await axios.get(process.env.REACT_APP_NGROK_HTTP +'doctor/' + newPart  + "?filter={\"fields\": [ \"fName\", \"lName\"]}");
-                        const owner =  await axios.get(process.env.REACT_APP_NGROK_HTTP+ 'doctor/' + docCre  + "?filter={\"fields\": [ \"fName\", \"lName\"]}");
+                        const doc = await axios.get(process.env.REACT_APP_NGROK_HTTP +'doctor/' + newPart  + "?filter={\"fields\": [ \"fName\", \"lName\"]}",
+                        {
+                            headers: {
+                                'x-api-key': process.env.REACT_APP_API_KEY
+                              }
+                        });
+                        const owner =  await axios.get(process.env.REACT_APP_NGROK_HTTP+ 'doctor/' + docCre  + "?filter={\"fields\": [ \"fName\", \"lName\"]}",
+                        {
+                            headers: {
+                                'x-api-key': process.env.REACT_APP_API_KEY
+                              }
+                        });
                         const docData = doc.data.fName + ' ' + doc.data.lName;
                         const ownerData = owner.data.fName + ' ' + owner.data.lName;
                         docReq.push(docData,ownerData);
@@ -87,9 +100,19 @@ class AccessRequestsTable extends Component {
                     "trusted": "resource:org.medrex.basic.doctor#" + var1.docID,
                     "transactionId": "",
                     "timestamp": new Date()
+                },
+                {
+                    headers: {
+                        'x-api-key': process.env.REACT_APP_API_KEY
+                      }
                 });
             try {
-                const docRes = await axios.get(process.env.REACT_APP_NGROK_HTTP + 'doctor/' + var1.docID)
+                const docRes = await axios.get(process.env.REACT_APP_NGROK_HTTP + 'doctor/' + var1.docID,
+                {
+                    headers: {
+                        'x-api-key': process.env.REACT_APP_API_KEY
+                      }
+                })
                 const docDataAdd = docRes.data;
                 email = docDataAdd.email;
 

@@ -63,7 +63,12 @@ class StatsGrid extends Component {
 
     async componentDidMount() {
         try {
-            const result = await axios.get(process.env.REACT_APP_NGROK_HTTP + 'queries/getStats');
+            const result = await axios.get(process.env.REACT_APP_NGROK_HTTP + 'queries/getStats',
+            {
+                headers: {
+                    'x-api-key': process.env.REACT_APP_API_KEY
+                  }
+            });
             console.log('res',result)
             const response = result.data[0];
             console.log('sc',response)
@@ -82,7 +87,7 @@ class StatsGrid extends Component {
               
                 <Grid container direction="row" justify="center" alignItems="center" spacing={5}
                     style={{background:'#fbfbf8', padding:'30px'}}>
-                        <Grid item xs={2}>
+                        <Grid item xs={3}>
                             <Card className='root' >
                                 <div className='details' >
                                     <CardContent className='content' >
@@ -112,7 +117,7 @@ class StatsGrid extends Component {
                        
                             
                         </Grid>
-                        <Grid item xs={2}>
+                        <Grid item xs={3}>
                             <Card className='root' >
                                 <div className='details' >
                                     <CardContent className='content' >
@@ -142,7 +147,7 @@ class StatsGrid extends Component {
                        
                             
                         </Grid>
-                        <Grid item xs={2}>
+                        <Grid item xs={3}>
                             <Card className='root' >
                                 <div className='details' >
                                     <CardContent className='content' >
@@ -172,7 +177,7 @@ class StatsGrid extends Component {
                        
                             
                         </Grid>
-                        <Grid item xs={2}>
+                        <Grid item xs={3}>
                             <Card className='root' >
                                 <div className='details' >
                                     <CardContent className='content' >
@@ -219,7 +224,12 @@ class StatsGrid extends Component {
 //         console.log("in useEffect");
 //         try{
 
-//             const result = await axios.get(process.env.REACT_APP_NGROK_HTTP + 'queries/getStats');
+//             const result = await axios.get(process.env.REACT_APP_NGROK_HTTP + 'queries/getStats',
+                // {
+                //     headers: {
+                //         'x-api-key': process.env.REACT_APP_API_KEY
+                //       }
+                // });
 //             console.log('res',result)
 //             stats.current = result.data[0];
 //             console.log('sc',stats.current)

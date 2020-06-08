@@ -29,7 +29,12 @@ function SimpleDialog(props) {
         console.log("in useEffect EMedDialog");
 
         const fetchRecord = await axios.get(process.env.REACT_APP_NGROK_HTTP + 'healthRecord/'
-            + myValue);
+            + myValue,
+            {
+                headers: {
+                    'x-api-key': process.env.REACT_APP_API_KEY
+                  }
+            });
         console.log(fetchRecord.data);
         if(myRecord.verified === 'true'){
             x = true;

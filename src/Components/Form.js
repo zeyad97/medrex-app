@@ -52,14 +52,24 @@ class Form extends React.Component {
         this.setState({Id: this.props.user.sub.substring(9, 25),fName: this.props.user.given_name,
             lName: this.props.user.family_name, photoLink: this.props.user.picture})
         try {
-            const docData = await axios.get(process.env.REACT_APP_NGROK_HTTP +'doctor/' + this.props.user.sub.substring(9, 25));
+            const docData = await axios.get(process.env.REACT_APP_NGROK_HTTP +'doctor/' + this.props.user.sub.substring(9, 25),
+            {
+                headers: {
+                    'x-api-key': process.env.REACT_APP_API_KEY
+                  }
+            });
             let dataToAdd = docData.data;
             this.setState({present: true, type:'doctor', cnic: dataToAdd.cnic, dob:dataToAdd.dob,
                 sex: dataToAdd.sex, email: dataToAdd.email});
 
         } catch (error) {
             try {
-                const patData = await axios.get(process.env.REACT_APP_NGROK_HTTP +'patient/' + this.props.user.sub.substring(9, 25))
+                const patData = await axios.get(process.env.REACT_APP_NGROK_HTTP +'patient/' + this.props.user.sub.substring(9, 25),
+                {
+                    headers: {
+                        'x-api-key': process.env.REACT_APP_API_KEY
+                      }
+                })
                 let valueToAdd = patData.data;
                 this.setState({address:valueToAdd.address, present: true, type:'patient', cnic: valueToAdd.cnic,
                     dob:valueToAdd.dob, bloodGroup: valueToAdd.bloodGroup, sex: valueToAdd.sex, email: valueToAdd.email});
@@ -84,8 +94,18 @@ class Form extends React.Component {
                         email: this.state.email,
                         bloodGroup: this.state.bloodGroup,
                         address: this.state.address
+                    },
+                    {
+                        headers: {
+                            'x-api-key': process.env.REACT_APP_API_KEY
+                          }
                     });
-                const response = await axios.get(process.env.REACT_APP_NGROK_HTTP + 'patient/' + this.state.Id)
+                const response = await axios.get(process.env.REACT_APP_NGROK_HTTP + 'patient/' + this.state.Id,
+                {
+                    headers: {
+                        'x-api-key': process.env.REACT_APP_API_KEY
+                      }
+                })
                 console.log(response.data.pId);
 
             } catch (error) {
@@ -102,8 +122,18 @@ class Form extends React.Component {
                         sex: this.state.sex,
                         dob: this.state.dateOfBirth,
                         email: this.state.email
+                    },
+                    {
+                        headers: {
+                            'x-api-key': process.env.REACT_APP_API_KEY
+                          }
                     });
-                const response = await axios.get(process.env.REACT_APP_NGROK_HTTP + 'doctor/' + this.state.Id)
+                const response = await axios.get(process.env.REACT_APP_NGROK_HTTP + 'doctor/' + this.state.Id,
+                {
+                    headers: {
+                        'x-api-key': process.env.REACT_APP_API_KEY
+                      }
+                })
                 console.log(response.data.dId);
                 console.log("doc created")
             } catch (error) {

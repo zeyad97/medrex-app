@@ -57,7 +57,12 @@ class Profile extends React.Component {
 
     async componentWillMount() {
         try {
-            const responseDoctor = await axios.get(process.env.REACT_APP_NGROK_HTTP + 'doctor/' + this.props.user.sub.substring(9, 25));
+            const responseDoctor = await axios.get(process.env.REACT_APP_NGROK_HTTP + 'doctor/' + this.props.user.sub.substring(9, 25),
+            {
+                headers: {
+                    'x-api-key': process.env.REACT_APP_API_KEY
+                  }
+            });
             this.setState({present: true});
             this.setState({Id: responseDoctor.data.dId});
             this.setState({cnic: responseDoctor.data.cnic});
@@ -70,7 +75,12 @@ class Profile extends React.Component {
         } catch (error) {
             console.log("Not a doctor")
             try {
-                const responsePatient = await axios.get(process.env.REACT_APP_NGROK_HTTP + 'patient/' + this.props.user.sub.substring(9, 25))
+                const responsePatient = await axios.get(process.env.REACT_APP_NGROK_HTTP + 'patient/' + this.props.user.sub.substring(9, 25),
+                {
+                    headers: {
+                        'x-api-key': process.env.REACT_APP_API_KEY
+                      }
+                })
                 this.setState({present: true});
                 this.setState({Id: responsePatient.data.pId});
                 this.setState({cnic: responsePatient.data.cnic});

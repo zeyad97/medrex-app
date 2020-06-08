@@ -28,6 +28,9 @@ class SearchPatient extends React.Component {
                 'queries/searchPatientsByFnameLnameOrPid', {
                 params: {
                     String: this.state.searchTerm
+                },
+                headers: {
+                    'x-api-key': process.env.REACT_APP_API_KEY
                 }
             });
             console.log(response);
