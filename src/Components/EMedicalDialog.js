@@ -23,7 +23,7 @@ function SimpleDialog(props) {
         onClose(selectedValue);
     };
 
-    console.log(props.selectedRecord.mrn);
+    console.log(props);
 
     useEffect(async () => {
         console.log("in useEffect EMedDialog");
@@ -116,6 +116,7 @@ function SimpleDialog(props) {
                         <h3>Labs Prescribed</h3>
                         <Typography variant="body1" gutterBottom>{myRecord.labs}</Typography>
                     </Grid>
+
                 </Grid>
             </DialogContent>
             </Paper>

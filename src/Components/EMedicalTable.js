@@ -1,265 +1,135 @@
-//Used to display all medical records of patients
-//Patient Component
+//used to display EMRs of a particular patient after a doctor searches for a patient
+//doctor only component
 
-import React, {useEffect} from 'react';
+import React, {useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Box from '@material-ui/core/Box';
-import Collapse from '@material-ui/core/Collapse';
-import IconButton from '@material-ui/core/IconButton';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
-import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
-import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
+import CheckIcon from '@material-ui/icons/Check';
 import {Button} from "@material-ui/core";
+import EMedicalDialog from "./EMedicalDialog";
 import Skeleton from "@material-ui/lab/Skeleton";
 const axios = require('axios');
 
-const useRowStyles = makeStyles({
-    root: {
-        '& > *': {
-            borderBottom: 'unset',
-        },
+const useStyles = makeStyles({
+    table: {
+        minWidth: 650,
     },
 });
 
 
-function Row(props) {
-    const { recordArray } = props;
-    const [open, setOpen] = React.useState(false);
-    const classes = useRowStyles();
-
-    async function revoke(varOne,indexValue) {
-            try{
-                const response = await axios.post(process.env.REACT_APP_NGROK_HTTP + 'revokeAccess',
-                    {
-                        "$class": "org.medrex.basic.revokeAccess",
-                        "record": "resource:org.medrex.basic.healthRecord#" + varOne[0].myMrn,
-                        "trusted": "resource:org.medrex.basic.doctor#" + varOne[4][indexValue].identityDoc,
-                        "transactionId": "",
-                        "timestamp": new Date()
-                    });
-            }catch (error) {
-                console.log(error);
-            }
-        }
-
-    return (
-        <React.Fragment>
-            <TableRow className={classes.root}>
-                <TableCell>
-                    <IconButton aria-label="expand row" size="small" onClick={() => setOpen(!open)}>
-                        {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
-                    </IconButton>
-                </TableCell>
-                <TableCell align="center">{recordArray[0].myMrn}</TableCell>
-                <TableCell align="center">{recordArray[0].myType}</TableCell>
-                <TableCell align="center">{recordArray[0].myDate}</TableCell>
-                <TableCell align="center">{recordArray[0].myMaker}</TableCell>
-            </TableRow>
-            <TableRow>
-                <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
-                    <Collapse in={open} timeout="auto" unmountOnExit>
-                        <Box margin={1}>
-                            <Typography variant="h6" gutterBottom component="div">
-                                Vitals
-                            </Typography>
-                            <Table size="small" aria-label="purchases">
-                                <TableHead>
-                                    <TableRow>
-                                        <TableCell align='left'>Body Temperature</TableCell>
-                                        <TableCell align='left'>Blood Pressure</TableCell>
-                                        <TableCell align='left'>Heart Rate</TableCell>
-                                        <TableCell align='left'>Respiratory Rate</TableCell>
-                                    </TableRow>
-                                </TableHead>
-                                <TableBody>
-                                    <TableRow>
-                                        <TableCell align='left'>{recordArray[1].myBt}</TableCell>
-                                        <TableCell align='left'>{recordArray[1].myBp}</TableCell>
-                                        <TableCell align='left'>{recordArray[1].myHr}</TableCell>
-                                        <TableCell align='left'>
-                                            {recordArray[1].myRr}
-                                        </TableCell>
-                                    </TableRow>
-                                </TableBody>
-                            </Table>
-                        </Box>
-                        <Box margin={1}>
-                            <Typography variant="h6" gutterBottom component="div">
-                                History
-                            </Typography>
-                            <Table size="small" aria-label="purchases">
-                                <TableHead>
-                                    <TableRow>
-                                        <TableCell align='left'>Medical History</TableCell>
-                                        <TableCell align='left'>Medications</TableCell>
-                                        <TableCell align='left'>Allergies</TableCell>
-                                        <TableCell align='left'>Social History</TableCell>
-                                    </TableRow>
-                                </TableHead>
-                                <TableBody>
-                                    <TableRow>
-                                        <TableCell align='left'>{recordArray[2].myHist}</TableCell>
-                                        <TableCell align='left'>{recordArray[2].myMeds}</TableCell>
-                                        <TableCell align='left'>{recordArray[2].myAllergies}</TableCell>
-                                        <TableCell align='left'>{recordArray[2].mySHist}</TableCell>
-                                    </TableRow>
-                                </TableBody>
-                            </Table>
-                        </Box>
-                        <Box margin={1}>
-                            <Typography variant="h6" gutterBottom component="div">
-                               Summary of EHR
-                            </Typography>
-                            <Table size="small" aria-label="purchases">
-                                <TableHead>
-                                    <TableRow>
-                                        <TableCell align='left'>Final Assessment</TableCell>
-                                        <TableCell align='left'>Plan of Action</TableCell>
-                                        <TableCell align='left'>Extra Notes</TableCell>
-                                        <TableCell align='left'>Lab Prescribed</TableCell>
-                                    </TableRow>
-                                </TableHead>
-                                <TableBody>
-                                    <TableRow>
-                                        <TableCell align='left'>{recordArray[3].myAssess}</TableCell>
-                                        <TableCell align='left'>{recordArray[3].myPlan}</TableCell>
-                                        <TableCell align='left'>{recordArray[3].myExtra}</TableCell>
-                                        <TableCell align='left'>{recordArray[3].myLab}</TableCell>
-                                    </TableRow>
-                                </TableBody>
-                            </Table>
-                        </Box>
-                        <Box margin={1}>
-                            <Typography variant="h6" gutterBottom component="div">
-                                Trusted Doctors
-                            </Typography>
-                            <Table size="small" aria-label="purchases">
-                                <TableHead>
-                                    <TableRow>
-                                        <TableCell align='left'>Doctor Name</TableCell>
-                                        <TableCell align='left'></TableCell>
-                                    </TableRow>
-                                </TableHead>
-                                <TableBody>
-                                    {recordArray[4].map((row, numberDoc) =>
-                                        <TableRow key={row.identityDoc}>
-
-                                            <TableCell>{row.nameDoc}</TableCell>
-                                            <TableCell><Button color='secondary' onClick={() => {revoke(recordArray,numberDoc)}}>
-                                                Revoke Access
-                                            </Button></TableCell>
-                                        </TableRow>
-                                    )}
-                                </TableBody>
-                            </Table>
-                        </Box>
-                    </Collapse>
-                </TableCell>
-            </TableRow>
-        </React.Fragment>
-    );
-}
-
-export default function CollapsibleTable(props) {
-    console.log("Comp loaded");
-    const [record, setRecord] = React.useState([]);
+export default function EMedicalTable(props) {
+    const classes = useStyles();
+    const [records,setRecords]= useState([]);
     const [loading, setLoading] = React.useState(true);
+
+
+    console.log(props.identity);
 
     useEffect(async () => {
         console.log("in useEffect");
-        let arr2 = [];
-        try{
-            const emrData = await axios.get(process.env.REACT_APP_NGROK_HTTP + 'queries/returnRecordsOfPatient', {
-                params: {
-                    patientObject: 'resource:org.medrex.basic.patient#' + props.identity.Id
-                }
-            });
-            let size = emrData.data.length;
-            let i;
-            for (i=0; i<size; i++){
-                const arr1=[];
-                try{
-                    let myEmr = emrData.data[i];
-                    let makerRes = emrData.data[i].maker;
-                    let maker = makerRes.substring(33,makerRes.length);
-                    const makerRequest = await axios.get(process.env.REACT_APP_NGROK_HTTP + "doctor/"+ maker +
-                        "?filter={\"fields\": [ \"fName\",\"lName\"]}");
-                    let makerName = makerRequest.data.fName + ' ' + makerRequest.data.lName;
-                    let trusted = emrData.data[i].trustedDocs;
-                    let trustedSize = emrData.data[i].trustedDocs.length;
-                    let j;
-                    let objectsDoc = [];
-                    for(j=0; j<trustedSize; j++) {
-                        try {
-                            let trustedRes = trusted[j].substring(33, trusted[j].length);
-                            const trustedReq = await axios.get(process.env.REACT_APP_NGROK_HTTP + "doctor/" +
-                                trustedRes + "?filter={\"fields\": [ \"fName\",\"lName\"]}");
-                            const docDeets = {identityDoc: trustedRes, nameDoc: trustedReq.data.fName + ' ' + trustedReq.data.lName};
-                            objectsDoc.push(docDeets);
-                        } catch (error) {
-                            console.log(error);
-                        }
-                    }
-                    const recordDeets = {myMrn: myEmr.mrn, myType: myEmr.type, myMaker:makerName, myDate:myEmr.date};
-
-                    const vitalsDeets = {myBt: myEmr.bt, myBp: myEmr.bp, myHr: myEmr.hr, myRr: myEmr.rr};
-
-                    const pastDeets = {myHist: myEmr.history, myMeds: myEmr.meds, myAllergies: myEmr.allergies,
-                        mySHist: myEmr.shist};
-
-                    const sumDeets = {myAssess: myEmr.assessment, myPlan: myEmr.plan, myExtra: myEmr.extra,
-                        myLab: myEmr.labs};
-
-                    arr1.push(recordDeets,vitalsDeets,pastDeets,sumDeets,objectsDoc);
-
-                }catch(error){
-                    console.log(error);
-                }
-                arr2.push(arr1);
+        const emrData = await axios.get(process.env.REACT_APP_NGROK_HTTP + 'queries/returnRecordsOfPatient', {
+            params: {
+                patientObject: 'resource:org.medrex.basic.patient#' + props.identity.Id
             }
-        }catch(error){
-            console.log(error)
+        });
+        let arr0 = [];
+        let i,j;
+        const dataToCheck = emrData.data;
+        for(i=0; i<dataToCheck.length; i++){
+            const obj = {mrn:'', recType:'', createdDate:'',createdBy:'', trustedDocs:[], verified:false};
+            obj.mrn = dataToCheck[i].mrn;
+            obj.recType = dataToCheck[i].type;
+            obj.createdDate = dataToCheck[i].date;
+            let makerID = dataToCheck[i].maker.substring(33,dataToCheck[i].maker.length);
+            const maker = await axios.get(process.env.REACT_APP_NGROK_HTTP +'doctor/' + makerID
+                + "?filter={\"fields\": [ \"fName\", \"lName\"]}");
+            let makerName = maker.data.fName + ' ' + maker.data.lName;
+            obj.createdBy = makerName;
+            const objOne = {name:makerName, id:makerID};
+            obj.trustedDocs.push(objOne);
+            for(j=0; j<dataToCheck[i].trustedDocs.length; j++){
+                const objDoc = {name:'', id:''};
+                let docID = dataToCheck[i].trustedDocs[j].substring(33,dataToCheck[i].trustedDocs[j].length);
+                objDoc.id = docID;
+                const docReq = await axios.get(process.env.REACT_APP_NGROK_HTTP +'doctor/' + docID
+                    + "?filter={\"fields\": [ \"fName\", \"lName\"]}");
+                let docName = docReq.data.fName + ' ' + docReq.data.lName;
+                objDoc.name = docName;
+                obj.trustedDocs.push(objDoc);
+            }
+            if(dataToCheck[i].verified === 'true'){
+                obj.verified = true;
+            }
+            console.log(obj);
+            arr0.push(obj);
+            console.log(arr0);
         }
-        setRecord(record.concat(arr2));
+        setRecords(arr0);
         setLoading(false);
-
     }, []);
 
-    console.log(record);
+    async function verifyRecord(var1) {
+        console.log("In verify")
+        try{
+            const verifyReq = await axios.post(process.env.REACT_APP_NGROK_HTTP + '/verifyRecord',
+                {
+                    $class: "org.medrex.basic.verifyRecord",
+                    record: "resource:org.medrex.basic.healthRecord#"+ var1.mrn,
+                    transactionId: "",
+                    timestamp: new Date()
+                }
+            );
+            console.log(verifyReq)
+            var1.verified = true;
+        }catch(error){
+            console.log(error);
+        }
+    }
+
+
+    console.log(records);
 
     return (
-        loading ?
-        <div>
-            <Skeleton variant="text" />
-            <Skeleton variant="rect"/>
-        </div>:
-                <div>
-                    <h1>Your Electronic Medical Record</h1>
-                    <TableContainer component={Paper}>
-                        <Table aria-label="collapsible table">
-                            <TableHead>
-                                <TableRow>
-                                    <TableCell />
-                                    <TableCell align="center">MRN</TableCell>
-                                    <TableCell align="center">Record Type</TableCell>
-                                    <TableCell align="center">Date Created</TableCell>
-                                    <TableCell align="center">Created By</TableCell>
-                                </TableRow>
-                            </TableHead>
-                            <TableBody>
-                                {record && record.map((recordArray, index) => (
-                                    <Row key={recordArray[0].myMrn} recordArray={recordArray} />
-                                ))}
-                            </TableBody>
-                        </Table>
-                    </TableContainer>
-                </div>
+        loading?
+            <div>
+                <Skeleton variant="text" />
+                <Skeleton variant="rect"/>
+            </div>:
+            <TableContainer component={Paper}>
+                <Table className={classes.table} aria-label="simple table">
+                    <TableHead>
+                        <TableRow>
+                            <TableCell align="center">MRN</TableCell>
+                            <TableCell align="center">Record Type</TableCell>
+                            <TableCell align="center">Date Created</TableCell>
+                            <TableCell align="center">Created By</TableCell>
+                            <TableCell align="center">Action</TableCell>
+                            <TableCell align='center'>Verification</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {records.map((record) => (
+                            <TableRow key={record.mrn}>
+                                <TableCell align="center">{record.mrn}</TableCell>
+                                <TableCell align="center">{record.recType}</TableCell>
+                                <TableCell align="center">{record.createdDate}</TableCell>
+                                <TableCell align="center">{record.createdBy}</TableCell>
+                                <TableCell align='center'><EMedicalDialog patientRecord={record}/></TableCell>
+                                {record.verified?
+                                <TableCell align='center'><CheckIcon/></TableCell>:
+                                    <TableCell align='center'>
+                                        <Button color='secondary' onClick={()=>verifyRecord(record)}>
+                                            Verify</Button></TableCell>}
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+            </TableContainer>
     );
 }

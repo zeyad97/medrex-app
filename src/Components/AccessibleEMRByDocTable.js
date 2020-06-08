@@ -24,7 +24,6 @@ class AccessibleEMRByDocTable extends Component {
             requests: [],
             loading: true,
         }
-        this.click = this.click.bind(this);
     };
 
     async componentDidMount() {
@@ -72,20 +71,6 @@ class AccessibleEMRByDocTable extends Component {
             console.log(error)
         }
         this.setState({loading: false});
-    }
-
-    async click(var1) {
-        console.log('clicked');
-        try {
-
-            try {
-
-            } catch (error) {
-                console.log(error)
-            }
-        } catch (error) {
-            console.log(error);
-        }
     }
 
 
