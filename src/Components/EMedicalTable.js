@@ -31,11 +31,10 @@ export default function EMedicalTable(props) {
 
     console.log(props.identity);
 
-    useEffect(async () => {
-        console.log("in useEffect");
+    async function fetchData(myValue){
         const emrData = await axios.get(process.env.REACT_APP_NGROK_HTTP + 'queries/returnRecordsOfPatient', {
             params: {
-                patientObject: 'resource:org.medrex.basic.patient#' + props.identity.Id
+                patientObject: 'resource:org.medrex.basic.patient#' + myValue
             }
         });
         let arr0 = [];
@@ -72,7 +71,11 @@ export default function EMedicalTable(props) {
         }
         setRecords(arr0);
         setLoading(false);
-    }, []);
+    }
+
+    useEffect( () => {
+        fetchData(props.identity.Id);
+    }, [props.identity.id]);
 
     async function verifyRecord(var1) {
         console.log("In verify")

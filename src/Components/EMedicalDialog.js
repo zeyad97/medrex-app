@@ -25,18 +25,21 @@ function SimpleDialog(props) {
 
     console.log(props);
 
-    useEffect(async () => {
+    async function fetchData(myValue){
         console.log("in useEffect EMedDialog");
 
-            const fetchRecord = await axios.get(process.env.REACT_APP_NGROK_HTTP + 'healthRecord/'
-                + props.selectedRecord.mrn);
-            console.log(fetchRecord.data);
-            if(myRecord.verified === 'true'){
-                x = true;
-            }
-            setMyRec(fetchRecord.data);
+        const fetchRecord = await axios.get(process.env.REACT_APP_NGROK_HTTP + 'healthRecord/'
+            + myValue);
+        console.log(fetchRecord.data);
+        if(myRecord.verified === 'true'){
+            x = true;
+        }
+        setMyRec(fetchRecord.data);
+    }
 
-    }, []);
+    useEffect( () => {
+        fetchData(props.selectedRecord.mrn);
+    }, [props.selectedRecord.mrn]);
 
     console.log(myRecord);
 

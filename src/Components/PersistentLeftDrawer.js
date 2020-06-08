@@ -28,6 +28,7 @@ import {useAuth0} from "../react-auth0-spa";
 import EMedicalTable from "./EMedicalTable";
 import AccessibleEMRByDocTable from './AccessibleEMRByDocTable';
 import SearchPatient from "./SearchPatient";
+import StatsGrid from "./StatsGrids";
 
 const drawerWidth = 240;
 
@@ -93,6 +94,7 @@ export default function PersistentDrawerLeft(props) {
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
     const {isAuthenticated, logout} = useAuth0();
+    const [index, setIndex] = React.useState('0');
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -102,20 +104,27 @@ export default function PersistentDrawerLeft(props) {
         setOpen(false);
     };
 
+    const changeComponent = (event,index) => {
+        setIndex(index);
+    }
+
     const listRendering = (props) => {
         let listToRender;
         if (props === 'patient') {
             listToRender =
                 <div>
-                    <ListItem button>
+                    <ListItem selected={index === '0'} onClick={(event) => changeComponent(event,'0')}
+                        button>
                         <ListItemIcon><HomeIcon/></ListItemIcon>
                         <ListItemText>Home</ListItemText>
                     </ListItem>
-                    <ListItem button>
+                    <ListItem selected={index === '1'} onClick={(event) => changeComponent(event,'1')}
+                        button>
                         <ListItemIcon><DescriptionIcon/></ListItemIcon>
                         <ListItemText>My E-Health-Records</ListItemText>
                     </ListItem>
-                    <ListItem button>
+                    <ListItem selected={index === '2'} onClick={(event) => changeComponent(event,'2')}
+                        button>
                         <ListItemIcon><PersonIcon/></ListItemIcon>
                         <ListItemText>Profile</ListItemText>
                     </ListItem>
@@ -124,15 +133,18 @@ export default function PersistentDrawerLeft(props) {
         } else {
             listToRender =
                 <div>
-                    <ListItem button>
+                    <ListItem selected={index === '3'} onClick={(event) => changeComponent(event,'3')}
+                        button>
                         <ListItemIcon><HomeIcon/></ListItemIcon>
                         <ListItemText>Home</ListItemText>
                     </ListItem>
-                    <ListItem button>
+                    <ListItem selected={index === '4'} onClick={(event) => changeComponent(event,'4')}
+                        button>
                         <ListItemIcon><DescriptionIcon/></ListItemIcon>
                         <ListItemText>My created EHRs</ListItemText>
                     </ListItem>
-                    <ListItem button>
+                    <ListItem selected={index === '5'} onClick={(event) => changeComponent(event,'5')}
+                        button>
                         <ListItemIcon><PersonIcon/></ListItemIcon>
                         <ListItemText>Profile</ListItemText>
                     </ListItem>
@@ -141,7 +153,7 @@ export default function PersistentDrawerLeft(props) {
         return listToRender;
     }
 
-
+        console.log(index);
         return (
             <div className={classes.root}>
                 <CssBaseline/>
@@ -195,21 +207,42 @@ export default function PersistentDrawerLeft(props) {
                 <main className={clsx(classes.content, {[classes.contentShift]: open,})}>
                     <div className={classes.drawerHeader}>
                     </div>
-                    <Grid container row spacing={2} justify='center' alignItems='center'>
-                        <Grid item xs={12}>
-                            <AccessRequestsTable user={props.participant}/>
-                        </Grid>
-                        <Grid item xs={12}>
-                            <EMedicalTable identity={props.participant}/>
-                        </Grid>
-                        <Grid item xs={12}>
-                            <SearchPatient doctor={props.participant}/>
-                        </Grid>
-                        <Grid item xs={12}>
-                            <AccessibleEMRByDocTable user={props.participant}/>
-                        </Grid>
-
-                    </Grid>
+                    {/*<Grid container row spacing={2} justify='center' alignItems='center'>*/}
+                    {/*    <Grid item xs={12}>*/}
+                    {/*        <AccessRequestsTable user={props.participant}/>*/}
+                    {/*    </Grid>*/}
+                    {/*    <Grid item xs={12}>*/}
+                    {/*        <EMedicalTable identity={props.participant}/>*/}
+                    {/*    </Grid>*/}
+                    {/*    <Grid item xs={12}>*/}
+                    {/*        <SearchPatient doctor={props.participant}/>*/}
+                    {/*    </Grid>*/}
+                    {/*    <Grid item xs={12}>*/}
+                    {/*        <AccessibleEMRByDocTable user={props.participant}/>*/}
+                    {/*    </Grid>*/}
+                    {/*</Grid>*/}
+                    {index === '0' && <div>
+                        <StatsGrid/>
+                        <AccessRequestsTable user={props.participant}/>
+                    </div> }
+                    {index === '1' && <div>
+                        <h1>Your Medical Record</h1>
+                        <EMedicalTable identity={props.participant}/>
+                    </div>
+                    }
+                    {index === '2' && <div>
+                        <h1>Profile to be included here</h1>
+                    </div>}
+                    {index === '3' && <div>
+                        <StatsGrid/>
+                        <SearchPatient doctor={props.participant}/>
+                    </div>}
+                    {index === '4' && <div>
+                        <AccessibleEMRByDocTable user={props.participant}/>
+                    </div>}
+                    {index === '5' && <div>
+                        <h1>Profile to be included here</h1>
+                    </div>}
                 </main>
 
             </div>

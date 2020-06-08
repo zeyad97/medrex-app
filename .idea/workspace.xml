@@ -2,13 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="28480649-a059-4827-a8df-0d305360d954" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/AccessibleEMRByDocTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/AccessibleEMRByDocTable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/EMedicalDialog.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/EMedicalDialog.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/EMedicalTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/EMedicalTable.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/SearchResultsTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/SearchResultsTable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/PersistentLeftDrawer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/PersistentLeftDrawer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +90,7 @@
       <workItem from="1591352466877" duration="16127000" />
       <workItem from="1591432285941" duration="19880000" />
       <workItem from="1591519730970" duration="28253000" />
-      <workItem from="1591608924338" duration="2437000" />
+      <workItem from="1591608924338" duration="6136000" />
     </task>
     <task id="LOCAL-00001" summary="Auth0 used with google and facebook authentication. secure route also configured">
       <created>1588938236534</created>
@@ -227,7 +225,14 @@
       <option name="project" value="LOCAL" />
       <updated>1591566606646</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Verification completed! App now required routing.">
+      <created>1591615116282</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1591615116282</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -265,7 +270,8 @@
     <MESSAGE value="Dialog form made" />
     <MESSAGE value="Add Record functionality completed" />
     <MESSAGE value="Doctor components nearly done. Routing, error handling and notifications remaining. Exciting time!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Doctor components nearly done. Routing, error handling and notifications remaining. Exciting time!" />
+    <MESSAGE value="Verification completed! App now required routing." />
+    <option name="LAST_COMMIT_MESSAGE" value="Verification completed! App now required routing." />
   </component>
   <component name="WindowStateProjectService">
     <state x="421" y="259" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1591364866582">
@@ -276,10 +282,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1440.900@0.0.1440.900" timestamp="1591050761472" />
-    <state x="297" y="25" key="CommitChangelistDialog2" timestamp="1591566606411">
+    <state x="237" y="25" key="CommitChangelistDialog2" timestamp="1591615116115">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="297" y="25" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1591566606411" />
+    <state x="237" y="25" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1591615116115" />
     <state x="100" y="100" width="1240" height="700" key="DiffContextDialog" timestamp="1591396968284">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -292,10 +298,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="608" y="324" width="443" height="252" key="MultipleFileMergeDialog/0.0.1440.900@0.0.1440.900" timestamp="1591219929365" />
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1591566672332">
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1591615139007">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1591566672332" />
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1591615139007" />
     <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1590672244738">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
