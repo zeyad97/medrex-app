@@ -1,115 +1,114 @@
 //future profile maker
-
 import React from "react";
-const axios = require('axios');
+import Typography from "@material-ui/core/Typography";
+import Grid from "@material-ui/core/Grid";
+import TextField from "@material-ui/core/TextField";
 
-// export default function Profile() {
-//
-//     return (
-//         <Grid container justify="center" alignItems="center" spacing={1}>
-//             <Grid item xs={4}>
-//                 <Grid container justify="center" alignItems="center" spacing={2}>
-//                     <Grid item med={3}>
-//                         <Avatar
-//                             alt="Remy Sharp"
-//                             src="/static/images/avatar/1.jpg"
-//                             className={classes.large}
-//                         />
-//                     </Grid>
-//                     <Grid item med={7}>
-//                         <Typography variant="h5" component="h2">
-//                             Zeyad Ahmed
-//                         </Typography>
-//                     </Grid>
-//                     <Grid med={4}>
-//                         <Typography variant="h6" color="textSecondary">
-//                             Patient
-//                         </Typography>
-//                         <Grid />
-//                         <Typography variant="body2" component="p">
-//                             well meaning and kindly.
-//                             <br />
-//                             {'"a benevolent smile"'}
-//                         </Typography>
-//                     </Grid>
-//                 </Grid>
-//             </Grid>
-//         </Grid>
-//     );
-// }
 
-class Profile extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            Id: '',
-            cnic: '',
-            fName: '',
-            lName: '',
-            email: '',
-            sex: '',
-            dateOfBirth: new Date(),
-            type: '',
-            bloodGroup: '',
-            address: ''
-        }
-    }
+export default function Profile(props) {
+    console.log(props);
 
-    async componentWillMount() {
-        try {
-            const responseDoctor = await axios.get(process.env.REACT_APP_NGROK_HTTP + 'doctor/' + this.props.user.sub.substring(9, 25),
-            {
-                headers: {
-                    'x-api-key': process.env.REACT_APP_API_KEY
-                  }
-            });
-            this.setState({present: true});
-            this.setState({Id: responseDoctor.data.dId});
-            this.setState({cnic: responseDoctor.data.cnic});
-            this.setState({fName: responseDoctor.data.fName});
-            this.setState({lName: responseDoctor.data.lName});
-            this.setState({email: responseDoctor.data.email});
-            this.setState({sex: responseDoctor.data.sex});
-            this.setState({dateOfBirth: responseDoctor.data.dob});
-            this.setState({type: responseDoctor.data.type});
-        } catch (error) {
-            console.log("Not a doctor")
-            try {
-                const responsePatient = await axios.get(process.env.REACT_APP_NGROK_HTTP + 'patient/' + this.props.user.sub.substring(9, 25),
-                {
-                    headers: {
-                        'x-api-key': process.env.REACT_APP_API_KEY
-                      }
-                })
-                this.setState({present: true});
-                this.setState({Id: responsePatient.data.pId});
-                this.setState({cnic: responsePatient.data.cnic});
-                this.setState({fName: responsePatient.data.fName});
-                this.setState({lName: responsePatient.data.lName});
-                this.setState({email: responsePatient.data.email});
-                this.setState({sex: responsePatient.data.sex});
-                this.setState({dateOfBirth: responsePatient.data.dob});
-                this.setState({type: responsePatient.data.type});
-                this.setState({bloodGroup: responsePatient.data.bloodGroup});
-                this.setState({address: responsePatient.data.address});
-            } catch (error) {
-                console.log("Not a patient")
-            }
-        }
-    }
+    return (
+        <div>
+            <Grid container direction='row' justify="center" alignItems="center" spacing={2}>
+                <Grid item xs={4}>
+                    <img src={props.user.photoLink} style={{width:'40%',height:'40%'}}/>
+                </Grid>
+                <Grid item xs={4}>
+                    <Typography variant="h3" component="h2" align='center' gutterBottom>
+                        {props.user.fName} {props.user.lName}
+                    </Typography>
+                    <Typography variant="subtitle1" align='center' gutterBottom>
+                        Your Identity is: {props.user.Id}
+                    </Typography>
+                </Grid>
 
-    render() {
+            <Grid container justify='center' alignItems='center' alignContent='center' spacing={3}>
 
-        if(this.state.present){
-
-        }
-        else{
-            return(
-                <div></div>
-            )
-        }
-    }
+                <Grid item xs={3}>
+                    <Typography variant="h5" gutterBottom>
+                        CNIC
+                    </Typography>
+                    <TextField
+                        id="standard-read-only-input"
+                        defaultValue={props.user.cnic}
+                        InputProps={{
+                            readOnly: true,
+                        }}
+                    />
+                </Grid>
+                <Grid item xs={3}>
+                    <Typography variant="h5" gutterBottom>
+                        CNIC
+                    </Typography>
+                    <TextField
+                        id="standard-read-only-input"
+                        defaultValue={props.user.cnic}
+                        InputProps={{
+                            readOnly: true,
+                        }}
+                    />
+                </Grid>
+            </Grid>
+            </Grid>
+                {/*<Grid item xs={6}>*/}
+                {/*    <TextField*/}
+                {/*        id="standard-read-only-input"*/}
+                {/*        label="Read Only"*/}
+                {/*        defaultValue={props.user.cnic}*/}
+                {/*        InputProps={{*/}
+                {/*            readOnly: true,*/}
+                {/*        }}*/}
+                {/*    />*/}
+                {/*</Grid>*/}
+                {/*<Grid item xs={12}>*/}
+                {/*    <Typography variant="body2" align='center' gutterBottom>*/}
+                {/*        {props.user.cnic}*/}
+                {/*    </Typography>*/}
+                {/*</Grid>*/}
+                {/*<Grid item xs={12}>*/}
+                {/*    <Typography variant="caption" display="block" align='center' gutterBottom>*/}
+                {/*        Date of Birth*/}
+                {/*    </Typography>*/}
+                {/*    <Typography variant="body2" align='center' gutterBottom>*/}
+                {/*        {props.user.dob.substring(0,10)}*/}
+                {/*    </Typography>*/}
+                {/*</Grid>*/}
+                {/*<Grid item xs={12}>*/}
+                {/*    <Typography variant="caption" display="block" align='center' gutterBottom>*/}
+                {/*        Sex*/}
+                {/*    </Typography>*/}
+                {/*    <Typography variant="body2" align='center' gutterBottom>*/}
+                {/*        {props.user.sex}*/}
+                {/*    </Typography>*/}
+                {/*</Grid>*/}
+                {/*<Grid item xs={12}>*/}
+                {/*    <Typography variant="caption" display="block" align='center' gutterBottom>*/}
+                {/*        Email*/}
+                {/*    </Typography>*/}
+                {/*    <Typography variant="body2" align='center' gutterBottom>*/}
+                {/*        {props.user.email}*/}
+                {/*    </Typography>*/}
+                {/*</Grid>*/}
+                {/*{props.user.type === 'patient'?*/}
+                {/*<div>*/}
+                {/*    <Grid item xs={12}>*/}
+                {/*        <Typography variant="caption" display="block" align='center' gutterBottom>*/}
+                {/*            Blood Group*/}
+                {/*        </Typography>*/}
+                {/*        <Typography variant="body2" align='center' gutterBottom>*/}
+                {/*            {props.user.bloodGroup}*/}
+                {/*        </Typography>*/}
+                {/*    </Grid>*/}
+                {/*    <Grid item xs={12}>*/}
+                {/*        <Typography variant="caption" display="block" align='center' gutterBottom>*/}
+                {/*            Address*/}
+                {/*        </Typography>*/}
+                {/*        <Typography variant="body2" align='center' gutterBottom>*/}
+                {/*            {props.user.address}*/}
+                {/*        </Typography>*/}
+                {/*    </Grid>*/}
+                {/*</div>:<div/>}*/}
+        </div>
+    );
 }
-
-export default Profile;
-

@@ -8,6 +8,8 @@ import DateFnsUtils from '@date-io/date-fns';
 import {MuiPickersUtilsProvider, DatePicker} from '@material-ui/pickers';
 import PersistentLeftDrawer from "./PersistentLeftDrawer";
 import Skeleton from "@material-ui/lab/Skeleton";
+import history from "../utils/history";
+import { useHistory } from "react-router-dom";
 const axios = require('axios');
 
 
@@ -49,6 +51,7 @@ class Form extends React.Component {
 
 
     async componentDidMount() {
+
         this.setState({Id: this.props.user.sub.substring(9, 25),fName: this.props.user.given_name,
             lName: this.props.user.family_name, photoLink: this.props.user.picture})
         try {
@@ -80,6 +83,8 @@ class Form extends React.Component {
     }
 
     handleSubmit = async event => {
+        let history = useHistory();
+        console.log(this.props.history);
         event.preventDefault();
         if (this.state.type === 'patient') {
             try {
@@ -106,7 +111,10 @@ class Form extends React.Component {
                         'x-api-key': process.env.REACT_APP_API_KEY
                       }
                 })
-                console.log(response.data.pId);
+                console.log(createPatient.data.pId);
+                if(createPatient.status === 200){
+                    this.props.history.push('/dashboard')
+                }
 
             } catch (error) {
                 console.error(error)
@@ -134,6 +142,9 @@ class Form extends React.Component {
                         'x-api-key': process.env.REACT_APP_API_KEY
                       }
                 })
+                if(createDoctor.status === 200){
+                    history.push('/dashboard')
+                }
                 console.log(response.data.dId);
                 console.log("doc created")
             } catch (error) {

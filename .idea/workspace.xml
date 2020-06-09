@@ -2,11 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="28480649-a059-4827-a8df-0d305360d954" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/EMedicalDialog.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/EMedicalDialog.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/EMedicalTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/EMedicalTable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Form.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Form.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/PatientSearchByDocTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/PatientSearchByDocTable.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/PersistentLeftDrawer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/PersistentLeftDrawer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Profile.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +92,9 @@
       <workItem from="1591352466877" duration="16127000" />
       <workItem from="1591432285941" duration="19880000" />
       <workItem from="1591519730970" duration="28253000" />
-      <workItem from="1591608924338" duration="6136000" />
+      <workItem from="1591608924338" duration="7176000" />
+      <workItem from="1591633941503" duration="3737000" />
+      <workItem from="1591700828247" duration="10344000" />
     </task>
     <task id="LOCAL-00001" summary="Auth0 used with google and facebook authentication. secure route also configured">
       <created>1588938236534</created>
@@ -232,7 +236,14 @@
       <option name="project" value="LOCAL" />
       <updated>1591615116282</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Nearly completed. Certain errors need to be dealt with.">
+      <created>1591631060143</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1591631060143</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -271,25 +282,30 @@
     <MESSAGE value="Add Record functionality completed" />
     <MESSAGE value="Doctor components nearly done. Routing, error handling and notifications remaining. Exciting time!" />
     <MESSAGE value="Verification completed! App now required routing." />
-    <option name="LAST_COMMIT_MESSAGE" value="Verification completed! App now required routing." />
+    <MESSAGE value="Nearly completed. Certain errors need to be dealt with." />
+    <option name="LAST_COMMIT_MESSAGE" value="Nearly completed. Certain errors need to be dealt with." />
   </component>
   <component name="WindowStateProjectService">
     <state x="421" y="259" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1591364866582">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="421" y="259" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1440.900@0.0.1440.900" timestamp="1591364866582" />
+    <state x="408" y="193" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1591633900578">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="408" y="193" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1440.900@0.0.1440.900" timestamp="1591633900578" />
     <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1591050761472">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1440.900@0.0.1440.900" timestamp="1591050761472" />
-    <state x="237" y="25" key="CommitChangelistDialog2" timestamp="1591615116115">
+    <state x="237" y="25" key="CommitChangelistDialog2" timestamp="1591631059996">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="237" y="25" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1591615116115" />
-    <state x="100" y="100" width="1240" height="700" key="DiffContextDialog" timestamp="1591396968284">
+    <state x="237" y="25" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1591631059996" />
+    <state x="100" y="100" width="1240" height="700" key="DiffContextDialog" timestamp="1591646953368">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="100" y="100" width="1240" height="700" key="DiffContextDialog/0.0.1440.900@0.0.1440.900" timestamp="1591396968284" />
+    <state x="100" y="100" width="1240" height="700" key="DiffContextDialog/0.0.1440.900@0.0.1440.900" timestamp="1591646953368" />
     <state x="254" y="79" key="MergeDialog" timestamp="1591219929332">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -298,10 +314,14 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="608" y="324" width="443" height="252" key="MultipleFileMergeDialog/0.0.1440.900@0.0.1440.900" timestamp="1591219929365" />
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1591615139007">
+    <state x="533" y="160" key="RollbackChangesDialog" timestamp="1591646961910">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1591615139007" />
+    <state x="533" y="160" key="RollbackChangesDialog/0.0.1440.900@0.0.1440.900" timestamp="1591646961910" />
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1591631067731">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1591631067731" />
     <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1590672244738">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -314,10 +334,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="343" y="67" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1440.900@0.0.1440.900" timestamp="1590830770399" />
-    <state x="409" y="245" key="git4idea.merge.GitPullDialog" timestamp="1591432651050">
+    <state x="409" y="245" key="git4idea.merge.GitPullDialog" timestamp="1591646971052">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="409" y="245" key="git4idea.merge.GitPullDialog/0.0.1440.900@0.0.1440.900" timestamp="1591432651050" />
+    <state x="409" y="245" key="git4idea.merge.GitPullDialog/0.0.1440.900@0.0.1440.900" timestamp="1591646971052" />
     <state x="385" y="210" key="run.anything.popup" timestamp="1591288048611">
       <screen x="0" y="0" width="1440" height="900" />
     </state>

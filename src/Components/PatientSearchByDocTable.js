@@ -30,70 +30,74 @@ export default function PatientSearchByDocTable(props) {
 
     console.log(props.patientDetails);
 
-    useEffect(async () => {
-        console.log("in useEffect");
-            const emrData = await axios.get(process.env.REACT_APP_NGROK_HTTP + 'queries/returnRecordsOfPatient', {
-                params: {
-                    patientObject: 'resource:org.medrex.basic.patient#' + props.patientDetails[0].patId
-                },
-                headers: {
-                    'x-api-key': process.env.REACT_APP_API_KEY
-                }
-            });
-            let arr0 = [];
-            let i,j;
-            const dataToCheck = emrData.data;
-            for(i=0; i<dataToCheck.length; i++){
-                const obj = {mrn:'', recType:'', createdDate:'',createdBy:'', trustedDocs:[], canView:false}
-                obj.mrn = dataToCheck[i].mrn;
-                obj.recType = dataToCheck[i].type;
-                obj.createdDate = dataToCheck[i].date;
-                let makerID = dataToCheck[i].maker.substring(33,dataToCheck[i].maker.length);
-                const maker = await axios.get(process.env.REACT_APP_NGROK_HTTP +'doctor/' + makerID
+    async function fetchData(myValue){
+        const emrData = await axios.get(process.env.REACT_APP_NGROK_HTTP + 'queries/returnRecordsOfPatient', {
+            params: {
+                patientObject: 'resource:org.medrex.basic.patient#' + myValue
+            },
+            headers: {
+                'x-api-key': process.env.REACT_APP_API_KEY
+            }
+        });
+        let arr0 = [];
+        let i,j;
+        const dataToCheck = emrData.data;
+        for(i=0; i<dataToCheck.length; i++){
+            const obj = {mrn:'', recType:'', createdDate:'',createdBy:'', trustedDocs:[], canView:false}
+            obj.mrn = dataToCheck[i].mrn;
+            obj.recType = dataToCheck[i].type;
+            obj.createdDate = dataToCheck[i].date;
+            let makerID = dataToCheck[i].maker.substring(33,dataToCheck[i].maker.length);
+            const maker = await axios.get(process.env.REACT_APP_NGROK_HTTP +'doctor/' + makerID
+                + "?filter={\"fields\": [ \"fName\", \"lName\"]}",
+                {
+                    headers: {
+                        'x-api-key': process.env.REACT_APP_API_KEY
+                    }
+                });
+            let makerName = maker.data.fName + ' ' + maker.data.lName;
+            obj.createdBy = makerName;
+            const objOne = {name:makerName, id:makerID};
+            obj.trustedDocs.push(objOne);
+            for(j=0; j<dataToCheck[i].trustedDocs.length; j++){
+                const objDoc = {name:'', id:''};
+                let docID = dataToCheck[i].trustedDocs[j].substring(33,dataToCheck[i].trustedDocs[j].length);
+                objDoc.id = docID;
+                const docReq = await axios.get(process.env.REACT_APP_NGROK_HTTP +'doctor/' + docID
                     + "?filter={\"fields\": [ \"fName\", \"lName\"]}",
                     {
                         headers: {
                             'x-api-key': process.env.REACT_APP_API_KEY
-                          }
+                        }
                     });
-                let makerName = maker.data.fName + ' ' + maker.data.lName;
-                obj.createdBy = makerName;
-                const objOne = {name:makerName, id:makerID};
-                obj.trustedDocs.push(objOne);
-                for(j=0; j<dataToCheck[i].trustedDocs.length; j++){
-                    const objDoc = {name:'', id:''};
-                    let docID = dataToCheck[i].trustedDocs[j].substring(33,dataToCheck[i].trustedDocs[j].length);
-                    objDoc.id = docID;
-                    const docReq = await axios.get(process.env.REACT_APP_NGROK_HTTP +'doctor/' + docID
-                        + "?filter={\"fields\": [ \"fName\", \"lName\"]}",
-                        {
-                            headers: {
-                                'x-api-key': process.env.REACT_APP_API_KEY
-                              }
-                        });
-                    let docName = docReq.data.fName + ' ' + docReq.data.lName;
-                    objDoc.name = docName;
-                    obj.trustedDocs.push(objDoc);
-                }
-                console.log(obj);
-                arr0.push(obj);
-                console.log(arr0);
-                let k;
-                for(k=0; k<obj.trustedDocs.length; k++){
-                    let myCheck = obj.trustedDocs[k].id;
-                    if(myCheck === props.doctorDetails.doctor.Id){
-                        obj.canView = true;
-                        break;
-                    }
-                    else{
-                        continue;
-                    }
-                }
-
+                let docName = docReq.data.fName + ' ' + docReq.data.lName;
+                objDoc.name = docName;
+                obj.trustedDocs.push(objDoc);
             }
-            setRecords(arr0);
-            setLoading(false);
-            }, []);
+            console.log(obj);
+            arr0.push(obj);
+            console.log(arr0);
+            let k;
+            for(k=0; k<obj.trustedDocs.length; k++){
+                let myCheck = obj.trustedDocs[k].id;
+                if(myCheck === props.doctorDetails.doctor.Id){
+                    obj.canView = true;
+                    break;
+                }
+                else{
+                    continue;
+                }
+            }
+
+        }
+        setRecords(arr0);
+        setLoading(false);
+    }
+
+    useEffect( () => {
+        console.log("in useEffect");
+        fetchData(props.patientDetails[0].patId);
+            }, [props.patientDetails[0].patId]);
 
     const requestAccess= async(mrNumber) =>{
         try{

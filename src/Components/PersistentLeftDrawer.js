@@ -29,6 +29,7 @@ import EMedicalTable from "./EMedicalTable";
 import AccessibleEMRByDocTable from './AccessibleEMRByDocTable';
 import SearchPatient from "./SearchPatient";
 import StatsGrid from "./StatsGrids";
+import Profile from "./Profile";
 
 const drawerWidth = 240;
 
@@ -96,6 +97,8 @@ export default function PersistentDrawerLeft(props) {
     const {isAuthenticated, logout} = useAuth0();
     const [index, setIndex] = React.useState('0');
 
+
+
     const handleDrawerOpen = () => {
         setOpen(true);
     };
@@ -107,6 +110,7 @@ export default function PersistentDrawerLeft(props) {
     const changeComponent = (event,index) => {
         setIndex(index);
     }
+
 
     const listRendering = (props) => {
         let listToRender;
@@ -241,7 +245,7 @@ export default function PersistentDrawerLeft(props) {
                         <AccessibleEMRByDocTable user={props.participant}/>
                     </div>}
                     {index === '5' && <div>
-                        <h1>Profile to be included here</h1>
+                        <Profile user={props.participant}/>
                     </div>}
                 </main>
 
