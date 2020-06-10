@@ -2,7 +2,7 @@
 //General Component
 
 
-import React from 'react';
+import React, {useEffect} from 'react';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -19,7 +19,6 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import HomeIcon from '@material-ui/icons/Home';
-import {Grid} from "@material-ui/core";
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import DescriptionIcon from '@material-ui/icons/Description';
 import PersonIcon from '@material-ui/icons/Person';
@@ -30,6 +29,9 @@ import AccessibleEMRByDocTable from './AccessibleEMRByDocTable';
 import SearchPatient from "./SearchPatient";
 import StatsGrid from "./StatsGrids";
 import Profile from "./Profile";
+import Skeleton from "@material-ui/lab/Skeleton";
+import Grid from "@material-ui/core/Grid";
+const axios = require('axios');
 
 const drawerWidth = 240;
 
@@ -95,7 +97,44 @@ export default function PersistentDrawerLeft(props) {
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
     const {isAuthenticated, logout} = useAuth0();
-    const [index, setIndex] = React.useState('0');
+    const { user } = useAuth0();
+    const [index, setIndex] = React.useState('');
+    const [party, setParty] = React.useState([]);
+    const [ loading, setLoading] = React.useState(true);
+
+
+    async function fetchData(myValue){
+        try {
+            const docData = await axios.get(process.env.REACT_APP_NGROK_HTTP +'doctor/' + myValue,
+                {
+                    headers: {
+                        'x-api-key': process.env.REACT_APP_API_KEY
+                    }
+                });
+            let dataToAdd = docData.data
+            setIndex('3');
+            setParty(dataToAdd);
+        }catch (error) {
+            try {
+                const patData = await axios.get(process.env.REACT_APP_NGROK_HTTP +'patient/' + myValue,
+                    {
+                        headers: {
+                            'x-api-key': process.env.REACT_APP_API_KEY
+                        }
+                    })
+                let dataToAdd = patData.data;
+                setIndex('0')
+                setParty(dataToAdd);
+            } catch (error) {
+                console.log(error)
+            }
+        }
+    }
+
+    useEffect( () => {
+        fetchData(user.sub.substring(9, 25));
+        setLoading(false);
+    }, [user.sub.substring(9, 25)]);
 
 
 
@@ -112,9 +151,9 @@ export default function PersistentDrawerLeft(props) {
     }
 
 
-    const listRendering = (props) => {
+    const listRendering = (value) => {
         let listToRender;
-        if (props === 'patient') {
+        if (value === 'org.medrex.basic.patient') {
             listToRender =
                 <div>
                     <ListItem selected={index === '0'} onClick={(event) => changeComponent(event,'0')}
@@ -157,7 +196,7 @@ export default function PersistentDrawerLeft(props) {
         return listToRender;
     }
 
-        console.log(index);
+        console.log(party);
         return (
             <div className={classes.root}>
                 <CssBaseline/>
@@ -173,7 +212,6 @@ export default function PersistentDrawerLeft(props) {
                             aria-label="open drawer"
                             onClick={() => {
                                 handleDrawerOpen();
-                                listRendering()
                             }}
                             edge="start"
                             className={clsx(classes.menuButton, open && classes.hide)}
@@ -181,7 +219,7 @@ export default function PersistentDrawerLeft(props) {
                             <MenuIcon/>
                         </IconButton>
                         {/*<Typography variant="h6" noWrap>*/}
-                            Welcome {props.participant.fName}!
+                            Welcome {party.fName}!
                         {/*</Typography>*/}
                     </Toolbar>
                 </AppBar>
@@ -201,7 +239,7 @@ export default function PersistentDrawerLeft(props) {
                     </div>
                     <Divider/>
                     <List>
-                        {listRendering(props.participant.type)}
+                        {listRendering(party.$class)}
                         {isAuthenticated && <ListItem button onClick={() => logout()}>
                             <ListItemIcon><ExitToAppIcon/></ListItemIcon>
                             <ListItemText>Log Out</ListItemText>
@@ -211,44 +249,35 @@ export default function PersistentDrawerLeft(props) {
                 <main className={clsx(classes.content, {[classes.contentShift]: open,})}>
                     <div className={classes.drawerHeader}>
                     </div>
-                    {/*<Grid container row spacing={2} justify='center' alignItems='center'>*/}
-                    {/*    <Grid item xs={12}>*/}
-                    {/*        <AccessRequestsTable user={props.participant}/>*/}
-                    {/*    </Grid>*/}
-                    {/*    <Grid item xs={12}>*/}
-                    {/*        <EMedicalTable identity={props.participant}/>*/}
-                    {/*    </Grid>*/}
-                    {/*    <Grid item xs={12}>*/}
-                    {/*        <SearchPatient doctor={props.participant}/>*/}
-                    {/*    </Grid>*/}
-                    {/*    <Grid item xs={12}>*/}
-                    {/*        <AccessibleEMRByDocTable user={props.participant}/>*/}
-                    {/*    </Grid>*/}
-                    {/*</Grid>*/}
-                    {index === '0' && <div>
-                        <StatsGrid/>
-                        <AccessRequestsTable user={props.participant}/>
-                    </div> }
-                    {index === '1' && <div>
-                        <h1>Your Medical Record</h1>
-                        <EMedicalTable identity={props.participant}/>
-                    </div>
-                    }
-                    {index === '2' && <div>
-                        <h1>Profile to be included here</h1>
-                    </div>}
-                    {index === '3' && <div>
-                        <StatsGrid/>
-                        <SearchPatient doctor={props.participant}/>
-                    </div>}
-                    {index === '4' && <div>
-                        <AccessibleEMRByDocTable user={props.participant}/>
-                    </div>}
-                    {index === '5' && <div>
-                        <Profile user={props.participant}/>
+                    {loading? <div>
+                        <Skeleton variant="text" />
+                        <Skeleton variant="rect"/>
+                    </div>:
+                    <div>
+                        {index === '0' && <div>
+                            <StatsGrid/>
+                            <AccessRequestsTable user={party}/>
+                        </div> }
+                        {index === '1' && <div>
+                            <h1>Your Medical Record</h1>
+                            <EMedicalTable identity={party}/>
+                        </div>
+                        }
+                        {index === '2' && <div>
+                            <h1>Profile to be included here</h1>
+                        </div>}
+                        {index === '3' && <div>
+                            <StatsGrid/>
+                            <SearchPatient doctor={party}/>
+                        </div>}
+                        {index === '4' && <div>
+                            <AccessibleEMRByDocTable user={party}/>
+                        </div>}
+                        {index === '5' && <div>
+                            <Profile user={party}/>
+                        </div>}
                     </div>}
                 </main>
-
             </div>
         );
     }

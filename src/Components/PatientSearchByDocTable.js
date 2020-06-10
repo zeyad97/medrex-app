@@ -14,6 +14,8 @@ import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
 import {Button} from "@material-ui/core";
 import EMedicalDialog from "./EMedicalDialog";
 import Skeleton from "@material-ui/lab/Skeleton";
+import Snackbar from "@material-ui/core/Snackbar";
+import Alert from "@material-ui/lab/Alert";
 const axios = require('axios');
 
 const useStyles = makeStyles({
@@ -27,71 +29,78 @@ export default function PatientSearchByDocTable(props) {
     const classes = useStyles();
     const [records,setRecords]= useState([]);
     const [loading, setLoading] = React.useState(true);
+    const [openSnack, setSnack] = useState(false);
+    const [severity, setSeverity] = React.useState("info");
+    const [message, setMessage] = React.useState("");
 
     console.log(props.patientDetails);
 
     async function fetchData(myValue){
-        const emrData = await axios.get(process.env.REACT_APP_NGROK_HTTP + 'queries/returnRecordsOfPatient', {
-            params: {
-                patientObject: 'resource:org.medrex.basic.patient#' + myValue
-            },
-            headers: {
-                'x-api-key': process.env.REACT_APP_API_KEY
-            }
-        });
-        let arr0 = [];
-        let i,j;
-        const dataToCheck = emrData.data;
-        for(i=0; i<dataToCheck.length; i++){
-            const obj = {mrn:'', recType:'', createdDate:'',createdBy:'', trustedDocs:[], canView:false}
-            obj.mrn = dataToCheck[i].mrn;
-            obj.recType = dataToCheck[i].type;
-            obj.createdDate = dataToCheck[i].date;
-            let makerID = dataToCheck[i].maker.substring(33,dataToCheck[i].maker.length);
-            const maker = await axios.get(process.env.REACT_APP_NGROK_HTTP +'doctor/' + makerID
-                + "?filter={\"fields\": [ \"fName\", \"lName\"]}",
-                {
-                    headers: {
-                        'x-api-key': process.env.REACT_APP_API_KEY
-                    }
-                });
-            let makerName = maker.data.fName + ' ' + maker.data.lName;
-            obj.createdBy = makerName;
-            const objOne = {name:makerName, id:makerID};
-            obj.trustedDocs.push(objOne);
-            for(j=0; j<dataToCheck[i].trustedDocs.length; j++){
-                const objDoc = {name:'', id:''};
-                let docID = dataToCheck[i].trustedDocs[j].substring(33,dataToCheck[i].trustedDocs[j].length);
-                objDoc.id = docID;
-                const docReq = await axios.get(process.env.REACT_APP_NGROK_HTTP +'doctor/' + docID
+        try{
+            const emrData = await axios.get(process.env.REACT_APP_NGROK_HTTP + 'queries/returnRecordsOfPatient', {
+                params: {
+                    patientObject: 'resource:org.medrex.basic.patient#' + myValue
+                },
+                headers: {
+                    'x-api-key': process.env.REACT_APP_API_KEY
+                }
+            });
+            let arr0 = [];
+            let i,j;
+            const dataToCheck = emrData.data;
+            for(i=0; i<dataToCheck.length; i++){
+                const obj = {mrn:'', recType:'', createdDate:'',createdBy:'', trustedDocs:[], canView:false}
+                obj.mrn = dataToCheck[i].mrn;
+                obj.recType = dataToCheck[i].type;
+                obj.createdDate = dataToCheck[i].date;
+                let makerID = dataToCheck[i].maker.substring(33,dataToCheck[i].maker.length);
+                const maker = await axios.get(process.env.REACT_APP_NGROK_HTTP +'doctor/' + makerID
                     + "?filter={\"fields\": [ \"fName\", \"lName\"]}",
                     {
                         headers: {
                             'x-api-key': process.env.REACT_APP_API_KEY
                         }
                     });
-                let docName = docReq.data.fName + ' ' + docReq.data.lName;
-                objDoc.name = docName;
-                obj.trustedDocs.push(objDoc);
-            }
-            console.log(obj);
-            arr0.push(obj);
-            console.log(arr0);
-            let k;
-            for(k=0; k<obj.trustedDocs.length; k++){
-                let myCheck = obj.trustedDocs[k].id;
-                if(myCheck === props.doctorDetails.doctor.Id){
-                    obj.canView = true;
-                    break;
+                let makerName = maker.data.fName + ' ' + maker.data.lName;
+                obj.createdBy = makerName;
+                const objOne = {name:makerName, id:makerID};
+                obj.trustedDocs.push(objOne);
+                for(j=0; j<dataToCheck[i].trustedDocs.length; j++){
+                    const objDoc = {name:'', id:''};
+                    let docID = dataToCheck[i].trustedDocs[j].substring(33,dataToCheck[i].trustedDocs[j].length);
+                    objDoc.id = docID;
+                    const docReq = await axios.get(process.env.REACT_APP_NGROK_HTTP +'doctor/' + docID
+                        + "?filter={\"fields\": [ \"fName\", \"lName\"]}",
+                        {
+                            headers: {
+                                'x-api-key': process.env.REACT_APP_API_KEY
+                            }
+                        });
+                    let docName = docReq.data.fName + ' ' + docReq.data.lName;
+                    objDoc.name = docName;
+                    obj.trustedDocs.push(objDoc);
                 }
-                else{
-                    continue;
+                console.log(obj);
+                arr0.push(obj);
+                console.log(arr0);
+                let k;
+                for(k=0; k<obj.trustedDocs.length; k++){
+                    let myCheck = obj.trustedDocs[k].id;
+                    if(myCheck === props.doctorDetails.doctor.Id){
+                        obj.canView = true;
+                        break;
+                    }
+                    else{
+                        continue;
+                    }
                 }
-            }
 
+            }
+            setRecords(arr0);
+            setLoading(false);
+        }catch(error){
+            console.log(error);
         }
-        setRecords(arr0);
-        setLoading(false);
     }
 
     useEffect( () => {
@@ -99,13 +108,14 @@ export default function PatientSearchByDocTable(props) {
         fetchData(props.patientDetails[0].patId);
             }, [props.patientDetails[0].patId]);
 
+
     const requestAccess= async(mrNumber) =>{
         try{
             const accessReq = await axios.post(process.env.REACT_APP_NGROK_HTTP + "/requestAccess",
                 {
                     "$class": "org.medrex.basic.requestAccess",
                     "record": "resource:org.medrex.basic.healthRecord#"+mrNumber,
-                    "requestingDoc": "resource:org.medrex.basic.doctor#"+props.doctorDetails.doctor.Id,
+                    "requestingDoc": "resource:org.medrex.basic.doctor#"+props.doctorDetails.doctor.dId,
                     "transactionId": "",
                     "timestamp": "2020-06-07T09:23:06.917Z"
                 },
@@ -114,14 +124,26 @@ export default function PatientSearchByDocTable(props) {
                         'x-api-key': process.env.REACT_APP_API_KEY
                       }
                 })
-            console.log("Request sent!")
+            setSeverity('success');
+            setSnack(true);
+            setMessage('Request has been sent for EMR#'+mrNumber);
         }
         catch(error){
-            console.log(error);
+            setSeverity('error');
+            setSnack(true);
+            setMessage('Request has not been sent');
         }
     }
 
+    const handleClose = (event, reason) => {
+        if (reason === "clickaway") {
+            return;
+        }
+        setSnack(false);
+    }
+
     console.log(records);
+    console.log(props);
 
     return (
         loading?
@@ -152,6 +174,12 @@ export default function PatientSearchByDocTable(props) {
                                 <TableCell align='center'>
                                     <Button color='secondary'
                                 onClick={()=>requestAccess(record.mrn)}>Request Access</Button>
+                                    <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'right'}}
+                                        open={openSnack} autoHideDuration={6000} onClose={handleClose}>
+                                        <Alert onClose={handleClose} severity={severity}>
+                                            {message}
+                                        </Alert>
+                                    </Snackbar>
                                 </TableCell>}
                         </TableRow>
                     ))}

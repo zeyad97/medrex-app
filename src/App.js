@@ -24,11 +24,12 @@ function App() {
                     <Switch>
                         <Route path="/" exact />
                         <Route path="/login" component={NavBar} />
-                        {/*<Route path="/dashboard" component={PersistentLeftDrawer}/>*/}
-                        <Route
-                            path='/dashboard'
-                            render={(props) => <PersistentLeftDrawer {...props} participant={this.state} />}
-                        />
+                        <Route path="/dashboard" exact={true} component={PersistentLeftDrawer}/>
+                        {/*<Route*/}
+                        {/*    path='/dashboard'*/}
+                        {/*    render={(props) => <PersistentLeftDrawer {...props} participant={this.state} />}*/}
+                        {/*/>*/}
+                        {/*<Route path="/about" render={()=> <PersistentLeftDrawer participant={this.state} />} />*/}
                         <PrivateRoute path="/authoriser" component={Authoriser} />
                     </Switch>
                 </BrowserRouter>

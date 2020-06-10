@@ -60,7 +60,7 @@ export default function DocAccessTable(props) {
                         </Grid>
                         <Grid item xs={12} direction='column'>
                             <h3>{props.record[0].patName}</h3>
-                            <h4>MRN Number: <h5>{props.record[0].patId}</h5></h4>
+                            <h4>Patient ID: <h5>{props.record[0].patId}</h5></h4>
                             <h4>Sex:<h5>{props.record[0].patSex}</h5></h4>
                             <h4>Date of Birth:<h5>{props.record[0].patAge.substring(0,10)}</h5></h4>
                         </Grid>

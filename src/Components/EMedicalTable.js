@@ -87,8 +87,8 @@ export default function EMedicalTable(props) {
     }
 
     useEffect( () => {
-        fetchData(props.identity.Id);
-    }, [props.identity.id]);
+        fetchData(props.identity.pId);
+    }, [props.identity.pId]);
 
     async function verifyRecord(var1) {
         console.log("In verify")

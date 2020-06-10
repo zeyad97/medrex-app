@@ -10,6 +10,8 @@ import axios from 'axios';
 import SearchResultsTable from './SearchResultsTable';
 import {Theme as theme} from "@material-ui/core/styles/createMuiTheme";
 import {Button, Grid} from "@material-ui/core";
+import TextField from "@material-ui/core/TextField";
+import Paper from "@material-ui/core/Paper";
 
 class SearchPatient extends React.Component {
     constructor(props) {
@@ -112,28 +114,31 @@ class SearchPatient extends React.Component {
 
 const classes = useStyles();
 */
+
     render() {
         return (
-
-            <div style={{flexGrow: '1'}}>
-                <Grid container spacing={2} justify="center" alignItems="center">
-                    <Grid item xs={8}>
-                        <InputBase
-                            placeholder="Search…"
-                            id="filled-search"
-                            type="search"
-                            variant="filled"
-                            inputProps={{'aria-label': 'Search patient'}}
-                            inputComponent={this.searchTerm}
-                            onChange={this.handleChange}
-                        />
+            <div>
+                <h1>Patient search</h1>
+                <Grid container spacing={3}>
+                    <Grid container justify='center' alignItems='center' item xs={12} spacing={3}>
+                        <Grid item>
+                            <TextField
+                                placeholder="Search.."
+                                type="search"
+                                variant="outlined"
+                                fullWidth
+                                inputComponent={this.searchTerm}
+                                onChange={this.handleChange}
+                                color='secondary'
+                            />
+                        </Grid>
+                        <Grid item>
+                            <Button onClick={() => this.getSearchResults()} variant='contained' color='secondary'
+                                    endIcon={<SearchIcon/>}>
+                                Search</Button>
+                        </Grid>
                     </Grid>
-                    <Grid item xs={4}>
-                        <Button onClick={() => this.getSearchResults()} variant='contained' color='secondary'
-                                endIcon={<SearchIcon/>}>
-                            Search</Button>
-                    </Grid>
-                    <Grid item xs={12}>
+                    <Grid container justify='center' alignItems='center' item xs={12}>
                         <SearchResultsTable resultsToDisplay={this.state} myDoctor={this.props}/>
                     </Grid>
                 </Grid>

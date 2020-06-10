@@ -30,7 +30,7 @@ class AccessibleEMRByDocTable extends Component {
         try{
             const response = await axios.get(process.env.REACT_APP_NGROK_HTTP + 'queries/returnRecordsAccessibleToDoctor', {
                 params: {
-                    doctorObject: 'resource:org.medrex.basic.doctor#'+ /*'1349197901937941'/*/ this.props.user.Id
+                    doctorObject: 'resource:org.medrex.basic.doctor#'+ /*'1349197901937941'/*/ this.props.user.dId
                 },
                 headers: {
                     'x-api-key': process.env.REACT_APP_API_KEY

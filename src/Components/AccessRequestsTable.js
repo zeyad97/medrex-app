@@ -29,7 +29,7 @@ class AccessRequestsTable extends Component {
         try{
             const response = await axios.get(process.env.REACT_APP_NGROK_HTTP + 'queries/getAccessRequestsForPatient', {
                 params: {
-                    patientObject: 'resource:org.medrex.basic.patient#'+ this.props.user.Id
+                    patientObject: 'resource:org.medrex.basic.patient#'+ this.props.user.pId
                 },
                 headers: {
                     'x-api-key': process.env.REACT_APP_API_KEY

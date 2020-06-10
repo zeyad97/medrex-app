@@ -1,6 +1,7 @@
 import React from "react";
 import { useAuth0 } from "../react-auth0-spa";
 import Form from './Form';
+import Intro from "./Intro";
 
 const Authoriser = () => {
     const { loading, user } = useAuth0();
@@ -13,7 +14,8 @@ const Authoriser = () => {
 
 return(
         <div>
-            <Form loading={loading} user={user} isAuth={isAuthenticated} myLogout={logout}/>
+            {/*<Form loading={loading} user={user} isAuth={isAuthenticated} myLogout={logout}/>*/}
+            <Intro loading={loading} user={user} isAuth={isAuthenticated} myLogout={logout}/>
         </div>
     )
 

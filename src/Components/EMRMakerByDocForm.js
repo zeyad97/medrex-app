@@ -1,7 +1,7 @@
 //EMR maker form in a dialog box
 //Doctor Component
 
-import React from 'react';
+import React, {useState} from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -15,6 +15,8 @@ import FormControl from "@material-ui/core/FormControl";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Radio from "@material-ui/core/Radio";
+import Alert from "@material-ui/lab/Alert";
+import Snackbar from "@material-ui/core/Snackbar";
 const axios = require('axios');
 
 export default function FormDialog(props) {
@@ -23,6 +25,9 @@ export default function FormDialog(props) {
         {type:'',bt:'',bp:'',hr:'',rr:'',
             hist:'',meds:'',allerg:'',shist:'',
         ass:'',plan:'',extra:'',labs:''});
+    const [openSnack, setSnack] = useState(false);
+    const [severity, setSeverity] = React.useState("info");
+    const [message, setMessage] = React.useState("");
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -36,48 +41,58 @@ export default function FormDialog(props) {
         return new Date().valueOf();
     }
 
+
+    console.log(props);
     const handleSubmit = async(event) => {
-        event.preventDefault();
-        console.log(form);
-        const myDate = new Date();
-        console.log(myDate);
-        var y = randomNumber().toString();
-        console.log(typeof y);
-        console.log(props.doctorMy.doctor.Id)
-        try{
-            const addRecordReq = await axios.post(process.env.REACT_APP_NGROK_HTTP + "/healthRecord", {
-                $class: "org.medrex.basic.healthRecord",
-                mrn: y,
-                owner: "resource:org.medrex.basic.patient#"+ props.patientMy[0].patId,
-                maker: "resource:org.medrex.basic.doctor#"+ props.doctorMy.doctor.Id,
-                date: myDate,
-                history: form.hist,
-                meds: form.meds,
-                allergies: form.meds,
-                shist: form.shist,
-                bt: form.bt,
-                bp: form.bp,
-                hr: form.hr,
-                rr: form.rr,
-                extra: form.extra,
-                labs: form.extra,
-                assessment: form.ass,
-                plan: form.plan,
-                type: form.type,
-                trustedDocs: [],
-                requestDocs: []
-            },
-            {
-                headers: {
-                    'x-api-key': process.env.REACT_APP_API_KEY
-                  }
-            } )
-            console.log(addRecordReq);
-        }catch(error){
-            console.log(error)
+            event.preventDefault();
+            console.log(form);
+            const myDate = new Date();
+            console.log(myDate);
+            var y = randomNumber().toString();
+            console.log(typeof y);
+            try{
+                const addRecordReq = await axios.post(process.env.REACT_APP_NGROK_HTTP + "/healthRecord", {
+                        $class: "org.medrex.basic.healthRecord",
+                        mrn: y,
+                        owner: "resource:org.medrex.basic.patient#"+ props.patientMy[0].patId,
+                        maker: "resource:org.medrex.basic.doctor#"+ props.doctorMy.doctor.dId,
+                        date: myDate,
+                        history: form.hist,
+                        meds: form.meds,
+                        allergies: form.meds,
+                        shist: form.shist,
+                        bt: form.bt,
+                        bp: form.bp,
+                        hr: form.hr,
+                        rr: form.rr,
+                        extra: form.extra,
+                        labs: form.extra,
+                        assessment: form.ass,
+                        plan: form.plan,
+                        type: form.type,
+                        trustedDocs: [],
+                        requestDocs: []
+                    },
+                    {
+                        headers: {
+                            'x-api-key': process.env.REACT_APP_API_KEY
+                        }
+                    } )
+                console.log(addRecordReq);
+                setSeverity('success');
+                setSnack(true);
+                setMessage('Request has been sent for EMR#');
+                console.log(open,severity,message);
+                setOpen(false);
+            }
+            catch(error){
+                setSeverity('error');
+                setSnack(true);
+                setMessage('EMR has not been uploaded');
+                console.log(openSnack,severity,message);
+                setOpen(false);
+            }
         }
-        setOpen(false);
-    };
 
     const updateField = e => {
         setValues({
@@ -85,6 +100,12 @@ export default function FormDialog(props) {
             [e.target.name]: e.target.value
         });
     };
+    const handleSnack = (event, reason) => {
+        if (reason === "clickaway") {
+            return;
+        }
+        setSnack(false);
+    }
 
     return (
         <div>
@@ -196,6 +217,12 @@ export default function FormDialog(props) {
                     <Button color="secondary" variant='contained' type="submit">
                         Submit record
                     </Button>
+                    <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'right'}}
+                              open={openSnack} autoHideDuration={6000} onClose={handleSnack}>
+                        <Alert onClose={handleSnack} severity={severity}>
+                            {message}
+                        </Alert>
+                    </Snackbar>
                 </DialogActions>
                 </form>
             </Dialog>

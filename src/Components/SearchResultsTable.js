@@ -59,8 +59,9 @@ class SearchResultsTable extends React.Component {
                                 )}
                                 </TableBody>
                             </Table>
-                        </TableContainer>
-                : <p> Please enter case sensitive first name, last name or patient id!</p>}
+                        </TableContainer>:
+                // : <p> Please enter case sensitive first name, last name or patient id!</p>
+                    <div></div>}
                 {this.state.showEMR ?
                     <DocAccessTable record={this.props.resultsToDisplay.axiosResults} doctor={this.props.myDoctor}/>
                     :

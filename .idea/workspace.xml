@@ -2,13 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="28480649-a059-4827-a8df-0d305360d954" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Components/Intro.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/AccessRequestsTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/AccessRequestsTable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/AccessibleEMRByDocTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/AccessibleEMRByDocTable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Authoriser.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Authoriser.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/DocAccessTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/DocAccessTable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/EMRMakerByDocForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/EMRMakerByDocForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/EMedicalDialog.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/EMedicalDialog.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/EMedicalTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/EMedicalTable.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/Form.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Form.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/PatientSearchByDocTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/PatientSearchByDocTable.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/PersistentLeftDrawer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/PersistentLeftDrawer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Profile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/SearchPatient.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/SearchPatient.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/SearchResultsTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/SearchResultsTable.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +50,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="CSS" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -94,7 +106,8 @@
       <workItem from="1591519730970" duration="28253000" />
       <workItem from="1591608924338" duration="7176000" />
       <workItem from="1591633941503" duration="3737000" />
-      <workItem from="1591700828247" duration="10344000" />
+      <workItem from="1591700828247" duration="16447000" />
+      <workItem from="1591785367192" duration="14800000" />
     </task>
     <task id="LOCAL-00001" summary="Auth0 used with google and facebook authentication. secure route also configured">
       <created>1588938236534</created>
@@ -243,7 +256,14 @@
       <option name="project" value="LOCAL" />
       <updated>1591631060143</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="profile component started.&#10;Form submission still in works">
+      <created>1591727219690</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1591727219690</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -283,7 +303,8 @@
     <MESSAGE value="Doctor components nearly done. Routing, error handling and notifications remaining. Exciting time!" />
     <MESSAGE value="Verification completed! App now required routing." />
     <MESSAGE value="Nearly completed. Certain errors need to be dealt with." />
-    <option name="LAST_COMMIT_MESSAGE" value="Nearly completed. Certain errors need to be dealt with." />
+    <MESSAGE value="profile component started.&#10;Form submission still in works" />
+    <option name="LAST_COMMIT_MESSAGE" value="profile component started.&#10;Form submission still in works" />
   </component>
   <component name="WindowStateProjectService">
     <state x="421" y="259" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1591364866582">
@@ -298,10 +319,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1440.900@0.0.1440.900" timestamp="1591050761472" />
-    <state x="237" y="25" key="CommitChangelistDialog2" timestamp="1591631059996">
+    <state x="237" y="25" key="CommitChangelistDialog2" timestamp="1591727219526">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="237" y="25" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1591631059996" />
+    <state x="237" y="25" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1591727219526" />
     <state x="100" y="100" width="1240" height="700" key="DiffContextDialog" timestamp="1591646953368">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -318,10 +339,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="533" y="160" key="RollbackChangesDialog/0.0.1440.900@0.0.1440.900" timestamp="1591646961910" />
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1591631067731">
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1591727226554">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1591631067731" />
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1591727226554" />
     <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1590672244738">
       <screen x="0" y="0" width="1440" height="900" />
     </state>

@@ -8,8 +8,8 @@ import DateFnsUtils from '@date-io/date-fns';
 import {MuiPickersUtilsProvider, DatePicker} from '@material-ui/pickers';
 import PersistentLeftDrawer from "./PersistentLeftDrawer";
 import Skeleton from "@material-ui/lab/Skeleton";
-import history from "../utils/history";
-import { useHistory } from "react-router-dom";
+// import history from "../utils/history";
+import { withRouter } from 'react-router-dom';
 const axios = require('axios');
 
 
@@ -29,7 +29,8 @@ class Form extends React.Component {
             type: '',
             bloodGroup: '',
             address: '',
-            photoLink: ''
+            photoLink: '',
+            formDone: false
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleDateChange = this.handleDateChange.bind(this);
@@ -50,41 +51,12 @@ class Form extends React.Component {
     };
 
 
-    async componentDidMount() {
-
+    componentDidMount() {
         this.setState({Id: this.props.user.sub.substring(9, 25),fName: this.props.user.given_name,
             lName: this.props.user.family_name, photoLink: this.props.user.picture})
-        try {
-            const docData = await axios.get(process.env.REACT_APP_NGROK_HTTP +'doctor/' + this.props.user.sub.substring(9, 25),
-            {
-                headers: {
-                    'x-api-key': process.env.REACT_APP_API_KEY
-                  }
-            });
-            let dataToAdd = docData.data;
-            this.setState({present: true, type:'doctor', cnic: dataToAdd.cnic, dob:dataToAdd.dob,
-                sex: dataToAdd.sex, email: dataToAdd.email});
-
-        } catch (error) {
-            try {
-                const patData = await axios.get(process.env.REACT_APP_NGROK_HTTP +'patient/' + this.props.user.sub.substring(9, 25),
-                {
-                    headers: {
-                        'x-api-key': process.env.REACT_APP_API_KEY
-                      }
-                })
-                let valueToAdd = patData.data;
-                this.setState({address:valueToAdd.address, present: true, type:'patient', cnic: valueToAdd.cnic,
-                    dob:valueToAdd.dob, bloodGroup: valueToAdd.bloodGroup, sex: valueToAdd.sex, email: valueToAdd.email});
-            } catch (error) {
-            }
-        }
-        console.log(this.state);
     }
 
     handleSubmit = async event => {
-        let history = useHistory();
-        console.log(this.props.history);
         event.preventDefault();
         if (this.state.type === 'patient') {
             try {
@@ -105,15 +77,10 @@ class Form extends React.Component {
                             'x-api-key': process.env.REACT_APP_API_KEY
                           }
                     });
-                const response = await axios.get(process.env.REACT_APP_NGROK_HTTP + 'patient/' + this.state.Id,
-                {
-                    headers: {
-                        'x-api-key': process.env.REACT_APP_API_KEY
-                      }
-                })
                 console.log(createPatient.data.pId);
                 if(createPatient.status === 200){
-                    this.props.history.push('/dashboard')
+                    this.props.history.push('/dashboard');
+                    this.setState({formDone: true});
                 }
 
             } catch (error) {
@@ -136,23 +103,18 @@ class Form extends React.Component {
                             'x-api-key': process.env.REACT_APP_API_KEY
                           }
                     });
-                const response = await axios.get(process.env.REACT_APP_NGROK_HTTP + 'doctor/' + this.state.Id,
-                {
-                    headers: {
-                        'x-api-key': process.env.REACT_APP_API_KEY
-                      }
-                })
+                console.log(this.state);
                 if(createDoctor.status === 200){
-                    history.push('/dashboard')
+                    this.props.history.push('/dashboard');
+                    this.setState({formDone: true});
                 }
-                console.log(response.data.dId);
+                console.log(createDoctor.data.dId);
                 console.log("doc created")
             } catch (error) {
                 console.error(error)
                 console.log("catch of createDoc")
             }
         }
-
     }
 
     render() {
@@ -192,110 +154,119 @@ class Form extends React.Component {
         }
         if(!(this.props.loading) || !(this.props.user)){
             if (!(this.state.present)) {
-                return (
-                    <form onSubmit={this.handleSubmit}>
-                        <Grid container spacing={2}>
-                            <Grid item sm={12}>
-                                <Grid container direction="column" justify="center" alignItems="center" spacing={5}>
-                                    <Grid item>
-                                        <img src={this.props.user.picture} alt="Profile"/>
-                                    </Grid>
-                                    <Grid>
-                                        <Typography>Welcome {this.props.user.name}</Typography>
-                                    </Grid>
-                                    <Grid>
-                                        <Typography>Your identity code
-                                            is {this.props.user.sub.substring(9, 25)}</Typography>
-                                    </Grid>
-                                    <Grid item>
-                                        <Typography>
-                                            We require certain details that we weren't able to gather. Kindly provide us
-                                            with the following details
-                                        </Typography>
-                                        <Divider/>
-                                    </Grid>
-                                    <Grid item>
-                                        <TextField
-                                            id="outlined-name"
-                                            label="CNIC"
-                                            value={this.state.cnic}
-                                            onChange={this.handleRadioTextChange("cnic")}
-                                            variant="outlined"
-                                        />
-                                    </Grid>
-                                    <Grid item>
-                                        <TextField
-                                            id="outlined-name"
-                                            label="First Name"
-                                            value={this.state.fName}
-                                            onChange={this.handleRadioTextChange('fName')}
-                                            variant="outlined"
-                                        />
-                                    </Grid>
-                                    <Grid item>
-                                        <TextField
-                                            id="outlined-name"
-                                            label="Last Name"
-                                            value={this.state.lName}
-                                            onChange={this.handleRadioTextChange('lName')}
-                                            variant="outlined"
-                                        />
-                                    </Grid>
-                                    <Grid item>
-                                        <TextField
-                                            id="outlined-name"
-                                            label="Email"
-                                            value={this.state.email}
-                                            onChange={this.handleRadioTextChange('email')}
-                                            variant="outlined"
-                                        />
-                                    </Grid>
-                                    <Grid item>
-                                        <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                                            <DatePicker
-                                                disableFuture openTo="year"
-                                                format="MM/dd/yyyy"
-                                                label="Date of birth"
-                                                views={["year", "month", "date"]}
-                                                value={this.state.dateOfBirth}
-                                                onChange={this.handleDateChange}
+                if(!(this.state.formDone)){
+                    return (
+                        <form onSubmit={this.handleSubmit}>
+                            <Grid container spacing={2}>
+                                <Grid item sm={12}>
+                                    <Grid container direction="column" justify="center" alignItems="center" spacing={5}>
+                                        <Grid item>
+                                            <img src={this.props.user.picture} alt="Profile"/>
+                                        </Grid>
+                                        <Grid>
+                                            <Typography>Welcome {this.props.user.name}</Typography>
+                                        </Grid>
+                                        <Grid>
+                                            <Typography>Your identity code
+                                                is {this.props.user.sub.substring(9, 25)}</Typography>
+                                        </Grid>
+                                        <Grid item>
+                                            <Typography>
+                                                We require certain details that we weren't able to gather. Kindly provide us
+                                                with the following details
+                                            </Typography>
+                                            <Divider/>
+                                        </Grid>
+                                        <Grid item>
+                                            <TextField
+                                                id="outlined-name"
+                                                label="CNIC"
+                                                value={this.state.cnic}
+                                                onChange={this.handleRadioTextChange("cnic")}
+                                                variant="outlined"
                                             />
-                                        </MuiPickersUtilsProvider>
-                                    </Grid>
-                                    <Grid item>
-                                        <FormControl component="fieldset">
-                                            <FormLabel component="legend">Gender</FormLabel>
-                                            <RadioGroup row aria-label="gender" name="gender1" value={this.state.sex}
-                                                        onChange={this.handleRadioTextChange('sex')}>
-                                                <FormControlLabel value="female" control={<Radio/>} label="Female"/>
-                                                <FormControlLabel value="male" control={<Radio/>} label="Male"/>
-                                                <FormControlLabel value="other" control={<Radio/>} label="Other"/>
-                                            </RadioGroup>
-                                        </FormControl>
-                                    </Grid>
-                                    <Grid item>
-                                        <FormControl component="fieldset1">
-                                            <FormLabel component="legend1">Gender</FormLabel>
-                                            <RadioGroup row aria-label="type" name="type1" value={this.state.type}
-                                                        onChange={this.handleRadioTextChange('type')}>
-                                                <FormControlLabel value="doctor" control={<Radio/>} label="Doctor"/>
-                                                <FormControlLabel value="patient" control={<Radio/>} label="Patient"/>
-                                            </RadioGroup>
-                                        </FormControl>
-                                    </Grid>
-                                    {bloodGroupForm}
-                                    {addressForm}
-                                    <Grid item>
-                                        <Button variant='contained' color='secondary' input
-                                                type="submit" value="Submit">
-                                            Submit
-                                        </Button>
+                                        </Grid>
+                                        <Grid item>
+                                            <TextField
+                                                id="outlined-name"
+                                                label="First Name"
+                                                value={this.state.fName}
+                                                onChange={this.handleRadioTextChange('fName')}
+                                                variant="outlined"
+                                            />
+                                        </Grid>
+                                        <Grid item>
+                                            <TextField
+                                                id="outlined-name"
+                                                label="Last Name"
+                                                value={this.state.lName}
+                                                onChange={this.handleRadioTextChange('lName')}
+                                                variant="outlined"
+                                            />
+                                        </Grid>
+                                        <Grid item>
+                                            <TextField
+                                                id="outlined-name"
+                                                label="Email"
+                                                value={this.state.email}
+                                                onChange={this.handleRadioTextChange('email')}
+                                                variant="outlined"
+                                            />
+                                        </Grid>
+                                        <Grid item>
+                                            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                                                <DatePicker
+                                                    disableFuture openTo="year"
+                                                    format="MM/dd/yyyy"
+                                                    label="Date of birth"
+                                                    views={["year", "month", "date"]}
+                                                    value={this.state.dateOfBirth}
+                                                    onChange={this.handleDateChange}
+                                                />
+                                            </MuiPickersUtilsProvider>
+                                        </Grid>
+                                        <Grid item>
+                                            <FormControl component="fieldset">
+                                                <FormLabel component="legend">Gender</FormLabel>
+                                                <RadioGroup row aria-label="gender" name="gender1" value={this.state.sex}
+                                                            onChange={this.handleRadioTextChange('sex')}>
+                                                    <FormControlLabel value="female" control={<Radio/>} label="Female"/>
+                                                    <FormControlLabel value="male" control={<Radio/>} label="Male"/>
+                                                    <FormControlLabel value="other" control={<Radio/>} label="Other"/>
+                                                </RadioGroup>
+                                            </FormControl>
+                                        </Grid>
+                                        <Grid item>
+                                            <FormControl component="fieldset1">
+                                                <FormLabel component="legend1">Gender</FormLabel>
+                                                <RadioGroup row aria-label="type" name="type1" value={this.state.type}
+                                                            onChange={this.handleRadioTextChange('type')}>
+                                                    <FormControlLabel value="doctor" control={<Radio/>} label="Doctor"/>
+                                                    <FormControlLabel value="patient" control={<Radio/>} label="Patient"/>
+                                                </RadioGroup>
+                                            </FormControl>
+                                        </Grid>
+                                        {bloodGroupForm}
+                                        {addressForm}
+                                        <Grid item>
+                                            <Button variant='contained' color='secondary' input
+                                                    type="submit" value="Submit">
+                                                Submit
+                                            </Button>
+                                        </Grid>
                                     </Grid>
                                 </Grid>
                             </Grid>
-                        </Grid>
-                    </form>
-                )
+                        </form>
+                    )
+                }
+                else{
+                    return(
+                        <div>
+
+                        </div>
+                    )
+                }
             } else {
                 return (<PersistentLeftDrawer participant={this.state}/>);
             }
@@ -309,4 +280,4 @@ class Form extends React.Component {
         }
         }
 };
-export default Form;
+export default withRouter(Form);
