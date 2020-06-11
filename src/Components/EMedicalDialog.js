@@ -18,8 +18,6 @@ const axios = require('axios');
 function SimpleDialog(props) {
     const { onClose, selectedValue, open } = props;
     const [myRecord, setMyRec] = React.useState([]);
-    const [severity, setSeverity] = React.useState("info");
-    const [message, setMessage] = React.useState("");
     let x = false;
 
     const handleClose = () => {
@@ -45,8 +43,6 @@ function SimpleDialog(props) {
             }
             setMyRec(fetchRecord.data);
         }catch(error){
-            setSeverity("error");
-            setMessage('Error'+error.status+'has occurred')
         }
 
     }

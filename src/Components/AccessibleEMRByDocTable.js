@@ -118,7 +118,7 @@ class AccessibleEMRByDocTable extends Component {
                                         <TableRow key={row.mrn}>
                                             <TableCell align="center">{row.owner}</TableCell>
                                             <TableCell align="center">{row.maker}</TableCell>
-                                            <TableCell align="center">{row.date}</TableCell>
+                                            <TableCell align="center">{row.date.substring(0,10)}</TableCell>
                                             <TableCell align="center">{row.mrn}</TableCell>
                                             <TableCell align="center">{row.medicalType}</TableCell>
                                             <TableCell align="center">{row.shortAssess}</TableCell>

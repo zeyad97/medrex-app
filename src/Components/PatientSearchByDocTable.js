@@ -13,6 +13,7 @@ import Paper from '@material-ui/core/Paper';
 import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
 import {Button} from "@material-ui/core";
 import EMedicalDialog from "./EMedicalDialog";
+import DoneIcon from '@material-ui/icons/Done';
 import Skeleton from "@material-ui/lab/Skeleton";
 import Snackbar from "@material-ui/core/Snackbar";
 import Alert from "@material-ui/lab/Alert";
@@ -49,10 +50,11 @@ export default function PatientSearchByDocTable(props) {
             let i,j;
             const dataToCheck = emrData.data;
             for(i=0; i<dataToCheck.length; i++){
-                const obj = {mrn:'', recType:'', createdDate:'',createdBy:'', trustedDocs:[], canView:false}
+                const obj = {mrn:'', recType:'', createdDate:'',createdBy:'', trustedDocs:[], reqDocs:[], canView:false,
+                    request:false}
                 obj.mrn = dataToCheck[i].mrn;
                 obj.recType = dataToCheck[i].type;
-                obj.createdDate = dataToCheck[i].date;
+                obj.createdDate = dataToCheck[i].date.substring(0,10);
                 let makerID = dataToCheck[i].maker.substring(33,dataToCheck[i].maker.length);
                 const maker = await axios.get(process.env.REACT_APP_NGROK_HTTP +'doctor/' + makerID
                     + "?filter={\"fields\": [ \"fName\", \"lName\"]}",
@@ -80,13 +82,29 @@ export default function PatientSearchByDocTable(props) {
                     objDoc.name = docName;
                     obj.trustedDocs.push(objDoc);
                 }
+                let y;
+                for(y=1; y<dataToCheck[i].requestDocs.length; y++){
+                    const objDoc = {name:'', id:''};
+                    let docID = dataToCheck[i].requestDocs[y].substring(33,dataToCheck[i].requestDocs[y].length);
+                    objDoc.id = docID;
+                    const docReq = await axios.get(process.env.REACT_APP_NGROK_HTTP +'doctor/' + docID
+                        + "?filter={\"fields\": [ \"fName\", \"lName\"]}",
+                        {
+                            headers: {
+                                'x-api-key': process.env.REACT_APP_API_KEY
+                            }
+                        });
+                    let docName = docReq.data.fName + ' ' + docReq.data.lName;
+                    objDoc.name = docName;
+                    obj.reqDocs.push(objDoc);
+                }
                 console.log(obj);
                 arr0.push(obj);
                 console.log(arr0);
                 let k;
                 for(k=0; k<obj.trustedDocs.length; k++){
                     let myCheck = obj.trustedDocs[k].id;
-                    if(myCheck === props.doctorDetails.doctor.Id){
+                    if(myCheck === props.doctorDetails.doctor.dId){
                         obj.canView = true;
                         break;
                     }
@@ -94,7 +112,17 @@ export default function PatientSearchByDocTable(props) {
                         continue;
                     }
                 }
-
+                let x;
+                for(x=1; x<obj.reqDocs.length; x++){
+                    let myCheck = obj.reqDocs[x].id;
+                    if(myCheck === props.doctorDetails.doctor.dId){
+                        obj.request = true;
+                        break;
+                    }
+                    else{
+                        continue;
+                    }
+                }
             }
             setRecords(arr0);
             setLoading(false);
@@ -109,12 +137,12 @@ export default function PatientSearchByDocTable(props) {
             }, [props.patientDetails[0].patId]);
 
 
-    const requestAccess= async(mrNumber) =>{
+    const requestAccess= async(rec) =>{
         try{
             const accessReq = await axios.post(process.env.REACT_APP_NGROK_HTTP + "/requestAccess",
                 {
                     "$class": "org.medrex.basic.requestAccess",
-                    "record": "resource:org.medrex.basic.healthRecord#"+mrNumber,
+                    "record": "resource:org.medrex.basic.healthRecord#"+rec.mrn,
                     "requestingDoc": "resource:org.medrex.basic.doctor#"+props.doctorDetails.doctor.dId,
                     "transactionId": "",
                     "timestamp": "2020-06-07T09:23:06.917Z"
@@ -124,9 +152,10 @@ export default function PatientSearchByDocTable(props) {
                         'x-api-key': process.env.REACT_APP_API_KEY
                       }
                 })
+            rec.request = true;
             setSeverity('success');
             setSnack(true);
-            setMessage('Request has been sent for EMR#'+mrNumber);
+            setMessage('Request has been sent for EMR#'+rec.mrn);
         }
         catch(error){
             setSeverity('error');
@@ -171,9 +200,10 @@ export default function PatientSearchByDocTable(props) {
                             <TableCell align="center">{record.createdBy}</TableCell>
                             {record.canView?
                             <TableCell align='center'><EMedicalDialog patientRecord={record} /></TableCell>:
+                                record.request?<TableCell align='center'>Request Sent</TableCell>:
                                 <TableCell align='center'>
                                     <Button color='secondary'
-                                onClick={()=>requestAccess(record.mrn)}>Request Access</Button>
+                                onClick={()=>requestAccess(record)}>Request Access</Button>
                                     <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'right'}}
                                         open={openSnack} autoHideDuration={6000} onClose={handleClose}>
                                         <Alert onClose={handleClose} severity={severity}>

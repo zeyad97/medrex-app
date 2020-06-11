@@ -37,6 +37,13 @@ export default function FormDialog(props) {
         setOpen(false);
     };
 
+    const handleSnack = (event, reason) => {
+        if (reason === "clickaway") {
+            return;
+        }
+        setSnack(false);
+    }
+
     function randomNumber() {
         return new Date().valueOf();
     }
@@ -45,11 +52,8 @@ export default function FormDialog(props) {
     console.log(props);
     const handleSubmit = async(event) => {
             event.preventDefault();
-            console.log(form);
             const myDate = new Date();
-            console.log(myDate);
-            var y = randomNumber().toString();
-            console.log(typeof y);
+            let y = randomNumber().toString();
             try{
                 const addRecordReq = await axios.post(process.env.REACT_APP_NGROK_HTTP + "/healthRecord", {
                         $class: "org.medrex.basic.healthRecord",
@@ -78,20 +82,16 @@ export default function FormDialog(props) {
                             'x-api-key': process.env.REACT_APP_API_KEY
                         }
                     } )
-                console.log(addRecordReq);
                 setSeverity('success');
                 setSnack(true);
-                setMessage('Request has been sent for EMR#');
-                console.log(open,severity,message);
-                setOpen(false);
+                setMessage('EMR '+y+' has been added.');
             }
             catch(error){
                 setSeverity('error');
                 setSnack(true);
-                setMessage('EMR has not been uploaded');
-                console.log(openSnack,severity,message);
-                setOpen(false);
+                setMessage('EMR has not been added.'+error.status);
             }
+            setOpen(false);
         }
 
     const updateField = e => {
@@ -100,13 +100,10 @@ export default function FormDialog(props) {
             [e.target.name]: e.target.value
         });
     };
-    const handleSnack = (event, reason) => {
-        if (reason === "clickaway") {
-            return;
-        }
-        setSnack(false);
-    }
 
+    console.log(severity);
+    console.log(message);
+    console.log(openSnack);
     return (
         <div>
             <Button variant="contained" color="secondary" onClick={handleClickOpen}>
@@ -217,15 +214,21 @@ export default function FormDialog(props) {
                     <Button color="secondary" variant='contained' type="submit">
                         Submit record
                     </Button>
-                    <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'right'}}
-                              open={openSnack} autoHideDuration={6000} onClose={handleSnack}>
-                        <Alert onClose={handleSnack} severity={severity}>
-                            {message}
-                        </Alert>
-                    </Snackbar>
+                    {/*<Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'right'}}*/}
+                    {/*          open={openSnack} autoHideDuration={6000} onClose={handleSnack}>*/}
+                    {/*    <Alert onClose={handleSnack} severity={severity}>*/}
+                    {/*        {message}*/}
+                    {/*    </Alert>*/}
+                    {/*</Snackbar>*/}
                 </DialogActions>
                 </form>
             </Dialog>
+            <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'right'}}
+                      open={openSnack} autoHideDuration={6000} onClose={handleSnack}>
+                <Alert onClose={handleSnack} severity={severity}>
+                    {message}
+                </Alert>
+            </Snackbar>
         </div>
     );
 }
