@@ -2,7 +2,7 @@
 //Patient only
 //homepage
 
-import React, { Component } from 'react'
+import React, {Component, useState} from 'react'
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -14,6 +14,8 @@ import axios from 'axios';
 import {Button} from "@material-ui/core";
 import Skeleton from '@material-ui/lab/Skeleton';
 import emailjs from "emailjs-com";
+import Alert from "@material-ui/lab/Alert";
+import Snackbar from "@material-ui/core/Snackbar";
 
 class AccessRequestsTable extends Component {
     constructor(props) {
@@ -21,9 +23,14 @@ class AccessRequestsTable extends Component {
         this.state = {
             requests: [],
             loading: true,
+            openSnack: false,
+            severity: 'info',
+            message:'',
+            clicked: false
         }
         this.click = this.click.bind(this);
     };
+
 
     async componentDidMount() {
         try{
@@ -83,13 +90,16 @@ class AccessRequestsTable extends Component {
 
             }
             this.setState({requests: queries});
+            this.setState({loading: false});
+
         }catch(error) {
             console.log(error)
+            this.setState({loading: false});
+
         }
-        this.setState({loading: false});
     }
 
-    async click(var1) {
+    async click(var1,index) {
         console.log('clicked');
         let email;
         try {
@@ -133,12 +143,32 @@ class AccessRequestsTable extends Component {
                     }, function (error) {
                         console.log('FAILED...', error);
                     });
-            } catch (error) {
-                console.log(error)
+                this.setState({severity: 'success'})
+                this.setState({openSnack: true});
+                this.setState({message: 'Access given to '+ var1.docName});
+                this.state.requests.splice(index, 1);
+                this.setState({requests: this.state.requests})
+            }
+            catch (error) {
+                console.log(error);
+                this.setState({severity: 'error'})
+                this.setState({openSnack: true});
+                this.setState({message: 'Unable to give access to '+ var1.docName});
             }
         } catch (error) {
             console.log(error);
+            this.setState({severity: 'error'})
+            this.setState({openSnack: true});
+            this.setState({message: 'Unable to give access to '+ var1.docName});
         }
+    }
+
+
+    handleClose = (event, reason) => {
+        if (reason === "clickaway") {
+            return;
+        }
+        this.setState({openSnack: false});
     }
 
     render() {
@@ -149,7 +179,7 @@ class AccessRequestsTable extends Component {
                     <div>
                         <Skeleton variant="text" />
                         <Skeleton variant="rect" height={118}/>
-                    </div> :
+                    </div>:
                     <div>
                         <TableContainer component={Paper}>
                             <Table style={{minWidth:'680'}} size="small" aria-label="a dense table">
@@ -164,8 +194,8 @@ class AccessRequestsTable extends Component {
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
-                                    {this.state.requests.map((row) =>
-                                        <TableRow key={row.docName}>
+                                    {this.state.requests.map((row,value) =>
+                                        <TableRow>
                                             <TableCell align="center">{row.docName}</TableCell>
                                             <TableCell align="center">{row.maker}</TableCell>
                                             <TableCell align="center">{row.medicalNo}</TableCell>
@@ -173,7 +203,7 @@ class AccessRequestsTable extends Component {
                                             <TableCell align="center">{row.shortAssess}</TableCell>
                                             <TableCell align='center'>
                                                 <Button color='secondary'
-                                                         onClick={() => {this.click(row)}}>
+                                                         onClick={() => {this.click(row,value)}}>
                                                 Grant Access
                                             </Button></TableCell>
                                         </TableRow>
@@ -181,6 +211,12 @@ class AccessRequestsTable extends Component {
                                 </TableBody>
                             </Table>
                         </TableContainer>
+                        <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'right'}}
+                                  open={this.state.openSnack} autoHideDuration={6000} onClose={this.handleClose}>
+                            <Alert onClose={this.handleClose} severity={this.state.severity}>
+                                {this.state.message}
+                            </Alert>
+                        </Snackbar>
                     </div>}
             </div>
         )

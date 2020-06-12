@@ -30,7 +30,6 @@ import SearchPatient from "./SearchPatient";
 import StatsGrid from "./StatsGrids";
 import Profile from "./Profile";
 import Skeleton from "@material-ui/lab/Skeleton";
-import Grid from "@material-ui/core/Grid";
 const axios = require('axios');
 
 const drawerWidth = 240;
@@ -123,17 +122,17 @@ export default function PersistentDrawerLeft(props) {
                         }
                     })
                 let dataToAdd = patData.data;
-                setIndex('0')
+                setIndex('0');
                 setParty(dataToAdd);
             } catch (error) {
                 console.log(error)
             }
         }
+        setLoading(false);
     }
 
     useEffect( () => {
         fetchData(user.sub.substring(9, 25));
-        setLoading(false);
     }, [user.sub.substring(9, 25)]);
 
 

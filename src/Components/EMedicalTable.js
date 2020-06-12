@@ -14,6 +14,7 @@ import CheckIcon from '@material-ui/icons/Check';
 import {Button} from "@material-ui/core";
 import EMedicalDialog from "./EMedicalDialog";
 import Skeleton from "@material-ui/lab/Skeleton";
+import CircularProgress from "@material-ui/core/CircularProgress";
 const axios = require('axios');
 
 const useStyles = makeStyles({
@@ -27,6 +28,7 @@ export default function EMedicalTable(props) {
     const classes = useStyles();
     const [records,setRecords]= useState([]);
     const [loading, setLoading] = React.useState(true);
+    const [clicked, setClick] = useState(false);
 
 
     console.log(props.identity);
@@ -90,8 +92,10 @@ export default function EMedicalTable(props) {
         fetchData(props.identity.pId);
     }, [props.identity.pId]);
 
-    async function verifyRecord(var1) {
+    async function verifyRecord(var1,valueMy) {
+        setClick(true);
         console.log("In verify")
+        let arr2=[]
         try{
             const verifyReq = await axios.post(process.env.REACT_APP_NGROK_HTTP + '/verifyRecord',
                 {
@@ -108,6 +112,8 @@ export default function EMedicalTable(props) {
             );
             console.log(verifyReq)
             var1.verified = true;
+            setClick(false);
+
         }catch(error){
             console.log(error);
         }
@@ -135,17 +141,19 @@ export default function EMedicalTable(props) {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {records.map((record) => (
+                        {records.map((record,recordNum) => (
                             <TableRow key={record.mrn}>
                                 <TableCell align="center">{record.mrn}</TableCell>
                                 <TableCell align="center">{record.recType}</TableCell>
-                                <TableCell align="center">{record.createdDate}</TableCell>
+                                <TableCell align="center">{record.createdDate.substring(0,10)}</TableCell>
                                 <TableCell align="center">{record.createdBy}</TableCell>
                                 <TableCell align='center'><EMedicalDialog patientRecord={record}/></TableCell>
                                 {record.verified?
                                 <TableCell align='center'><CheckIcon/></TableCell>:
+                                    clicked ? <TableCell align='center'>
+                                            <CircularProgress color='primary'/></TableCell>:
                                     <TableCell align='center'>
-                                        <Button color='secondary' onClick={()=>verifyRecord(record)}>
+                                        <Button color='secondary' onClick={()=>verifyRecord(record,recordNum)}>
                                             Verify</Button></TableCell>}
                             </TableRow>
                         ))}

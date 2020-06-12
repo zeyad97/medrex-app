@@ -1,13 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:npm_and_yarn" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="28480649-a059-4827-a8df-0d305360d954" name="Default Changelist" comment="">
+    <list default="true" id="28480649-a059-4827-a8df-0d305360d954" name="Default Changelist" comment="Testing functionality of request">
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/AccessibleEMRByDocTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/AccessibleEMRByDocTable.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/EMRMakerByDocForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/EMRMakerByDocForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/EMedicalDialog.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/EMedicalDialog.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/PatientSearchByDocTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/PatientSearchByDocTable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/AccessRequestsTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/AccessRequestsTable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/EMedicalTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/EMedicalTable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/PersistentLeftDrawer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/PersistentLeftDrawer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +127,8 @@
       <workItem from="1591700828247" duration="16447000" />
       <workItem from="1591785367192" duration="15011000" />
       <workItem from="1591827196565" duration="167000" />
-      <workItem from="1591866316669" duration="4027000" />
+      <workItem from="1591866316669" duration="9390000" />
+      <workItem from="1591956627270" duration="2088000" />
     </task>
     <task id="LOCAL-00001" summary="Auth0 used with google and facebook authentication. secure route also configured">
       <created>1588938236534</created>
@@ -260,7 +291,14 @@
       <option name="project" value="LOCAL" />
       <updated>1591824648782</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Doctor dashboard completed!&#10;Patient dashboard left.">
+      <created>1591871705763</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1591871705763</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -302,7 +340,8 @@
     <MESSAGE value="Nearly completed. Certain errors need to be dealt with." />
     <MESSAGE value="profile component started.&#10;Form submission still in works" />
     <MESSAGE value="Error handling, test cases and snackbar implementation left.&#10;App functionality is completed." />
-    <option name="LAST_COMMIT_MESSAGE" value="Error handling, test cases and snackbar implementation left.&#10;App functionality is completed." />
+    <MESSAGE value="Doctor dashboard completed!&#10;Patient dashboard left." />
+    <option name="LAST_COMMIT_MESSAGE" value="Doctor dashboard completed!&#10;Patient dashboard left." />
   </component>
   <component name="WindowStateProjectService">
     <state x="421" y="259" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1591364866582">
@@ -317,10 +356,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1440.900@0.0.1440.900" timestamp="1591050761472" />
-    <state x="237" y="25" key="CommitChangelistDialog2" timestamp="1591824648518">
+    <state x="237" y="25" key="CommitChangelistDialog2" timestamp="1591903253460">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="237" y="25" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1591824648518" />
+    <state x="237" y="25" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1591903253460" />
     <state x="100" y="100" width="1240" height="700" key="DiffContextDialog" timestamp="1591646953368">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -337,10 +376,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="533" y="160" key="RollbackChangesDialog/0.0.1440.900@0.0.1440.900" timestamp="1591646961910" />
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1591824658591">
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1591871713733">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1591824658591" />
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1591871713733" />
     <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1590672244738">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -353,17 +392,17 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="343" y="67" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1440.900@0.0.1440.900" timestamp="1590830770399" />
-    <state x="409" y="245" key="git4idea.merge.GitPullDialog" timestamp="1591646971052">
+    <state x="409" y="245" key="git4idea.merge.GitPullDialog" timestamp="1591889317098">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="409" y="245" key="git4idea.merge.GitPullDialog/0.0.1440.900@0.0.1440.900" timestamp="1591646971052" />
+    <state x="409" y="245" key="git4idea.merge.GitPullDialog/0.0.1440.900@0.0.1440.900" timestamp="1591889317098" />
     <state x="385" y="210" key="run.anything.popup" timestamp="1591288048611">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="385" y="210" key="run.anything.popup/0.0.1440.900@0.0.1440.900" timestamp="1591288048611" />
-    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1591288504686">
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1591877396662">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1591288504686" />
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1591877396662" />
   </component>
 </project>
