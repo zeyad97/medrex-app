@@ -4,6 +4,7 @@
 import React from "react";
 import { useAuth0 } from "../react-auth0-spa";
 import Authoriser from "./Authoriser";
+import LandingPage from "./LandingPage";
 
 const NavBar = () => {
     const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
@@ -11,10 +12,8 @@ const NavBar = () => {
     return (
         <div>
             {!isAuthenticated && (
-                <button onClick={() => loginWithRedirect({})}>Log in</button>
+                <LandingPage loginValue={loginWithRedirect}/>
             )}
-
-            {isAuthenticated && <button onClick={() => logout()}>Log out</button>}
             {isAuthenticated && (<span><Authoriser /></span>)}
         </div>
     );

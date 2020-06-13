@@ -25,8 +25,7 @@ class AccessRequestsTable extends Component {
             loading: true,
             openSnack: false,
             severity: 'info',
-            message:'',
-            clicked: false
+            message:''
         }
         this.click = this.click.bind(this);
     };
@@ -101,6 +100,7 @@ class AccessRequestsTable extends Component {
 
     async click(var1,index) {
         console.log('clicked');
+        this.setState({openSnack: true,message:"Processing request"})
         let email;
         try {
             const response = await axios.post(process.env.REACT_APP_NGROK_HTTP + 'giveAccess',
@@ -143,23 +143,18 @@ class AccessRequestsTable extends Component {
                     }, function (error) {
                         console.log('FAILED...', error);
                     });
-                this.setState({severity: 'success'})
-                this.setState({openSnack: true});
-                this.setState({message: 'Access given to '+ var1.docName});
-                this.state.requests.splice(index, 1);
-                this.setState({requests: this.state.requests})
+                this.setState({openSnack:false});
+                this.setState({severity: 'success',openSnack: true,message: 'Access given to '+ var1.docName})
             }
             catch (error) {
+                this.setState({openSnack:false});
                 console.log(error);
-                this.setState({severity: 'error'})
-                this.setState({openSnack: true});
-                this.setState({message: 'Unable to give access to '+ var1.docName});
+                this.setState({severity:'error', openSnack:true, message:'Unable to give access to '+ var1.docName});
+
             }
         } catch (error) {
             console.log(error);
-            this.setState({severity: 'error'})
-            this.setState({openSnack: true});
-            this.setState({message: 'Unable to give access to '+ var1.docName});
+            this.setState({severity:'error', openSnack:true, message:'Unable to give access to '+ var1.docName});
         }
     }
 

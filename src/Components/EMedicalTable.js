@@ -15,6 +15,9 @@ import {Button} from "@material-ui/core";
 import EMedicalDialog from "./EMedicalDialog";
 import Skeleton from "@material-ui/lab/Skeleton";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import Alert from "@material-ui/lab/Alert";
+import Snackbar from "@material-ui/core/Snackbar";
+import RevokeAccessDialog from "./RevokeAccessDialog";
 const axios = require('axios');
 
 const useStyles = makeStyles({
@@ -28,7 +31,9 @@ export default function EMedicalTable(props) {
     const classes = useStyles();
     const [records,setRecords]= useState([]);
     const [loading, setLoading] = React.useState(true);
-    const [clicked, setClick] = useState(false);
+    const [openSnack, setSnack] = useState(false);
+    const [message, setMessage] = useState('');
+    const [severity, setSeverity] = useState('info')
 
 
     console.log(props.identity);
@@ -46,7 +51,8 @@ export default function EMedicalTable(props) {
         let i,j;
         const dataToCheck = emrData.data;
         for(i=0; i<dataToCheck.length; i++){
-            const obj = {mrn:'', recType:'', createdDate:'',createdBy:'', trustedDocs:[], verified:false};
+            const obj = {mrn:'', recType:'', createdDate:'',createdBy:'', trustedDocs:[], reqDocs:[],
+                verified:false};
             obj.mrn = dataToCheck[i].mrn;
             obj.recType = dataToCheck[i].type;
             obj.createdDate = dataToCheck[i].date;
@@ -77,6 +83,22 @@ export default function EMedicalTable(props) {
                 objDoc.name = docName;
                 obj.trustedDocs.push(objDoc);
             }
+            let y;
+            for(y=1; y<dataToCheck[i].requestDocs.length; y++){
+                const objDoc = {name:'', id:''};
+                let docID = dataToCheck[i].requestDocs[y].substring(33,dataToCheck[i].requestDocs[y].length);
+                objDoc.id = docID;
+                const docReq = await axios.get(process.env.REACT_APP_NGROK_HTTP +'doctor/' + docID
+                    + "?filter={\"fields\": [ \"fName\", \"lName\"]}",
+                    {
+                        headers: {
+                            'x-api-key': process.env.REACT_APP_API_KEY
+                        }
+                    });
+                let docName = docReq.data.fName + ' ' + docReq.data.lName;
+                objDoc.name = docName;
+                obj.reqDocs.push(objDoc);
+            }
             if(dataToCheck[i].verified === 'true'){
                 obj.verified = true;
             }
@@ -92,10 +114,10 @@ export default function EMedicalTable(props) {
         fetchData(props.identity.pId);
     }, [props.identity.pId]);
 
-    async function verifyRecord(var1,valueMy) {
-        setClick(true);
+    async function verifyRecord(var1) {
         console.log("In verify")
-        let arr2=[]
+        setSnack(true);
+        setMessage('Verifying record#'+var1.mrn)
         try{
             const verifyReq = await axios.post(process.env.REACT_APP_NGROK_HTTP + '/verifyRecord',
                 {
@@ -111,16 +133,26 @@ export default function EMedicalTable(props) {
                 }
             );
             console.log(verifyReq)
+            setSnack(false);
             var1.verified = true;
-            setClick(false);
+            setSeverity('success');
+            setSnack(true);
+            setMessage('Verified record # '+var1.mrn)
 
         }catch(error){
             console.log(error);
         }
     }
 
-
     console.log(records);
+
+    const handleClose = (event, reason) => {
+        if (reason === "clickaway") {
+            return;
+        }
+        setSnack(false);
+    }
+
 
     return (
         loading?
@@ -150,15 +182,23 @@ export default function EMedicalTable(props) {
                                 <TableCell align='center'><EMedicalDialog patientRecord={record}/></TableCell>
                                 {record.verified?
                                 <TableCell align='center'><CheckIcon/></TableCell>:
-                                    clicked ? <TableCell align='center'>
-                                            <CircularProgress color='primary'/></TableCell>:
                                     <TableCell align='center'>
                                         <Button color='secondary' onClick={()=>verifyRecord(record,recordNum)}>
                                             Verify</Button></TableCell>}
+                                    <TableCell align='center'><RevokeAccessDialog patient={record}/></TableCell>
+                                <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'right'}}
+                                          open={openSnack} autoHideDuration={6000} onClose={handleClose}>
+                                    <Alert onClose={handleClose} severity={severity}>
+                                        {message}
+                                    </Alert>
+                                </Snackbar>
                             </TableRow>
                         ))}
+
                     </TableBody>
                 </Table>
             </TableContainer>
+
+
     );
 }

@@ -51,48 +51,52 @@ export default function FormDialog(props) {
 
     console.log(props);
     const handleSubmit = async(event) => {
-            event.preventDefault();
-            const myDate = new Date();
-            let y = randomNumber().toString();
-            try{
-                const addRecordReq = await axios.post(process.env.REACT_APP_NGROK_HTTP + "/healthRecord", {
-                        $class: "org.medrex.basic.healthRecord",
-                        mrn: y,
-                        owner: "resource:org.medrex.basic.patient#"+ props.patientMy[0].patId,
-                        maker: "resource:org.medrex.basic.doctor#"+ props.doctorMy.doctor.dId,
-                        date: myDate,
-                        history: form.hist,
-                        meds: form.meds,
-                        allergies: form.meds,
-                        shist: form.shist,
-                        bt: form.bt,
-                        bp: form.bp,
-                        hr: form.hr,
-                        rr: form.rr,
-                        extra: form.extra,
-                        labs: form.extra,
-                        assessment: form.ass,
-                        plan: form.plan,
-                        type: form.type,
-                        trustedDocs: [],
-                        requestDocs: []
-                    },
-                    {
-                        headers: {
-                            'x-api-key': process.env.REACT_APP_API_KEY
-                        }
-                    } )
-                setSeverity('success');
-                setSnack(true);
-                setMessage('EMR '+y+' has been added.');
-            }
-            catch(error){
-                setSeverity('error');
-                setSnack(true);
-                setMessage('EMR has not been added.'+error.status);
-            }
-            setOpen(false);
+        setSnack(true);
+        setMessage("Submitting Form kindly wait.")
+        event.preventDefault();
+        const myDate = new Date();
+        let y = randomNumber().toString();
+        try{
+            const addRecordReq = await axios.post(process.env.REACT_APP_NGROK_HTTP + "/healthRecord", {
+                    $class: "org.medrex.basic.healthRecord",
+                    mrn: y,
+                    owner: "resource:org.medrex.basic.patient#"+ props.patientMy[0].patId,
+                    maker: "resource:org.medrex.basic.doctor#"+ props.doctorMy.doctor.dId,
+                    date: myDate,
+                    history: form.hist,
+                    meds: form.meds,
+                    allergies: form.allerg,
+                    shist: form.shist,
+                    bt: form.bt,
+                    bp: form.bp,
+                    hr: form.hr,
+                    rr: form.rr,
+                    extra: form.extra,
+                    labs: form.labs,
+                    assessment: form.ass,
+                    plan: form.plan,
+                    type: form.type,
+                    trustedDocs: [],
+                    requestDocs: []
+                },
+                {
+                    headers: {
+                        'x-api-key': process.env.REACT_APP_API_KEY
+                    }
+                } )
+            setSnack(false);
+            setSeverity('success');
+            setSnack(true);
+            setMessage('EMR '+y+' has been added.');
         }
+        catch(error){
+            setSnack(false);
+            setSeverity('error');
+            setSnack(true);
+            setMessage('EMR has not been added.'+error.status);
+        }
+        setOpen(false);
+    }
 
     const updateField = e => {
         setValues({

@@ -10,6 +10,8 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import theme from './theme';
 import Authoriser from "./Components/Authoriser";
 import PersistentLeftDrawer from "./Components/PersistentLeftDrawer";
+import CardGen from "./Components/CardGen";
+import CoronaContent from "./Components/CoronaContent";
 
 
 function App() {
@@ -35,6 +37,9 @@ function App() {
                 </BrowserRouter>
             </ThemeProvider>
         </div>
+        // <div>
+        //     <CoronaContent/>
+        // </div>
     );
 }
 

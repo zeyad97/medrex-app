@@ -138,6 +138,8 @@ export default function PatientSearchByDocTable(props) {
 
 
     const requestAccess= async(rec) =>{
+        setSnack(true);
+        setMessage('Sending request. Kindly wait.');
         try{
             const accessReq = await axios.post(process.env.REACT_APP_NGROK_HTTP + "/requestAccess",
                 {
@@ -153,11 +155,13 @@ export default function PatientSearchByDocTable(props) {
                       }
                 })
             rec.request = true;
+            setSnack(false);
             setSeverity('success');
             setSnack(true);
             setMessage('Request has been sent for EMR#'+rec.mrn);
         }
         catch(error){
+            setSnack(false);
             setSeverity('error');
             setSnack(true);
             setMessage('Request has not been sent');

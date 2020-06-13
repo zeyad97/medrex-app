@@ -123,7 +123,7 @@ function SimpleDialog(props) {
                                 </Grid>
                                 <Grid item xs={6}>
                                     <h3>Social History</h3>
-                                    <Typography variant="body1" gutterBottom>{myRecord.history}</Typography>
+                                    <Typography variant="body1" gutterBottom>{myRecord.shist}</Typography>
                                 </Grid>
                                 <Grid item xs={12}>
                                     <Divider/>
