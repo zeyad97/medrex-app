@@ -30,6 +30,8 @@ import SearchPatient from "./SearchPatient";
 import StatsGrid from "./StatsGrids";
 import Profile from "./Profile";
 import Skeleton from "@material-ui/lab/Skeleton";
+import CoronaContent from "./CoronaContent";
+import Grid from "@material-ui/core/Grid";
 const axios = require('axios');
 
 const drawerWidth = 240;
@@ -100,6 +102,7 @@ export default function PersistentDrawerLeft(props) {
     const [index, setIndex] = React.useState('');
     const [party, setParty] = React.useState([]);
     const [ loading, setLoading] = React.useState(true);
+    console.log(user.picture);
 
     const valueToUse = user.sub.substring(9, 25);
 
@@ -249,11 +252,11 @@ export default function PersistentDrawerLeft(props) {
                     <div className={classes.drawerHeader}>
                     </div>
                     {loading? <div>
-                        <Skeleton variant="text" />
-                        <Skeleton variant="rect"/>
+                        <Skeleton variant="rect" height="100%"/>
                     </div>:
                     <div>
                         {index === '0' && <div>
+                            <CoronaContent/>
                             <StatsGrid/>
                             <AccessRequestsTable user={party}/>
                         </div> }
@@ -263,9 +266,15 @@ export default function PersistentDrawerLeft(props) {
                         </div>
                         }
                         {index === '2' && <div>
-                            <h1>Profile to be included here</h1>
+                            <Profile user={party} pic={user.picture}/>
                         </div>}
                         {index === '3' && <div>
+                            <Grid container justify='center' alignContent='center' alignItems='center'>
+                                <Grid item>
+                                    <CoronaContent/>
+                                </Grid>
+                            </Grid>
+                            <Divider/>
                             <StatsGrid/>
                             <SearchPatient doctor={party}/>
                         </div>}
@@ -273,7 +282,7 @@ export default function PersistentDrawerLeft(props) {
                             <AccessibleEMRByDocTable user={party}/>
                         </div>}
                         {index === '5' && <div>
-                            <Profile user={party}/>
+                            <Profile user={party} pic={user.picture}/>
                         </div>}
                     </div>}
                 </main>

@@ -82,9 +82,10 @@ class StatsGrid extends Component {
             //https://bit.dev/recharts/recharts/area-chart?example=5cebcb9470f126001cdb7d1a
 
             <div>
-
                 <Grid container direction="row" justify="center" alignItems="center" spacing={5}
                     style={{background:'#fbfbf8', padding:'30px'}}>
+                    <Grid item xs={12}>
+                    </Grid>
                         <Grid item xs={3}>
                             <Card className='root' >
                                 <div className='details' >

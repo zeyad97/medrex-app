@@ -233,7 +233,7 @@ class Form extends React.Component {
                                                     disableFuture openTo="year"
                                                     format="MM/dd/yyyy"
                                                     label="Date of birth"
-                                                    views={["year", "month", "date"]}
+                                                    views={["month", "date", "year"]}
                                                     value={this.state.dateOfBirth}
                                                     onChange={this.handleDateChange}
                                                 />
