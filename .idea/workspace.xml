@@ -33,18 +33,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="28480649-a059-4827-a8df-0d305360d954" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Components/CardGen.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/CoronaContent.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/LandingPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/RevokeAccessDialog.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/RevokeCheckBoxes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/AccessRequestsTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/AccessRequestsTable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/AccessibleEMRByDocTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/AccessibleEMRByDocTable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Authoriser.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Authoriser.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/CardGen.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/CardGen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/DocAccessTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/DocAccessTable.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/EMRMakerByDocForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/EMRMakerByDocForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/EMedicalDialog.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/EMedicalDialog.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/EMedicalTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/EMedicalTable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Form.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Form.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Intro.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Intro.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/NavBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NavBar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/PatientSearchByDocTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/PatientSearchByDocTable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/PersistentLeftDrawer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/PersistentLeftDrawer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/RevokeAccessDialog.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/RevokeAccessDialog.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/SearchPatient.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/SearchPatient.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/StatsGrids.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/StatsGrids.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,7 +142,7 @@
       <workItem from="1591785367192" duration="15011000" />
       <workItem from="1591827196565" duration="167000" />
       <workItem from="1591866316669" duration="9390000" />
-      <workItem from="1591956627270" duration="13703000" />
+      <workItem from="1591956627270" duration="33191000" />
     </task>
     <task id="LOCAL-00001" summary="Auth0 used with google and facebook authentication. secure route also configured">
       <created>1588938236534</created>
@@ -312,7 +319,14 @@
       <option name="project" value="LOCAL" />
       <updated>1591961144635</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Revoke access functionality left.">
+      <created>1592035510948</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1592035510948</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -331,7 +345,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Auth0 used with google and facebook authentication. secure route also configured" />
     <MESSAGE value="Profile retrieved, used in AppBar." />
     <MESSAGE value="AuthO functioning proeperly" />
     <MESSAGE value="Dashboard and form component created" />
@@ -356,7 +369,8 @@
     <MESSAGE value="Error handling, test cases and snackbar implementation left.&#10;App functionality is completed." />
     <MESSAGE value="Doctor dashboard completed!&#10;Patient dashboard left." />
     <MESSAGE value="Patient access request and verify notifs testing." />
-    <option name="LAST_COMMIT_MESSAGE" value="Patient access request and verify notifs testing." />
+    <MESSAGE value="Revoke access functionality left." />
+    <option name="LAST_COMMIT_MESSAGE" value="Revoke access functionality left." />
   </component>
   <component name="WindowStateProjectService">
     <state x="421" y="259" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1591364866582">
@@ -371,10 +385,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1440.900@0.0.1440.900" timestamp="1591050761472" />
-    <state x="237" y="25" key="CommitChangelistDialog2" timestamp="1591961144426">
+    <state x="237" y="25" key="CommitChangelistDialog2" timestamp="1592035510797">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="237" y="25" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1591961144426" />
+    <state x="237" y="25" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1592035510797" />
     <state x="100" y="100" width="1240" height="700" key="DiffContextDialog" timestamp="1591646953368">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -391,10 +405,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="533" y="160" key="RollbackChangesDialog/0.0.1440.900@0.0.1440.900" timestamp="1591646961910" />
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1592035448459">
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1592035519217">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1592035448459" />
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1592035519217" />
     <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1590672244738">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -403,21 +417,21 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1440.900@0.0.1440.900" timestamp="1590672244739" />
-    <state x="343" y="67" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1590830770399">
+    <state x="343" y="67" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1592060001871">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="343" y="67" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1440.900@0.0.1440.900" timestamp="1590830770399" />
+    <state x="343" y="67" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1440.900@0.0.1440.900" timestamp="1592060001871" />
     <state x="409" y="245" key="git4idea.merge.GitPullDialog" timestamp="1591889317098">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="409" y="245" key="git4idea.merge.GitPullDialog/0.0.1440.900@0.0.1440.900" timestamp="1591889317098" />
-    <state x="385" y="210" key="run.anything.popup" timestamp="1591288048611">
+    <state x="385" y="210" key="run.anything.popup" timestamp="1592075910779">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="385" y="210" key="run.anything.popup/0.0.1440.900@0.0.1440.900" timestamp="1591288048611" />
-    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1591877396662">
+    <state x="385" y="210" key="run.anything.popup/0.0.1440.900@0.0.1440.900" timestamp="1592075910779" />
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1592077225629">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1591877396662" />
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1592077225629" />
   </component>
 </project>

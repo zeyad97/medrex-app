@@ -10,6 +10,8 @@ import PersistentLeftDrawer from "./PersistentLeftDrawer";
 import Skeleton from "@material-ui/lab/Skeleton";
 // import history from "../utils/history";
 import { withRouter } from 'react-router-dom';
+import Alert from "@material-ui/lab/Alert";
+import Snackbar from "@material-ui/core/Snackbar";
 const axios = require('axios');
 
 
@@ -30,12 +32,16 @@ class Form extends React.Component {
             bloodGroup: '',
             address: '',
             photoLink: '',
-            formDone: false
+            formDone: false,
+            severity:'info',
+            message:'Form being processed. Kindly wait.',
+            openSnack: false
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleDateChange = this.handleDateChange.bind(this);
         this.handleRadioTextChange = this.handleRadioTextChange.bind(this);
         this.handleBloodGroupChange = this.handleBloodGroupChange.bind(this);
+        this.handleClose = this.handleClose.bind(this);
     }
 
     handleRadioTextChange = (name) => (e) => {
@@ -58,6 +64,7 @@ class Form extends React.Component {
 
     handleSubmit = async event => {
         event.preventDefault();
+        this.setState({openSnack:true})
         if (this.state.type === 'patient') {
             try {
                 const createPatient = await axios.post(process.env.REACT_APP_NGROK_HTTP + 'patient',
@@ -80,7 +87,8 @@ class Form extends React.Component {
                 console.log(createPatient.data.pId);
                 if(createPatient.status === 200){
                     this.props.history.push('/dashboard');
-                    this.setState({formDone: true});
+
+                    this.setState({openSnack:false,formDone: true});
                 }
 
             } catch (error) {
@@ -106,7 +114,7 @@ class Form extends React.Component {
                 console.log(this.state);
                 if(createDoctor.status === 200){
                     this.props.history.push('/dashboard');
-                    this.setState({formDone: true});
+                    this.setState({openSnack:false,formDone: true});
                 }
                 console.log(createDoctor.data.dId);
                 console.log("doc created")
@@ -115,6 +123,12 @@ class Form extends React.Component {
                 console.log("catch of createDoc")
             }
         }
+    }
+    handleClose = (event, reason) => {
+        if (reason === "clickaway") {
+            return;
+        }
+        this.setState({openSnack: false});
     }
 
     render() {
@@ -257,6 +271,12 @@ class Form extends React.Component {
                                     </Grid>
                                 </Grid>
                             </Grid>
+                            <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'right'}}
+                                      open={this.state.openSnack} autoHideDuration={6000} onClose={this.handleClose}>
+                                <Alert onClose={this.handleClose} severity={this.state.severity}>
+                                    {this.state.message}
+                                </Alert>
+                            </Snackbar>
                         </form>
                     )
                 }

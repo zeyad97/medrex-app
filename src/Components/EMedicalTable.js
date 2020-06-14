@@ -14,7 +14,6 @@ import CheckIcon from '@material-ui/icons/Check';
 import {Button} from "@material-ui/core";
 import EMedicalDialog from "./EMedicalDialog";
 import Skeleton from "@material-ui/lab/Skeleton";
-import CircularProgress from "@material-ui/core/CircularProgress";
 import Alert from "@material-ui/lab/Alert";
 import Snackbar from "@material-ui/core/Snackbar";
 import RevokeAccessDialog from "./RevokeAccessDialog";
@@ -119,7 +118,7 @@ export default function EMedicalTable(props) {
         setSnack(true);
         setMessage('Verifying record#'+var1.mrn)
         try{
-            const verifyReq = await axios.post(process.env.REACT_APP_NGROK_HTTP + '/verifyRecord',
+            const verifyReq = await axios.post(process.env.REACT_APP_NGROK_HTTP + 'verifyRecord',
                 {
                     $class: "org.medrex.basic.verifyRecord",
                     record: "resource:org.medrex.basic.healthRecord#"+ var1.mrn,
@@ -170,6 +169,7 @@ export default function EMedicalTable(props) {
                             <TableCell align="center">Created By</TableCell>
                             <TableCell align="center">Action</TableCell>
                             <TableCell align='center'>Verification</TableCell>
+                            <TableCell align='center'>Trusted Docs</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>

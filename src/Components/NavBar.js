@@ -7,7 +7,7 @@ import Authoriser from "./Authoriser";
 import LandingPage from "./LandingPage";
 
 const NavBar = () => {
-    const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
+    const { isAuthenticated, loginWithRedirect } = useAuth0();
 
     return (
         <div>

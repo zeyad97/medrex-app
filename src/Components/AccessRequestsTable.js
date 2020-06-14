@@ -2,7 +2,7 @@
 //Patient only
 //homepage
 
-import React, {Component, useState} from 'react'
+import React, {Component} from 'react'
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -116,6 +116,7 @@ class AccessRequestsTable extends Component {
                         'x-api-key': process.env.REACT_APP_API_KEY
                       }
                 });
+            console.log(response);
             try {
                 const docRes = await axios.get(process.env.REACT_APP_NGROK_HTTP + 'doctor/' + var1.docID,
                 {
@@ -144,7 +145,6 @@ class AccessRequestsTable extends Component {
                         console.log('FAILED...', error);
                     });
                 this.setState({openSnack:false});
-                this.setState({severity: 'success',openSnack: true,message: 'Access given to '+ var1.docName})
             }
             catch (error) {
                 this.setState({openSnack:false});
@@ -156,6 +156,7 @@ class AccessRequestsTable extends Component {
             console.log(error);
             this.setState({severity:'error', openSnack:true, message:'Unable to give access to '+ var1.docName});
         }
+        this.setState({severity: 'success',openSnack: true,message: 'Access given to '+ var1.docName})
     }
 
 
@@ -201,17 +202,17 @@ class AccessRequestsTable extends Component {
                                                          onClick={() => {this.click(row,value)}}>
                                                 Grant Access
                                             </Button></TableCell>
+                                            <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'right'}}
+                                                      open={this.state.openSnack} autoHideDuration={6000} onClose={this.handleClose}>
+                                                <Alert onClose={this.handleClose} severity={this.state.severity}>
+                                                    {this.state.message}
+                                                </Alert>
+                                            </Snackbar>
                                         </TableRow>
                                     )}
                                 </TableBody>
                             </Table>
                         </TableContainer>
-                        <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'right'}}
-                                  open={this.state.openSnack} autoHideDuration={6000} onClose={this.handleClose}>
-                            <Alert onClose={this.handleClose} severity={this.state.severity}>
-                                {this.state.message}
-                            </Alert>
-                        </Snackbar>
                     </div>}
             </div>
         )

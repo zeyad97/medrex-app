@@ -84,6 +84,7 @@ export default function FormDialog(props) {
                         'x-api-key': process.env.REACT_APP_API_KEY
                     }
                 } )
+            console.log(addRecordReq);
             setSnack(false);
             setSeverity('success');
             setSnack(true);

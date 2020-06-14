@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import { Grid } from "@material-ui/core";
 import Avatar from "@material-ui/core/Avatar";
 import {makeStyles} from "@material-ui/core/styles";
-import {deepOrange, deepPurple} from "@material-ui/core/colors";
+import {deepOrange} from "@material-ui/core/colors";
 import DialogForm from "./EMRMakerByDocForm";
 import PatientSearchByDocTable from "./PatientSearchByDocTable";
 
@@ -27,7 +27,7 @@ export default function DocAccessTable(props) {
 
     String.prototype.getInitials = function(glue){
         if (typeof glue == "undefined") {
-            var glue = true;
+            glue = true;
         }
 
         var initials = this.replace(/[^a-zA-Z- ]/g, "").match(/\b\w/g);

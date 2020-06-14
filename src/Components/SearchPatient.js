@@ -3,15 +3,11 @@
 //doctor component used to search patients
 
 import React from 'react';
-import InputBase from '@material-ui/core/InputBase';
-import {fade, makeStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
 import axios from 'axios';
 import SearchResultsTable from './SearchResultsTable';
-import {Theme as theme} from "@material-ui/core/styles/createMuiTheme";
 import {Button, Grid} from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
-import Paper from "@material-ui/core/Paper";
 
 class SearchPatient extends React.Component {
     constructor(props) {

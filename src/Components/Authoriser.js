@@ -1,6 +1,5 @@
 import React from "react";
 import { useAuth0 } from "../react-auth0-spa";
-import Form from './Form';
 import Intro from "./Intro";
 
 const Authoriser = () => {

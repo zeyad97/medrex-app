@@ -2,7 +2,7 @@
 
 import React from "react";
 import NavBar from "./Components/NavBar";
-import {Router, Route, Switch, BrowserRouter} from "react-router-dom";
+import {Route, Switch, BrowserRouter} from "react-router-dom";
 import history from "./utils/history";
 import PrivateRoute from "./Components/PrivateRoute";
 import { ThemeProvider } from '@material-ui/core/styles'
@@ -10,8 +10,6 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import theme from './theme';
 import Authoriser from "./Components/Authoriser";
 import PersistentLeftDrawer from "./Components/PersistentLeftDrawer";
-import CardGen from "./Components/CardGen";
-import CoronaContent from "./Components/CoronaContent";
 
 
 function App() {

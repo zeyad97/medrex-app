@@ -101,6 +101,7 @@ export default function PersistentDrawerLeft(props) {
     const [party, setParty] = React.useState([]);
     const [ loading, setLoading] = React.useState(true);
 
+    const valueToUse = user.sub.substring(9, 25);
 
     async function fetchData(myValue){
         try {
@@ -132,9 +133,8 @@ export default function PersistentDrawerLeft(props) {
     }
 
     useEffect( () => {
-        fetchData(user.sub.substring(9, 25));
-    }, [user.sub.substring(9, 25)]);
-
+        fetchData(valueToUse);
+    }, [valueToUse]);
 
 
     const handleDrawerOpen = () => {

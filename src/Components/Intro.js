@@ -1,7 +1,7 @@
 //used to display EMRs of a particular patient after a doctor searches for a patient
 //doctor only component
 
-import React, {useEffect, useState } from 'react';
+import React, {useEffect } from 'react';
 import Form from "./Form";
 import PersistentLeftDrawer from "./PersistentLeftDrawer";
 import {CircularProgress} from "@material-ui/core";
@@ -22,6 +22,8 @@ export default function Intro(props) {
     const [testForm, loadForm] = React.useState(false);
     const [loading, setLoading] = React.useState(false);
 
+    const valueToUse = props.user.sub.substring(9, 25);
+
     async function fetchData(myValue){
         try {
             const docData = await axios.get(process.env.REACT_APP_NGROK_HTTP +'doctor/' + myValue,
@@ -31,6 +33,7 @@ export default function Intro(props) {
                     }
                 });
             let dataToAdd = docData.data
+            console.log(dataToAdd);
             setLoading(true);
         }catch (error) {
             try {
@@ -41,6 +44,7 @@ export default function Intro(props) {
                         }
                     })
                 let dataToAdd = patData.data;
+                console.log(dataToAdd);
                 setLoading(true);
             } catch (error) {
                 loadForm(true);
@@ -52,8 +56,8 @@ export default function Intro(props) {
     const classes = useStyles();
 
     useEffect( () => {
-        fetchData(props.user.sub.substring(9, 25));
-    }, [props.user.sub.substring(9, 25)]);
+        fetchData(valueToUse);
+    }, [valueToUse]);
 
     if(loading){return (
         testForm ? <div>

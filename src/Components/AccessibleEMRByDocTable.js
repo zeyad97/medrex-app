@@ -13,7 +13,6 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import axios from 'axios';
-import {Button} from "@material-ui/core";
 import Skeleton from '@material-ui/lab/Skeleton';
 import EMedicalDialog from "./EMedicalDialog";
 
