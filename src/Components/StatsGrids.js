@@ -62,9 +62,10 @@ class StatsGrid extends Component {
     async componentDidMount() {
         try {
             try{
-                const result = await axios.get(process.env.REACT_APP_NGROK_HTTP + 'updateStats', {
-                    "$class" : "org.medrex.basic.stats",
-                    "statsToUpdate" : "resource:org.medrex.basic.stats#01",
+                const result = await axios.post(process.env.REACT_APP_NGROK_HTTP + 'updateStats', 
+                {
+                    "$class": "org.medrex.basic.updateStats",
+                    "statsToUpdate": "resource:org.medrex.basic.stats#01",
                     "transactionId": "",
                     "timestamp": new Date()
                 },
