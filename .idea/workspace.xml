@@ -33,15 +33,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="28480649-a059-4827-a8df-0d305360d954" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/EMedicalDialog.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/EMedicalDialog.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Form.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Form.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/PersistentLeftDrawer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/PersistentLeftDrawer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Profile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/AccessRequestsTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/AccessRequestsTable.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/RevokeCheckBoxes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/RevokeCheckBoxes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/StatsGrids.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/StatsGrids.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,7 +129,7 @@
       <workItem from="1591956627270" duration="54828000" />
       <workItem from="1592225325421" duration="2157000" />
       <workItem from="1592308863886" duration="3280000" />
-      <workItem from="1592385381947" duration="2468000" />
+      <workItem from="1592385381947" duration="5140000" />
     </task>
     <task id="LOCAL-00001" summary="Auth0 used with google and facebook authentication. secure route also configured">
       <created>1588938236534</created>
@@ -333,7 +327,14 @@
       <option name="project" value="LOCAL" />
       <updated>1592171546060</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Minor fixes made.">
+      <created>1592408022081</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1592408022081</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -352,7 +353,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Dashboard and form component created" />
     <MESSAGE value="Dashboard removed, consolidated Form component created." />
     <MESSAGE value="Form completed." />
     <MESSAGE value="Form converted into a classful component with two more additional fields." />
@@ -377,7 +377,8 @@
     <MESSAGE value="Revoke access functionality left." />
     <MESSAGE value="Revoke functionality completed. Rendering on update fixes required. Corona work started." />
     <MESSAGE value="Rendering fixes required. App is nearly completed." />
-    <option name="LAST_COMMIT_MESSAGE" value="Rendering fixes required. App is nearly completed." />
+    <MESSAGE value="Minor fixes made." />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor fixes made." />
   </component>
   <component name="WindowStateProjectService">
     <state x="183" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1592238002277">
@@ -396,10 +397,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1440.900@0.0.1440.900" timestamp="1592169270674" />
-    <state x="237" y="25" key="CommitChangelistDialog2" timestamp="1592171545901">
+    <state x="237" y="25" key="CommitChangelistDialog2" timestamp="1592408021835">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="237" y="25" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1592171545901" />
+    <state x="237" y="25" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1592408021835" />
     <state x="100" y="100" width="1240" height="700" key="DiffContextDialog" timestamp="1591646953368">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -416,10 +417,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="533" y="160" key="RollbackChangesDialog/0.0.1440.900@0.0.1440.900" timestamp="1591646961910" />
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1592171553193">
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1592408042990">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1592171553193" />
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1592408042990" />
     <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1590672244738">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
