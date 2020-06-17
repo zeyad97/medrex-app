@@ -62,7 +62,7 @@ class StatsGrid extends Component {
     async componentDidMount() {
         try {
             try{
-                const result = await axios.post(process.env.REACT_APP_NGROK_HTTP + 'updateStats', 
+                const result = await axios.post(process.env.REACT_APP_NGROK_HTTP + 'updateStats',
                 {
                     "$class": "org.medrex.basic.updateStats",
                     "statsToUpdate": "resource:org.medrex.basic.stats#01",
@@ -140,7 +140,6 @@ class StatsGrid extends Component {
                                     <Typography variant="subtitle1" color="textPrimary">
                                     Total Doctors
                                     </Typography>
-
                                     </CardContent>
                                 </div>
                                 <ResponsiveContainer width="100%" height={100}>

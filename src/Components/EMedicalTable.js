@@ -115,6 +115,7 @@ export default function EMedicalTable(props) {
 
     async function verifyRecord(var1) {
         console.log("In verify")
+        setSeverity('info');
         setSnack(true);
         setMessage('Verifying record#'+var1.mrn)
         try{
@@ -141,6 +142,7 @@ export default function EMedicalTable(props) {
         }catch(error){
             console.log(error);
         }
+        setSnack(false);
     }
 
     console.log(records);

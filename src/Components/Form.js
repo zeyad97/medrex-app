@@ -198,6 +198,7 @@ class Form extends React.Component {
                                                 value={this.state.cnic}
                                                 onChange={this.handleRadioTextChange("cnic")}
                                                 variant="outlined"
+                                                inputProps={{ maxLength: 13, minLength:13 }}
                                             />
                                         </Grid>
                                         <Grid item>
@@ -225,6 +226,7 @@ class Form extends React.Component {
                                                 value={this.state.email}
                                                 onChange={this.handleRadioTextChange('email')}
                                                 variant="outlined"
+                                                type="email"
                                             />
                                         </Grid>
                                         <Grid item>

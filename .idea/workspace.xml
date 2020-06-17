@@ -34,8 +34,10 @@
   <component name="ChangeListManager">
     <list default="true" id="28480649-a059-4827-a8df-0d305360d954" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/AccessRequestsTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/AccessRequestsTable.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/RevokeCheckBoxes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/RevokeCheckBoxes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/CoronaContent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/CoronaContent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/EMedicalTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/EMedicalTable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Form.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Form.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/StatsGrids.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/StatsGrids.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +131,7 @@
       <workItem from="1591956627270" duration="54828000" />
       <workItem from="1592225325421" duration="2157000" />
       <workItem from="1592308863886" duration="3280000" />
-      <workItem from="1592385381947" duration="5140000" />
+      <workItem from="1592385381947" duration="7668000" />
     </task>
     <task id="LOCAL-00001" summary="Auth0 used with google and facebook authentication. secure route also configured">
       <created>1588938236534</created>
@@ -334,7 +336,14 @@
       <option name="project" value="LOCAL" />
       <updated>1592408022081</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="App works fine - Revoke access rendering.">
+      <created>1592416525513</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1592416525513</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -353,7 +362,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Dashboard removed, consolidated Form component created." />
     <MESSAGE value="Form completed." />
     <MESSAGE value="Form converted into a classful component with two more additional fields." />
     <MESSAGE value="Registration module completed - validation.&#10;StatsGrid and Profile component is in works." />
@@ -378,7 +386,8 @@
     <MESSAGE value="Revoke functionality completed. Rendering on update fixes required. Corona work started." />
     <MESSAGE value="Rendering fixes required. App is nearly completed." />
     <MESSAGE value="Minor fixes made." />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor fixes made." />
+    <MESSAGE value="App works fine - Revoke access rendering." />
+    <option name="LAST_COMMIT_MESSAGE" value="App works fine - Revoke access rendering." />
   </component>
   <component name="WindowStateProjectService">
     <state x="183" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1592238002277">
@@ -397,14 +406,14 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1440.900@0.0.1440.900" timestamp="1592169270674" />
-    <state x="237" y="25" key="CommitChangelistDialog2" timestamp="1592408021835">
+    <state x="237" y="25" key="CommitChangelistDialog2" timestamp="1592416525361">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="237" y="25" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1592408021835" />
-    <state x="100" y="100" width="1240" height="700" key="DiffContextDialog" timestamp="1591646953368">
+    <state x="237" y="25" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1592416525361" />
+    <state x="100" y="100" width="1240" height="700" key="DiffContextDialog" timestamp="1592426391998">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="100" y="100" width="1240" height="700" key="DiffContextDialog/0.0.1440.900@0.0.1440.900" timestamp="1591646953368" />
+    <state x="100" y="100" width="1240" height="700" key="DiffContextDialog/0.0.1440.900@0.0.1440.900" timestamp="1592426391998" />
     <state x="254" y="79" key="MergeDialog" timestamp="1591219929332">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -413,14 +422,14 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="608" y="324" width="443" height="252" key="MultipleFileMergeDialog/0.0.1440.900@0.0.1440.900" timestamp="1591219929365" />
-    <state x="533" y="160" key="RollbackChangesDialog" timestamp="1591646961910">
+    <state x="533" y="160" key="RollbackChangesDialog" timestamp="1592426396722">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="533" y="160" key="RollbackChangesDialog/0.0.1440.900@0.0.1440.900" timestamp="1591646961910" />
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1592408042990">
+    <state x="533" y="160" key="RollbackChangesDialog/0.0.1440.900@0.0.1440.900" timestamp="1592426396722" />
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1592416534914">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1592408042990" />
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1592416534914" />
     <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1590672244738">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -433,10 +442,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="343" y="67" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1440.900@0.0.1440.900" timestamp="1592060001871" />
-    <state x="409" y="245" key="git4idea.merge.GitPullDialog" timestamp="1591889317098">
+    <state x="409" y="245" key="git4idea.merge.GitPullDialog" timestamp="1592426408084">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="409" y="245" key="git4idea.merge.GitPullDialog/0.0.1440.900@0.0.1440.900" timestamp="1591889317098" />
+    <state x="409" y="245" key="git4idea.merge.GitPullDialog/0.0.1440.900@0.0.1440.900" timestamp="1592426408084" />
     <state x="385" y="210" key="run.anything.popup" timestamp="1592075910779">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
