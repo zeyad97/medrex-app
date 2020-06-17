@@ -52,12 +52,15 @@ export default (props) => {
 
     const handleSubmit = async (event) =>{
         event.preventDefault();
+        let arr0 = props.doctors.trustedDocs;
         console.log(isSelected);
         let i;
         try{
         for(i=0; i<isSelected.length; i++){
             let doctorToRevoke = isSelected[i];
             console.log(doctorToRevoke);
+            const index = arr0.map(e => e.name).indexOf(doctorToRevoke);
+            console.log(index);
             setSnack(true);
             setMessage("Revoking access. Kindly wait.")
                 const revokeDoctor = await axios.post(process.env.REACT_APP_NGROK_HTTP + 'revokeAccess',
@@ -72,7 +75,14 @@ export default (props) => {
                         headers: {
                             'x-api-key': process.env.REACT_APP_API_KEY
                         }
-                    } );}
+                    } );
+            if (index > -1) {
+                arr0.splice(index, 1);
+                console.log(arr0);
+                props.doctors.trustedDocs = arr0;
+        }
+
+                }
                 setSeverity('success');
                 setSnack(true);
                 setMessage("Revoked access");

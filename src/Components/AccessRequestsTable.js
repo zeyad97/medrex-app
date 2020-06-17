@@ -152,11 +152,17 @@ class AccessRequestsTable extends Component {
                 this.setState({severity:'error', openSnack:true, message:'Unable to give access to '+ var1.docName});
 
             }
+            if (index > -1) {
+                let arr0 = this.state.requests;
+                arr0.splice(index, 1);
+                console.log(arr0);
+                this.setState({requests: arr0})
+            }
+            this.setState({severity: 'success',openSnack: true,message: 'Access given to '+ var1.docName})
         } catch (error) {
             console.log(error);
             this.setState({severity:'error', openSnack:true, message:'Unable to give access to '+ var1.docName});
         }
-        this.setState({severity: 'success',openSnack: true,message: 'Access given to '+ var1.docName})
     }
 
 
