@@ -61,6 +61,23 @@ class StatsGrid extends Component {
 
     async componentDidMount() {
         try {
+            try{
+                const result = await axios.get(process.env.REACT_APP_NGROK_HTTP + 'updateStats', {
+                    "$class" : "org.medrex.basic.stats",
+                    "statsToUpdate" : "resource:org.medrex.basic.stats#01",
+                    "transactionId": "",
+                    "timestamp": new Date()
+                },
+                {
+                    headers: {
+                        'x-api-key': process.env.REACT_APP_API_KEY
+                    }
+                });
+                console.log('updatestats',result);
+            } catch(error){
+                console.log('updateStats',error);
+            }
+
             const result = await axios.get(process.env.REACT_APP_NGROK_HTTP + 'queries/getStats',
             {
                 headers: {
