@@ -13,7 +13,7 @@ const axios = require('axios');
 
 const useStyles = makeStyles({
     root: {
-        maxWidth: 700,
+        width: 650,
     },
     media: {
         height: 140,
@@ -57,7 +57,7 @@ export default function CoronaContent() {
                         <CardActionArea>
                             <CardMedia
                                 className={classes.media}
-                                image="https://source.unsplash.com/fuqv-V02ZhE"
+                                image="https://source.unsplash.com/fuqv-V02ZhE/1600x900"
                                 title="Pakistan"
                             />
                             <CardContent>
@@ -89,7 +89,7 @@ export default function CoronaContent() {
                         <CardActionArea>
                             <CardMedia
                                 className={classes.media}
-                                image="https://source.unsplash.com/VO0OEWNS8gc"
+                                image="https://source.unsplash.com/VO0OEWNS8gc/1600x900"
                                 title="The United States"
                             />
                             <CardContent>

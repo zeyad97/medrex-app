@@ -32,6 +32,7 @@ import Profile from "./Profile";
 import Skeleton from "@material-ui/lab/Skeleton";
 import CoronaContent from "./CoronaContent";
 import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
 const axios = require('axios');
 
 const drawerWidth = 240;
@@ -221,7 +222,7 @@ export default function PersistentDrawerLeft(props) {
                             <MenuIcon/>
                         </IconButton>
                         {/*<Typography variant="h6" noWrap>*/}
-                            Welcome {party.fName}!
+                               Welcome {party.fName}!
                         {/*</Typography>*/}
                     </Toolbar>
                 </AppBar>
@@ -256,11 +257,7 @@ export default function PersistentDrawerLeft(props) {
                     </div>:
                     <div>
                         {index === '0' && <div>
-                            <Grid container justify='center' alignContent='center' alignItems='center'>
-                                <Grid item>
-                                    <CoronaContent/>
-                                </Grid>
-                            </Grid>
+                            <CoronaContent/>
                             <Divider/>
                             <StatsGrid/>
                             <AccessRequestsTable user={party}/>
