@@ -1,6 +1,6 @@
 // src/App.js
 
-import React, {useEffect} from "react";
+import React from "react";
 import NavBar from "./Components/NavBar";
 import {Route, Switch, BrowserRouter} from "react-router-dom";
 import history from "./utils/history";

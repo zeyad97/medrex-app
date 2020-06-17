@@ -84,8 +84,6 @@ class StatsGrid extends Component {
             <div>
                 <Grid container direction="row" justify="center" alignItems="center" spacing={5}
                     style={{background:'#fbfbf8', padding:'30px'}}>
-                    <Grid item xs={12}>
-                    </Grid>
                         <Grid item xs={3}>
                             <Card className='root' >
                                 <div className='details' >
@@ -97,13 +95,12 @@ class StatsGrid extends Component {
                                     <Typography variant="subtitle1" color="textPrimary">
                                     Total Patients
                                     </Typography>
-
                                     </CardContent>
                                 </div>
                                 <ResponsiveContainer width="100%" height={100}>
                                 <AreaChart
                                 width={150}
-                                height={100}
+                                height={parseInt(this.state.stats.patients)}
                                 data={data}
                                 margin={{
                                     top: 5, right: 5, left: 5, bottom: 5,
@@ -113,8 +110,6 @@ class StatsGrid extends Component {
                             </AreaChart>
                             </ResponsiveContainer>
                             </Card>
-
-
                         </Grid>
                         <Grid item xs={3}>
                             <Card className='root' >
@@ -133,7 +128,7 @@ class StatsGrid extends Component {
                                 <ResponsiveContainer width="100%" height={100}>
                                 <AreaChart
                                 width={150}
-                                height={100}
+                                height={parseInt(this.state.stats.doctors)}
                                 data={data}
                                 margin={{
                                     top: 5, right: 5, left: 5, bottom: 5,
@@ -163,7 +158,7 @@ class StatsGrid extends Component {
                                 <ResponsiveContainer width="100%" height={100}>
                                 <AreaChart
                                 width={150}
-                                height={100}
+                                height={parseInt(this.state.stats.emrs)}
                                 data={data}
                                 margin={{
                                     top: 5, right: 5, left: 5, bottom: 5,
@@ -193,7 +188,7 @@ class StatsGrid extends Component {
                                 <ResponsiveContainer width="100%" height={100}>
                                 <AreaChart
                                 width={150}
-                                height={100}
+                                height={parseInt(this.state.stats.transactions)}
                                 data={data}
                                 margin={{
                                     top: 5, right: 5, left: 5, bottom: 5,

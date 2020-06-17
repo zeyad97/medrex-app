@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Profile(props) {
     const classes = useStyles();
     console.log(props.pic);
+    console.log(props.user)
 
 
     return (
@@ -68,23 +69,18 @@ export default function Profile(props) {
                     <Grid container item xs={6} justify='flex-start' alignContent='flex-start' alignItems='flex-start'>
                         <Typography variant="h6" gutterBottom>{props.user.dob.substring(0,10)}</Typography>
                     </Grid>
-                    {props.user.type === 'patient'?
-                        <div>
-                            <Grid container item xs={6} justify='flex-end' alignContent='flex-end' alignItems='flex-end'>
-                                <Typography variant="h6" gutterBottom>Blood Group:</Typography>
-                            </Grid>
-                            <Grid container item xs={6} justify='flex-start' alignContent='flex-start' alignItems='flex-start'>
-                                <Typography variant="h6" gutterBottom>{props.user.bloodGroup}</Typography>
-                            </Grid>
-                            <Grid container item xs={6} justify='flex-end' alignContent='flex-end' alignItems='flex-end'>
-                                <Typography variant="h6" gutterBottom>Address:</Typography>
-                            </Grid>
-                            <Grid container item xs={6} justify='flex-start' alignContent='flex-start' alignItems='flex-start'>
-                                <Typography variant="h6" gutterBottom>{props.user.address}</Typography>
-                            </Grid>
-                        </div>
-                        :
-                        <div></div>}
+                    <Grid container item xs={6} justify='flex-end' alignContent='flex-end' alignItems='flex-end'>
+                        <Typography variant="h6" gutterBottom>Blood Group:</Typography>
+                    </Grid>
+                    <Grid container item xs={6} justify='flex-start' alignContent='flex-start' alignItems='flex-start'>
+                        <Typography variant="h6" gutterBottom>{props.user.bloodGroup}</Typography>
+                    </Grid>
+                    <Grid container item xs={6} justify='flex-end' alignContent='flex-end' alignItems='flex-end'>
+                        <Typography variant="h6" gutterBottom>Address:</Typography>
+                    </Grid>
+                    <Grid container item xs={6} justify='flex-start' alignContent='flex-start' alignItems='flex-start'>
+                        <Typography variant="h6" gutterBottom>{props.user.address}</Typography>
+                    </Grid>
                 </Grid>
         </div>
     );

@@ -256,7 +256,12 @@ export default function PersistentDrawerLeft(props) {
                     </div>:
                     <div>
                         {index === '0' && <div>
-                            <CoronaContent/>
+                            <Grid container justify='center' alignContent='center' alignItems='center'>
+                                <Grid item>
+                                    <CoronaContent/>
+                                </Grid>
+                            </Grid>
+                            <Divider/>
                             <StatsGrid/>
                             <AccessRequestsTable user={party}/>
                         </div> }

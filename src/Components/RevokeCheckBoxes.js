@@ -28,7 +28,7 @@ export default (props) => {
     const [severity, setSeverity] = useState('info')
 
     const handleChange = (event,id) => {
-        let newSelected = isSelected.slice(0,isSelected.length);
+        let newSelected = isSelected.slice(0);
         if (newSelected.includes(id)){
             const index = newSelected.indexOf(id);
             if (index > -1){
@@ -54,12 +54,12 @@ export default (props) => {
         event.preventDefault();
         console.log(isSelected);
         let i;
+        try{
         for(i=0; i<isSelected.length; i++){
             let doctorToRevoke = isSelected[i];
             console.log(doctorToRevoke);
             setSnack(true);
             setMessage("Revoking access. Kindly wait.")
-            try{
                 const revokeDoctor = await axios.post(process.env.REACT_APP_NGROK_HTTP + 'revokeAccess',
                     {
                         $class: "org.medrex.basic.revokeAccess",
@@ -72,11 +72,10 @@ export default (props) => {
                         headers: {
                             'x-api-key': process.env.REACT_APP_API_KEY
                         }
-                    } );
-                console.log(revokeDoctor);
+                    } );}
                 setSeverity('success');
                 setSnack(true);
-                setMessage("Revoked "+doctorToRevoke);
+                setMessage("Revoked access");
             }catch(error){
                 console.log(error);
                 setSnack(false);
@@ -84,7 +83,6 @@ export default (props) => {
                 setMessage("There seems to be an error.")
             }
         }
-    }
 
     return (
         <div className={classes.root}>

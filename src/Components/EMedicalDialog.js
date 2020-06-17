@@ -18,7 +18,6 @@ const axios = require('axios');
 function SimpleDialog(props) {
     const { onClose, selectedValue, open } = props;
     const [myRecord, setMyRec] = React.useState([]);
-    let x = false;
 
     const handleClose = () => {
         onClose(selectedValue);
@@ -38,11 +37,9 @@ function SimpleDialog(props) {
                     }
                 });
             console.log(fetchRecord.data);
-            if(myRecord.verified === 'true'){
-                x = true;
-            }
             setMyRec(fetchRecord.data);
         }catch(error){
+            console.log(error);
         }
 
     }
@@ -57,7 +54,6 @@ function SimpleDialog(props) {
         return(<Dialog onClose={handleClose} aria-labelledby="simple-dialog-title" open={open}>
             <Paper variant="outlined" elevation={3} >
                 <DialogTitle id="simple-dialog-title">
-                    { x ? <VerifiedUserIcon/>:<div></div> }
                     Medical Record Number {myRecord.mrn}
                 </DialogTitle>
                 <DialogContent>
@@ -75,78 +71,77 @@ function SimpleDialog(props) {
             <Dialog onClose={handleClose} aria-labelledby="simple-dialog-title" open={open}>
                 <Paper variant="outlined" elevation={3} >
                     <DialogTitle id="simple-dialog-title">
-                        { x ? <VerifiedUserIcon/>:<div></div> }
                         Medical Record Number {myRecord.mrn}
                     </DialogTitle>
                     <DialogContent>
+                        { myRecord.verified === "true" ? <VerifiedUserIcon/>:<div></div>}
                         <Grid container direction='row' justify="center" spacing={1}>
                             <Grid container item>
                                 <Grid item xs={12}>
-                                    <Typography variant='h5' style={{backgroundColor:'#0B3948',color:'#FFFFFF'}}>
+                                    <Typography variant='h6' gutterBottom={true}>
                                         Vitals</Typography>
                                 </Grid>
                                 <Grid item xs={6}>
-                                    <h3>Body Temperature</h3>
-                                    {/*<Typography variant="body1" gutterBottom>{myRecord.bt}</Typography>*/}
-                                    <Typography variant="body1" gutterBottom>{myRecord.bt}</Typography>
+                                    <Typography variant="caption">Body Temperature</Typography>
+                                    <p>{myRecord.bt}</p>
                                 </Grid>
                                 <Grid item xs={6}>
-                                    <h3>Blood Pressure</h3>
-                                    <Typography variant="body1" gutterBottom>{myRecord.bp}</Typography>
+                                    <Typography variant="caption">Blood Pressure</Typography>
+                                    <p>{myRecord.bp}</p>
                                 </Grid>
                                 <Grid item xs={6}>
-                                    <h3>Heart Rate</h3>
-                                    <Typography variant="body1" gutterBottom>{myRecord.hr}</Typography>
+                                    <Typography variant="caption">Heart Rate</Typography>
+                                    <p>{myRecord.hr}</p>
                                 </Grid>
                                 <Grid item xs={6}>
-                                    <h3>Respiratory Rate</h3>
-                                    <Typography variant="body1" gutterBottom>{myRecord.rr}</Typography>
+                                    <Typography variant="caption">Respiratory Rate</Typography>
+                                    <p>{myRecord.rr}</p>
                                 </Grid>
                                 <Grid item xs={12}>
                                     <Divider/>
                                 </Grid>
                                 <Grid item xs={12}>
-                                    <Typography variant='h5' style={{backgroundColor:'#0B3948',color:'#FFFFFF'}}>
+                                    <Typography variant='h6' gutterBottom={true}>
                                         History</Typography>
                                 </Grid>
                                 <Grid item xs={6}>
-                                    <h3>Medical History</h3>
-                                    <Typography variant="body1" gutterBottom>{myRecord.history}</Typography>
+                                    <Typography variant="caption">Medical History</Typography>
+                                    <p>{myRecord.history}</p>
                                 </Grid>
                                 <Grid item xs={6}>
-                                    <h3>Medication History</h3>
-                                    <Typography variant="body1" gutterBottom>{myRecord.meds}</Typography>
+                                    <Typography variant="caption">Medication History</Typography>
+                                    <p>{myRecord.meds}</p>
                                 </Grid>
                                 <Grid item xs={6}>
-                                    <h3>Allergies</h3>
-                                    <Typography variant="body1" gutterBottom>{myRecord.allergies}</Typography>
+                                    <Typography variant="caption">Allergies</Typography>
+                                    <p>{myRecord.allergies}</p>
                                 </Grid>
                                 <Grid item xs={6}>
-                                    <h3>Social History</h3>
-                                    <Typography variant="body1" gutterBottom>{myRecord.shist}</Typography>
+                                    <Typography variant="caption">Social History</Typography>
+                                    <p>{myRecord.shist}</p>
                                 </Grid>
                                 <Grid item xs={12}>
                                     <Divider/>
                                 </Grid>
                                 <Grid item xs={12}>
-                                    <Typography variant='h5' style={{backgroundColor:'#0B3948',color:'#FFFFFF'}}>
+                                    <Typography variant='h6' gutterBottom={true}>
                                         Summary</Typography>
                                 </Grid>
                                 <Grid item xs={6}>
-                                    <h3>Final Assessment</h3>
-                                    <Typography variant="body1" gutterBottom>{myRecord.assessment}</Typography>
+                                    <Typography variant="caption">Final Assessment</Typography>
+                                    <p>{myRecord.assessment}</p>
                                 </Grid>
                                 <Grid item xs={6}>
-                                    <h3>Plan of Action</h3>
-                                    <Typography variant="body1" gutterBottom>{myRecord.plan}</Typography>
+                                    <Typography variant="caption">Plan of Action</Typography>
+                                    <p>{myRecord.plan}</p>
                                 </Grid>
                                 <Grid item xs={6}>
-                                    <h3>Extra Notes</h3>
-                                    <Typography variant="body1" gutterBottom>{myRecord.extra}</Typography>
+                                    <Typography variant="caption">Extra Notes</Typography>
+                                    <p>{myRecord.extra}</p>
                                 </Grid>
                                 <Grid item xs={6}>
-                                    <h3>Labs Prescribed</h3>
-                                    <Typography variant="body1" gutterBottom>{myRecord.labs}</Typography>
+                                    <Typography variant="caption">Labs Prescribed</Typography>
+                                    <p>{myRecord.labs}</p>
                                 </Grid>
                             </Grid>
                         </Grid>

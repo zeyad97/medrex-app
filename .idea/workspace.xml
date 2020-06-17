@@ -36,10 +36,11 @@
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/CoronaContent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/CoronaContent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/EMedicalDialog.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/EMedicalDialog.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/Form.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Form.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/PersistentLeftDrawer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/PersistentLeftDrawer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Profile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/RevokeCheckBoxes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/RevokeCheckBoxes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/StatsGrids.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/StatsGrids.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -131,7 +132,10 @@
       <workItem from="1591785367192" duration="15011000" />
       <workItem from="1591827196565" duration="167000" />
       <workItem from="1591866316669" duration="9390000" />
-      <workItem from="1591956627270" duration="53442000" />
+      <workItem from="1591956627270" duration="54828000" />
+      <workItem from="1592225325421" duration="2157000" />
+      <workItem from="1592308863886" duration="3280000" />
+      <workItem from="1592385381947" duration="2468000" />
     </task>
     <task id="LOCAL-00001" summary="Auth0 used with google and facebook authentication. secure route also configured">
       <created>1588938236534</created>
@@ -322,7 +326,14 @@
       <option name="project" value="LOCAL" />
       <updated>1592125065431</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Rendering fixes required. App is nearly completed.">
+      <created>1592171546060</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1592171546060</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -341,7 +352,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="AuthO functioning proeperly" />
     <MESSAGE value="Dashboard and form component created" />
     <MESSAGE value="Dashboard removed, consolidated Form component created." />
     <MESSAGE value="Form completed." />
@@ -366,9 +376,14 @@
     <MESSAGE value="Patient access request and verify notifs testing." />
     <MESSAGE value="Revoke access functionality left." />
     <MESSAGE value="Revoke functionality completed. Rendering on update fixes required. Corona work started." />
-    <option name="LAST_COMMIT_MESSAGE" value="Revoke functionality completed. Rendering on update fixes required. Corona work started." />
+    <MESSAGE value="Rendering fixes required. App is nearly completed." />
+    <option name="LAST_COMMIT_MESSAGE" value="Rendering fixes required. App is nearly completed." />
   </component>
   <component name="WindowStateProjectService">
+    <state x="183" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1592238002277">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="183" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1592238002277" />
     <state x="421" y="259" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1591364866582">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -381,10 +396,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1440.900@0.0.1440.900" timestamp="1592169270674" />
-    <state x="237" y="25" key="CommitChangelistDialog2" timestamp="1592125065266">
+    <state x="237" y="25" key="CommitChangelistDialog2" timestamp="1592171545901">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="237" y="25" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1592125065266" />
+    <state x="237" y="25" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1592171545901" />
     <state x="100" y="100" width="1240" height="700" key="DiffContextDialog" timestamp="1591646953368">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -401,10 +416,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="533" y="160" key="RollbackChangesDialog/0.0.1440.900@0.0.1440.900" timestamp="1591646961910" />
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1592125074108">
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1592171553193">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1592125074108" />
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1592171553193" />
     <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1590672244738">
       <screen x="0" y="0" width="1440" height="900" />
     </state>

@@ -231,9 +231,9 @@ class Form extends React.Component {
                                             <MuiPickersUtilsProvider utils={DateFnsUtils}>
                                                 <DatePicker
                                                     disableFuture openTo="year"
+                                                    variant="inline"
                                                     format="MM/dd/yyyy"
                                                     label="Date of birth"
-                                                    views={["month", "date", "year"]}
                                                     value={this.state.dateOfBirth}
                                                     onChange={this.handleDateChange}
                                                 />
@@ -252,7 +252,7 @@ class Form extends React.Component {
                                         </Grid>
                                         <Grid item>
                                             <FormControl component="fieldset1">
-                                                <FormLabel component="legend1">Gender</FormLabel>
+                                                <FormLabel component="legend1">Participant</FormLabel>
                                                 <RadioGroup row aria-label="type" name="type1" value={this.state.type}
                                                             onChange={this.handleRadioTextChange('type')}>
                                                     <FormControlLabel value="doctor" control={<Radio/>} label="Doctor"/>
