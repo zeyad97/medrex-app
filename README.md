@@ -4,7 +4,16 @@ MedReX is a blockchain based web application that will permit users to manage th
 This frontend interacts with the REST API for the Hyperledger Fabric blockchain
 
 ## Screenshots
-<img src="https://github.com/zeyad97/medrex-app" width="200">
+
+<img src="https://github.com/zeyad97/medrex-app/blob/master/blob/LandingPage.png" width="500">
+<img src="https://github.com/zeyad97/medrex-app/blob/master/blob/Auth0Screen.png" width="500">
+<img src="https://github.com/zeyad97/medrex-app/blob/master/blob/DocHomePage.png" width="500">
+<img src="https://github.com/zeyad97/medrex-app/blob/master/blob/PatientSearch.png" width="500">
+<img src="https://github.com/zeyad97/medrex-app/blob/master/blob/PatientSearch2.png" width="500">
+<img src="https://github.com/zeyad97/medrex-app/blob/master/blob/PatientHome.png" width="500">
+<img src="https://github.com/zeyad97/medrex-app/blob/master/blob/PatientRecords.png" width="500">
+<img src="https://github.com/zeyad97/medrex-app/blob/master/blob/RevokeAccess.png" width="500">
+
 
 ## Demo Video
 A video explaining the benefits of the system, and a wakthrough of the UI.
