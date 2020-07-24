@@ -5,14 +5,14 @@ This frontend interacts with the REST API for the Hyperledger Fabric blockchain
 
 ## Screenshots
 
-<img src="https://github.com/zeyad97/medrex-app/blob/master/blob/LandingPage.png" width="500">
-<img src="https://github.com/zeyad97/medrex-app/blob/master/blob/Auth0Screen.png" width="500">
-<img src="https://github.com/zeyad97/medrex-app/blob/master/blob/DocHomePage.png" width="500">
-<img src="https://github.com/zeyad97/medrex-app/blob/master/blob/PatientSearch.png" width="500">
-<img src="https://github.com/zeyad97/medrex-app/blob/master/blob/PatientSearch2.png" width="500">
-<img src="https://github.com/zeyad97/medrex-app/blob/master/blob/PatientHome.png" width="500">
-<img src="https://github.com/zeyad97/medrex-app/blob/master/blob/PatientRecords.png" width="500">
-<img src="https://github.com/zeyad97/medrex-app/blob/master/blob/RevokeAccess.png" width="500">
+<img src="https://github.com/zeyad97/medrex-app/blob/master/blob/LandingPage.png" width="700">
+<img src="https://github.com/zeyad97/medrex-app/blob/master/blob/Auth0Screen.png" width="700">
+<img src="https://github.com/zeyad97/medrex-app/blob/master/blob/DocHomePage.png" width="700">
+<img src="https://github.com/zeyad97/medrex-app/blob/master/blob/PatientSearch.png" width="700">
+<img src="https://github.com/zeyad97/medrex-app/blob/master/blob/PatientSearch2.png" width="700">
+<img src="https://github.com/zeyad97/medrex-app/blob/master/blob/PatientHome.png" width="700">
+<img src="https://github.com/zeyad97/medrex-app/blob/master/blob/PatientRecords.png" width="700">
+<img src="https://github.com/zeyad97/medrex-app/blob/master/blob/RevokeAccess.png" width="700">
 
 
 ## Demo Video
