@@ -1,3 +1,9 @@
+## Screenshots
+
+## Demo Video
+A video explaining the benefits of the system, and a wakthrough of the UI.
+https://www.youtube.com/watch?v=bRZv4-Vzwlk&feature=youtu.be
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
