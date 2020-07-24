@@ -1,4 +1,10 @@
+## Medrex
+MedReX is a blockchain based web application that will permit users to manage their electronic medical records just like they manage their bank account. The purpose of our project is to give patients complete access control over their medical history, i.e., ensure confidentiality, integrity and authenticity of their electronic medical records.
+
+This frontend interacts with the REST API for the Hyperledger Fabric blockchain
+
 ## Screenshots
+<img src="https://github.com/zeyad97/medrex-app" width="200">
 
 ## Demo Video
 A video explaining the benefits of the system, and a wakthrough of the UI.
